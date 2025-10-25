@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(del \"app\\Http\\Controllers\\DashboardController.php\")",
+      "Bash(ren \"app\\Http\\Controllers\\DashboardController_NEW.php\" \"DashboardController.php\")",
+      "Bash(php artisan:*)",
+      "Bash(del \"d:\\project\\marori\\resources\\views\\partials\\footer.blade.php\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
