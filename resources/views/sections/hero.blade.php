@@ -2,9 +2,9 @@
 <section id="home" class="hero-section-bg">
     <div class="hero-parallax-bg"
         @if($hero && $hero->background_image)
-            style="background-image: url('{{ asset('storage/' . $hero->background_image) }}');"
+            data-bg-image="{{ asset('storage/' . $hero->background_image) }}"
         @else
-            style="background-image: url('{{ asset('images/hero-bg.jpg') }}');"
+            data-bg-image="{{ asset('images/hero-bg.jpg') }}"
         @endif
     ></div>
     <div class="container-fluid px-4">
@@ -66,26 +66,12 @@
         left: 0;
         width: 100%;
         height: 120%;
-        background: linear-gradient(135deg, #3E2723 0%, #5C4033 50%, #4E3629 100%);
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        background-blend-mode: overlay;
         transform: translate3d(0, 0, 0);
         will-change: transform;
         z-index: 0;
-    }
-
-    .hero-parallax-bg::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, rgba(62, 39, 35, 0.4) 0%, rgba(92, 64, 51, 0.3) 50%, rgba(78, 54, 41, 0.4) 100%);
-        pointer-events: none;
-        z-index: 1;
     }
 
     .hero-row {
@@ -103,45 +89,55 @@
     .hero-content-left {
         position: relative;
         z-index: 2;
-        padding-left: 20px;
+        padding-left: 60px;
+        padding-top: 40px;
     }
 
     .hero-content-inner {
-        max-width: 600px;
+        max-width: 580px;
     }
 
     .hero-badge {
         display: inline-block;
-        color: #A68A64;
-        font-size: 12px;
-        font-weight: 600;
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.15);
+        font-size: 0.75rem;
+        font-weight: 700;
         letter-spacing: 3px;
-        margin-bottom: 20px;
+        padding: 10px 24px;
+        border-radius: 50px;
+        margin-bottom: 28px;
         text-transform: uppercase;
+        border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
     .hero-title-modern {
-        font-size: 4rem;
-        font-weight: 800;
+        font-size: 4.5rem;
+        font-weight: 900;
         color: #ffffff;
-        line-height: 1.1;
-        margin-bottom: 25px;
+        line-height: 1.15;
+        margin-bottom: 32px;
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        letter-spacing: -2px;
+        letter-spacing: -2.5px;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
     }
 
     .hero-description {
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 1.1rem;
-        line-height: 1.8;
-        margin-bottom: 35px;
-        max-width: 520px;
+        color: #ffffff;
+        font-size: 1.15rem;
+        line-height: 1.85;
+        margin-bottom: 40px;
+        max-width: 540px;
+        font-weight: 400;
+        text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
     }
 
     .hero-buttons {
         display: flex;
         gap: 15px;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: flex-start;
     }
 
     .btn-hero-primary {
@@ -247,18 +243,41 @@
     }
 
     /* Responsive Design */
+    @media (max-width: 1200px) {
+        .hero-content-left {
+            padding-left: 40px;
+            padding-top: 30px;
+        }
+
+        .hero-title-modern {
+            font-size: 3.5rem;
+            letter-spacing: -2px;
+        }
+
+        .hero-description {
+            font-size: 1.05rem;
+        }
+    }
+
     @media (max-width: 991px) {
         .hero-section-bg {
             padding: 100px 0 60px;
         }
 
         .hero-content-left {
-            padding-left: 20px;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 20px;
             margin-bottom: 50px;
         }
 
         .hero-title-modern {
             font-size: 3rem;
+            letter-spacing: -1.5px;
+        }
+
+        .hero-description {
+            font-size: 1rem;
         }
 
         .hero-image-right {
@@ -267,25 +286,44 @@
     }
 
     @media (max-width: 768px) {
+        .hero-section-bg {
+            padding: 90px 0 60px;
+        }
+
         .hero-content-left {
-            padding-left: 20px;
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-top: 15px;
+        }
+
+        .hero-badge {
+            font-size: 0.7rem;
+            padding: 8px 20px;
+            margin-bottom: 24px;
         }
 
         .hero-title-modern {
             font-size: 2.5rem;
+            margin-bottom: 28px;
+            letter-spacing: -1px;
         }
 
         .hero-description {
             font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 35px;
         }
 
         .hero-buttons {
-            flex-direction: column;
+            flex-direction: row;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         .btn-hero-primary,
         .btn-hero-outline {
-            width: 100%;
+            flex: 1;
+            min-width: 140px;
             justify-content: center;
             text-align: center;
         }
@@ -300,8 +338,104 @@
     }
 
     @media (max-width: 576px) {
+        .hero-section-bg {
+            padding: 80px 0 60px;
+        }
+
+        .hero-content-left {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+        }
+
+        .hero-badge {
+            font-size: 0.65rem;
+            padding: 7px 18px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
         .hero-title-modern {
             font-size: 2rem;
+            margin-bottom: 24px;
+        }
+
+        .hero-description {
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            line-height: 1.65;
+        }
+
+        .hero-buttons {
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-hero-primary,
+        .btn-hero-outline {
+            width: 100%;
+            padding: 14px 28px;
+            font-size: 14px;
+        }
+
+        .ticker-item {
+            font-size: 13px;
+        }
+    }
+
+    /* Extra small devices */
+    @media (max-width: 400px) {
+        .hero-section-bg {
+            padding: 70px 0 50px;
+        }
+
+        .hero-content-left {
+            padding-left: 18px;
+            padding-right: 18px;
+            padding-top: 5px;
+        }
+
+        .hero-badge {
+            font-size: 0.6rem;
+            letter-spacing: 1.5px;
+            padding: 6px 16px;
+            margin-bottom: 18px;
+        }
+
+        .hero-title-modern {
+            font-size: 1.75rem;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+        }
+
+        .hero-description {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .hero-buttons {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-hero-primary,
+        .btn-hero-outline {
+            width: 100%;
+            padding: 12px 24px;
+            font-size: 13px;
+        }
+
+        .hero-image-right {
+            height: 300px;
+        }
+
+        .ticker-content {
+            gap: 50px;
+        }
+
+        .ticker-item {
+            font-size: 12px;
         }
     }
 
@@ -340,6 +474,22 @@
 </style>
 
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Lazy load hero background image
+        const heroParallax = document.querySelector('.hero-parallax-bg');
+        if (heroParallax) {
+            const bgImage = heroParallax.getAttribute('data-bg-image');
+            if (bgImage) {
+                // Create new image to preload
+                const img = new Image();
+                img.onload = function() {
+                    heroParallax.style.backgroundImage = `url('${bgImage}')`;
+                };
+                img.src = bgImage;
+            }
+        }
+    });
+
     // Parallax effect for hero background
     window.addEventListener('scroll', function() {
         const heroParallax = document.querySelector('.hero-parallax-bg');

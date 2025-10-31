@@ -16,12 +16,10 @@ return new class extends Migration
             $table->string('name', 200);
             $table->string('category', 100);
             $table->text('description');
-            $table->decimal('price', 10, 2);
-            $table->string('price_display', 50); // Formatted price display
-            $table->string('image')->nullable();
-            $table->string('marketplace_link')->nullable();
-            $table->integer('order')->default(0);
-            $table->boolean('is_active')->default(true);
+            $table->string('price', 100); // Price display like "Rp 250.000 - Rp 500.000"
+            $table->string('image')->nullable(); // Product photo
+            $table->string('shopee_link')->nullable();
+            $table->string('tokopedia_link')->nullable();
             $table->timestamps();
         });
     }

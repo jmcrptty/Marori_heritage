@@ -9,9 +9,10 @@ use App\Models\HeroSection;
 use App\Models\AboutSection;
 use App\Models\CultureItem;
 use App\Models\Product;
-use App\Models\ContactInfo;
 use App\Models\GalleryVideo;
 use App\Models\GalleryPhoto;
+use App\Models\Researcher;
+use App\Models\ContactInfo;
 
 class DashboardController extends Controller
 {
@@ -21,10 +22,14 @@ class DashboardController extends Controller
     public function index()
     {
         $stats = [
+            'hero' => HeroSection::exists() ? 1 : 0,
             'culture_items' => CultureItem::count(),
             'products' => Product::count(),
+            'researchers' => Researcher::count(),
             'videos' => GalleryVideo::count(),
             'photos' => GalleryPhoto::count(),
+            'total_media' => GalleryVideo::count() + GalleryPhoto::count(),
+            'contact' => ContactInfo::exists() ? 1 : 0,
         ];
 
         return view('dashboard.index', compact('stats'));
@@ -71,6 +76,14 @@ class DashboardController extends Controller
             $hero->update($validated);
         } else {
             HeroSection::create($validated);
+        }
+
+        // Return JSON response for AJAX requests
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Hero section berhasil diperbarui!'
+            ]);
         }
 
         Session::flash('success', 'Hero section berhasil diperbarui!');
@@ -178,118 +191,6 @@ class DashboardController extends Controller
 
         Session::flash('success', 'Item budaya berhasil dihapus!');
         return redirect()->route('dashboard.culture');
-    }
-
-    /**
-     * Show products management page
-     */
-    public function products()
-    {
-        $products = Product::ordered()->get();
-        return view('dashboard.products', compact('products'));
-    }
-
-    /**
-     * Update products
-     */
-    public function updateProducts(Request $request)
-    {
-        $validated = $request->validate([
-            'id' => 'nullable|exists:products,id',
-            'name' => 'required|string|max:200',
-            'category' => 'required|string|max:100',
-            'description' => 'required|string',
-            'price' => 'required|numeric',
-            'price_display' => 'required|string|max:50',
-            'image' => 'nullable|image|max:2048',
-            'marketplace_link' => 'nullable|url',
-            'order' => 'required|integer',
-            'is_active' => 'nullable|boolean'
-        ]);
-
-        $validated['is_active'] = $request->has('is_active');
-
-        if ($request->id) {
-            $product = Product::find($request->id);
-
-            // Handle image upload
-            if ($request->hasFile('image')) {
-                if ($product->image) {
-                    Storage::disk('public')->delete($product->image);
-                }
-                $validated['image'] = $request->file('image')->store('products', 'public');
-            }
-
-            $product->update($validated);
-            $message = 'Produk berhasil diperbarui!';
-        } else {
-            if ($request->hasFile('image')) {
-                $validated['image'] = $request->file('image')->store('products', 'public');
-            }
-            Product::create($validated);
-            $message = 'Produk berhasil ditambahkan!';
-        }
-
-        Session::flash('success', $message);
-        return redirect()->route('dashboard.products');
-    }
-
-    /**
-     * Delete product
-     */
-    public function deleteProduct($id)
-    {
-        $product = Product::findOrFail($id);
-
-        // Delete image if exists
-        if ($product->image) {
-            Storage::disk('public')->delete($product->image);
-        }
-
-        $product->delete();
-
-        Session::flash('success', 'Produk berhasil dihapus!');
-        return redirect()->route('dashboard.products');
-    }
-
-    /**
-     * Show contact edit form
-     */
-    public function contact()
-    {
-        $contact = ContactInfo::first();
-        return view('dashboard.contact', compact('contact'));
-    }
-
-    /**
-     * Update contact information
-     */
-    public function updateContact(Request $request)
-    {
-        $validated = $request->validate([
-            'whatsapp' => 'required|string|max:50',
-            'whatsapp_link' => 'required|url',
-            'email' => 'required|email|max:100',
-            'address' => 'required|string',
-            'instagram' => 'nullable|url',
-            'facebook' => 'nullable|url',
-            'youtube' => 'nullable|url',
-            'weekday_hours' => 'required|string|max:100',
-            'saturday_hours' => 'required|string|max:100',
-            'sunday_hours' => 'required|string|max:100',
-            'whatsapp_response' => 'required|string|max:100'
-        ]);
-
-        $contact = ContactInfo::first();
-
-        if ($contact) {
-            $contact->update($validated);
-        } else {
-            ContactInfo::create($validated);
-        }
-
-        Session::flash('success', 'Informasi kontak berhasil diperbarui!');
-        return redirect()->route('dashboard.contact');
     }
 
     /**

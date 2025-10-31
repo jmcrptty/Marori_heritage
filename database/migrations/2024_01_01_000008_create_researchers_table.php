@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gallery_photos', function (Blueprint $table) {
+        Schema::create('researchers', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 200);
-            $table->text('caption');
-            $table->string('image_path')->nullable(); // Nullable untuk upload via dashboard
+            $table->string('name', 200);
+            $table->string('role', 100); // Antropolog, Etnografer, dll
+            $table->string('institution', 200);
+            $table->string('photo')->nullable(); // Path to photo in storage
             $table->integer('order')->default(0);
-            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gallery_photos');
+        Schema::dropIfExists('researchers');
     }
 };

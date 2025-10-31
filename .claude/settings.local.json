@@ -4,7 +4,8 @@
       "Bash(del \"app\\Http\\Controllers\\DashboardController.php\")",
       "Bash(ren \"app\\Http\\Controllers\\DashboardController_NEW.php\" \"DashboardController.php\")",
       "Bash(php artisan:*)",
-      "Bash(del \"d:\\project\\marori\\resources\\views\\partials\\footer.blade.php\")"
+      "Bash(del \"d:\\project\\marori\\resources\\views\\partials\\footer.blade.php\")",
+      "Bash(del \"d:\\project\\marori\\database\\migrations\\2024_01_01_000006_add_is_active_fields_to_contact_info_table.php\")"
     ],
     "deny": [],
     "ask": []

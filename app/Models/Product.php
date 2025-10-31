@@ -14,31 +14,13 @@ class Product extends Model
         'category',
         'description',
         'price',
-        'price_display',
         'image',
-        'marketplace_link',
-        'order',
-        'is_active',
+        'shopee_link',
+        'tokopedia_link',
     ];
 
     protected $casts = [
-        'price' => 'decimal:2',
-        'is_active' => 'boolean',
+        'price' => 'string',
     ];
 
-    /**
-     * Scope to get only active products
-     */
-    public function scopeActive($query)
-    {
-        return $query->where('is_active', true);
-    }
-
-    /**
-     * Scope to get products ordered
-     */
-    public function scopeOrdered($query)
-    {
-        return $query->orderBy('order', 'asc');
-    }
 }

@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\ContactInfo;
 use App\Models\GalleryVideo;
 use App\Models\GalleryPhoto;
+use App\Models\Researcher;
 
 class HomeController extends Controller
 {
@@ -23,12 +24,14 @@ class HomeController extends Controller
             $hero = HeroSection::first();
             $about = AboutSection::first();
             $cultureItems = CultureItem::ordered()->get();
-            $products = Product::active()->ordered()->get();
+            $products = Product::latest()->get();
             $contact = ContactInfo::first();
             $video = GalleryVideo::active()->featured()->first() ?? GalleryVideo::active()->ordered()->first();
-            $photos = GalleryPhoto::active()->ordered()->limit(6)->get();
+            $videos = GalleryVideo::active()->ordered()->get();
+            $photos = GalleryPhoto::active()->ordered()->get();
+            $researchers = Researcher::ordered()->get();
 
-            return view('main', compact('hero', 'about', 'cultureItems', 'products', 'contact', 'video', 'photos'));
+            return view('main', compact('hero', 'about', 'cultureItems', 'products', 'contact', 'video', 'videos', 'photos', 'researchers'));
         } catch (\Exception $e) {
             // If database not migrated yet, return view without data
             return view('main');

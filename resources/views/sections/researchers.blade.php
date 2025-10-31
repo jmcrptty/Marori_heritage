@@ -23,8 +23,10 @@
                         <div class="researcher-card">
                             <div class="researcher-image">
                                 @if($researcher->photo)
-                                    <img src="{{ asset($researcher->photo) }}"
-                                         alt="{{ $researcher->name }}">
+                                    <img data-src="{{ asset('storage/' . $researcher->photo) }}"
+                                         alt="{{ $researcher->name }}"
+                                         loading="lazy"
+                                         class="lazy-loading">
                                 @else
                                     <div class="researcher-avatar">
                                         <i class="bi bi-person-circle"></i>
@@ -151,11 +153,8 @@
 
     .researchers-slider-bg {
         background: transparent;
-        position: absolute;
-        top: 0;
-        left: 0;
+        position: relative;
         width: 100%;
-        height: 100%;
         min-height: 100vh;
         display: flex;
         align-items: center;
@@ -195,10 +194,10 @@
         font-size: 0.65rem;
         font-weight: 700;
         letter-spacing: 2px;
-        color: #8B6F47;
+        color: #4A6B5A;
         text-transform: uppercase;
         margin-bottom: 8px;
-        background: rgba(139, 111, 71, 0.15);
+        background: rgba(74, 107, 90, 0.15);
         padding: 4px 12px;
         border-radius: 20px;
     }
@@ -206,7 +205,7 @@
     .researchers-main-title {
         font-family: 'Playfair Display', serif;
         font-size: 2rem;
-        color: #3E2723;
+        color: #4A6B5A;
         margin-bottom: 10px;
         font-weight: 700;
         line-height: 1.2;
@@ -214,7 +213,7 @@
     }
 
     .researchers-subtitle {
-        color: #5D4037;
+        color: #4A6B5A;
         font-size: 0.9rem;
         line-height: 1.5;
         max-width: 700px;
@@ -230,7 +229,7 @@
     /* Slider Container */
     .researchers-slider-wrapper {
         position: relative;
-        overflow: hidden;
+        overflow: visible;
         margin: 0 auto;
         max-width: 100%;
     }
@@ -238,21 +237,22 @@
     .researchers-slider-container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 1fr);
+        grid-template-rows: auto;
         gap: 15px;
         transition: opacity 0.5s ease;
         width: 100%;
+        min-height: 400px;
     }
 
     /* Researcher Card - Smaller Design */
     .researcher-card {
-        background: linear-gradient(135deg, #D7CCC8 0%, #BCAAA4 100%);
+        background: #4A6B5A;
         border-radius: 16px;
         overflow: hidden;
         transition: all 0.3s ease;
         cursor: pointer;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        border: 1px solid rgba(139, 111, 71, 0.2);
+        box-shadow: 0 4px 15px rgba(74, 107, 90, 0.3);
+        border: 1px solid rgba(74, 107, 90, 0.4);
         display: flex;
         flex-direction: column;
         opacity: 1;
@@ -261,14 +261,15 @@
 
     .researcher-card:hover {
         transform: translateY(-8px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        border-color: rgba(139, 111, 71, 0.4);
+        box-shadow: 0 8px 25px rgba(74, 107, 90, 0.4);
+        border-color: rgba(74, 107, 90, 0.6);
+        background: #516F5F;
     }
 
     .researcher-image {
         width: 100%;
         height: 200px;
-        background: linear-gradient(135deg, #A1887F 0%, #8D6E63 100%);
+        background: linear-gradient(135deg, #5A7365 0%, #667B6F 100%);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -283,7 +284,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: radial-gradient(circle at center, rgba(139, 111, 71, 0.15) 0%, transparent 70%);
+        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
     }
 
     .researcher-image img {
@@ -292,9 +293,13 @@
         object-fit: cover;
     }
 
+    .researcher-image img.lazy-loading {
+        background: linear-gradient(135deg, #5A7365 0%, #667B6F 100%);
+    }
+
     .researcher-avatar {
         font-size: 3.5rem;
-        color: rgba(255, 255, 255, 0.3);
+        color: rgba(255, 255, 255, 0.5);
         position: relative;
         z-index: 1;
         transition: transform 0.4s;
@@ -307,7 +312,7 @@
     .researcher-info {
         padding: 14px;
         text-align: center;
-        background: linear-gradient(135deg, #EFEBE9 0%, #D7CCC8 100%);
+        background: #4A6B5A;
         flex-grow: 1;
         display: flex;
         flex-direction: column;
@@ -316,7 +321,7 @@
 
     .researcher-name {
         font-family: 'Playfair Display', serif;
-        color: #3E2723;
+        color: #ffffff;
         font-size: 1rem;
         margin-bottom: 6px;
         font-weight: 700;
@@ -324,8 +329,8 @@
 
     .researcher-role {
         display: inline-block;
-        background: rgba(109, 76, 65, 0.15);
-        color: #6D4C41;
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
         padding: 4px 10px;
         border-radius: 50px;
         font-size: 0.7rem;
@@ -336,7 +341,7 @@
     }
 
     .researcher-institution {
-        color: #5D4037;
+        color: rgba(255, 255, 255, 0.9);
         font-size: 0.75rem;
         margin: 0;
         font-weight: 500;
@@ -413,9 +418,16 @@
             min-height: auto;
         }
 
+        .researchers-slider-bg {
+            min-height: auto;
+            padding: 60px 0;
+        }
+
         .researchers-slider-container {
             grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(3, 1fr);
+            grid-template-rows: auto;
+            gap: 20px;
+            min-height: 500px;
         }
 
         .researchers-header {
@@ -436,8 +448,15 @@
     }
 
     @media (max-width: 768px) {
+        .researchers-slider-bg {
+            padding: 50px 0;
+        }
+
         .researchers-slider-container {
             grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto;
+            gap: 20px;
+            min-height: 450px;
         }
 
         .researcher-image {
@@ -469,8 +488,15 @@
     }
 
     @media (max-width: 576px) {
+        .researchers-slider-bg {
+            padding: 40px 0;
+        }
+
         .researchers-slider-container {
             grid-template-columns: 1fr;
+            grid-template-rows: auto;
+            gap: 20px;
+            min-height: auto;
         }
 
         .researchers-header {
@@ -505,6 +531,91 @@
 
         .researcher-info {
             padding: 16px;
+        }
+
+        .slider-controls {
+            margin-top: 35px;
+        }
+    }
+
+    /* Extra small devices */
+    @media (max-width: 400px) {
+        .researchers-section-slider {
+            min-height: auto;
+        }
+
+        .researchers-slider-bg {
+            padding: 40px 0 50px;
+        }
+
+        .researchers-header {
+            margin-bottom: 25px;
+        }
+
+        .researchers-label {
+            font-size: 0.6rem;
+            letter-spacing: 1.5px;
+            padding: 3px 10px;
+        }
+
+        .researchers-main-title {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .researchers-subtitle {
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .researcher-card {
+            border-radius: 14px;
+        }
+
+        .researcher-image {
+            height: 180px;
+        }
+
+        .researcher-avatar {
+            font-size: 3rem;
+        }
+
+        .researcher-info {
+            padding: 14px;
+        }
+
+        .researcher-name {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .researcher-role {
+            font-size: 0.65rem;
+            padding: 3px 8px;
+        }
+
+        .researcher-institution {
+            font-size: 0.7rem;
+        }
+
+        .slider-controls {
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .slider-control-btn {
+            width: 40px;
+            height: 40px;
+            font-size: 1.1rem;
+        }
+
+        .indicator-dot {
+            width: 8px;
+            height: 8px;
+        }
+
+        .indicator-dot.active {
+            width: 24px;
         }
     }
 </style>

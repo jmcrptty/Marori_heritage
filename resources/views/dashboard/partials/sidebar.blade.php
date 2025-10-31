@@ -19,9 +19,9 @@
             <span class="menu-item-text">Hero Section</span>
         </a>
 
-        <a href="{{ route('dashboard.about') }}" class="menu-item {{ request()->routeIs('dashboard.about') ? 'active' : '' }}">
-            <i class="bi bi-info-circle"></i>
-            <span class="menu-item-text">Tentang Kami</span>
+        <a href="{{ route('dashboard.products') }}" class="menu-item {{ request()->routeIs('dashboard.products') ? 'active' : '' }}">
+            <i class="bi bi-box-seam"></i>
+            <span class="menu-item-text">Produk</span>
         </a>
 
         <a href="{{ route('dashboard.culture') }}" class="menu-item {{ request()->routeIs('dashboard.culture') ? 'active' : '' }}">
@@ -29,9 +29,14 @@
             <span class="menu-item-text">Budaya</span>
         </a>
 
-        <a href="{{ route('dashboard.products') }}" class="menu-item {{ request()->routeIs('dashboard.products') ? 'active' : '' }}">
-            <i class="bi bi-box-seam"></i>
-            <span class="menu-item-text">Produk</span>
+        <a href="{{ route('dashboard.media') }}" class="menu-item {{ request()->routeIs('dashboard.media') ? 'active' : '' }}">
+            <i class="bi bi-image"></i>
+            <span class="menu-item-text">Media Gallery</span>
+        </a>
+
+        <a href="{{ route('dashboard.researchers') }}" class="menu-item {{ request()->routeIs('dashboard.researchers') ? 'active' : '' }}">
+            <i class="bi bi-people"></i>
+            <span class="menu-item-text">Tim Peneliti</span>
         </a>
 
         <a href="{{ route('dashboard.contact') }}" class="menu-item {{ request()->routeIs('dashboard.contact') ? 'active' : '' }}">
@@ -39,24 +44,14 @@
             <span class="menu-item-text">Kontak</span>
         </a>
 
-        <div class="menu-section-title">Settings</div>
+        <div class="menu-section-title">System</div>
 
-        <a href="{{ route('dashboard.media') }}" class="menu-item {{ request()->routeIs('dashboard.media') ? 'active' : '' }}">
-            <i class="bi bi-image"></i>
-            <span class="menu-item-text">Media Gallery</span>
-        </a>
-
-        <a href="{{ route('dashboard.settings') }}" class="menu-item {{ request()->routeIs('dashboard.settings') ? 'active' : '' }}">
-            <i class="bi bi-gear"></i>
-            <span class="menu-item-text">Pengaturan</span>
+        <a href="{{ route('dashboard.admin') }}" class="menu-item {{ request()->routeIs('dashboard.admin') ? 'active' : '' }}">
+            <i class="bi bi-shield-lock"></i>
+            <span class="menu-item-text">Kelola Akun Admin</span>
         </a>
 
         <div class="menu-section-title">Account</div>
-
-        <a href="{{ url('/') }}" target="_blank" class="menu-item">
-            <i class="bi bi-eye"></i>
-            <span class="menu-item-text">Lihat Website</span>
-        </a>
 
         <a href="#" class="menu-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="bi bi-box-arrow-right"></i>

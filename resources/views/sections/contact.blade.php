@@ -13,48 +13,32 @@
         </div>
 
         <!-- Main Contact Grid -->
-        <div class="row g-4 mb-5">
+        <div class="row g-4 mb-5 justify-content-center">
             <!-- WhatsApp -->
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-6">
                 <div class="contact-card-modern">
                     <div class="contact-icon-modern">
                         <i class="bi bi-whatsapp"></i>
                     </div>
                     <h4 class="contact-card-title">WhatsApp</h4>
                     <p class="contact-card-desc">Chat langsung dengan tim kami</p>
-                    <a href="https://wa.me/6281234567890" class="contact-link">
-                        <i class="bi bi-arrow-right-circle"></i> +62 812-3456-7890
+                    <a href="{{ $contact->whatsapp_link ?? 'https://wa.me/6281234567890' }}" class="contact-link" target="_blank">
+                        <i class="bi bi-arrow-right-circle"></i> {{ $contact->whatsapp ?? '+62 812-3456-7890' }}
                     </a>
                 </div>
             </div>
 
             <!-- Email -->
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-6">
                 <div class="contact-card-modern">
                     <div class="contact-icon-modern">
                         <i class="bi bi-envelope-at"></i>
                     </div>
                     <h4 class="contact-card-title">Email</h4>
                     <p class="contact-card-desc">Untuk pertanyaan detail</p>
-                    <a href="mailto:marori@wasur.com" class="contact-link">
-                        <i class="bi bi-arrow-right-circle"></i> marori@wasur.com
+                    <a href="mailto:{{ $contact->email ?? 'marori@wasur.com' }}" class="contact-link">
+                        <i class="bi bi-arrow-right-circle"></i> {{ $contact->email ?? 'marori@wasur.com' }}
                     </a>
-                </div>
-            </div>
-
-            <!-- Location -->
-            <div class="col-md-6 col-lg-4">
-                <div class="contact-card-modern">
-                    <div class="contact-icon-modern">
-                        <i class="bi bi-geo-alt"></i>
-                    </div>
-                    <h4 class="contact-card-title">Lokasi</h4>
-                    <p class="contact-card-desc">Kunjungi kami di</p>
-                    <p class="contact-address">
-                        Taman Nasional Wasur<br>
-                        Merauke, Papua Selatan<br>
-                        Indonesia
-                    </p>
                 </div>
             </div>
         </div>
@@ -75,26 +59,36 @@
                     </div>
 
                     <div class="social-links-grid">
-                        <a href="#" class="social-link-item instagram">
+                        @if($contact && $contact->is_instagram_active && $contact->instagram)
+                        <a href="{{ $contact->instagram }}" class="social-link-item instagram" target="_blank">
                             <i class="bi bi-instagram"></i>
                             <span>Instagram</span>
                         </a>
-                        <a href="#" class="social-link-item facebook">
+                        @endif
+                        @if($contact && $contact->is_facebook_active && $contact->facebook)
+                        <a href="{{ $contact->facebook }}" class="social-link-item facebook" target="_blank">
                             <i class="bi bi-facebook"></i>
                             <span>Facebook</span>
                         </a>
-                        <a href="#" class="social-link-item youtube">
+                        @endif
+                        @if($contact && $contact->is_youtube_active && $contact->youtube)
+                        <a href="{{ $contact->youtube }}" class="social-link-item youtube" target="_blank">
                             <i class="bi bi-youtube"></i>
                             <span>YouTube</span>
                         </a>
-                        <a href="#" class="social-link-item tiktok">
+                        @endif
+                        @if($contact && $contact->is_tiktok_active && $contact->tiktok)
+                        <a href="{{ $contact->tiktok }}" class="social-link-item tiktok" target="_blank">
                             <i class="bi bi-tiktok"></i>
                             <span>TikTok</span>
                         </a>
-                        <a href="#" class="social-link-item twitter">
+                        @endif
+                        @if($contact && $contact->is_twitter_active && $contact->twitter)
+                        <a href="{{ $contact->twitter }}" class="social-link-item twitter" target="_blank">
                             <i class="bi bi-twitter-x"></i>
                             <span>Twitter</span>
                         </a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -113,31 +107,63 @@
                     </div>
 
                     <div class="marketplace-links">
-                        <a href="#" class="marketplace-link-item shopee">
+                        @if($contact && $contact->is_shopee_active)
+                        <a href="{{ $contact->shopee_url ?? '#' }}" class="marketplace-link-item shopee" target="_blank">
                             <div class="marketplace-logo">
                                 <i class="bi bi-bag-check"></i>
                             </div>
                             <div class="marketplace-info">
                                 <h5>Shopee</h5>
-                                <p>@marori.official</p>
+                                <p>{{ $contact->shopee_username ?? '@marori.official' }}</p>
                             </div>
                             <i class="bi bi-arrow-right"></i>
                         </a>
+                        @endif
 
-                        <a href="#" class="marketplace-link-item tokopedia">
+                        @if($contact && $contact->is_tokopedia_active)
+                        <a href="{{ $contact->tokopedia_url ?? '#' }}" class="marketplace-link-item tokopedia" target="_blank">
                             <div class="marketplace-logo">
                                 <i class="bi bi-shop-window"></i>
                             </div>
                             <div class="marketplace-info">
                                 <h5>Tokopedia</h5>
-                                <p>Marori Wasur Official</p>
+                                <p>{{ $contact->tokopedia_store_name ?? 'Marori Wasur Official' }}</p>
                             </div>
                             <i class="bi bi-arrow-right"></i>
                         </a>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Google Maps Section -->
+        @if($contact && $contact->is_maps_active && $contact->maps_embed_url)
+        <div class="row g-4 mb-5">
+            <div class="col-12">
+                <div class="maps-card">
+                    <div class="maps-header-compact">
+                        <div class="maps-icon-compact">
+                            <i class="bi bi-geo-alt"></i>
+                        </div>
+                        <div class="maps-address-inline">
+                            {{ $contact->address ?? "Taman Nasional Wasur, Merauke, Papua Selatan, Indonesia" }}
+                        </div>
+                    </div>
+                    <div class="maps-container">
+                        <iframe
+                            src="{{ $contact->maps_embed_url }}"
+                            width="100%"
+                            style="border:0; border-radius: 15px;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
 
         <!-- Footer Copyright -->
         <div class="footer-bottom">
@@ -158,7 +184,7 @@
             #FFEBCC 80%,
             #F5E6D3 100%);
         position: relative;
-        padding: 40px 0 40px;
+        padding: 10px 0 40px;
         overflow: hidden;
     }
 
@@ -522,6 +548,64 @@
         opacity: 0.7;
     }
 
+    /* Google Maps Card */
+    .maps-card {
+        background: rgba(44, 74, 62, 0.85);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(44, 74, 62, 0.3);
+        border-radius: 24px;
+        padding: 30px;
+        transition: all 0.4s ease;
+        box-shadow: 0 4px 20px rgba(44, 74, 62, 0.2);
+    }
+
+    .maps-card:hover {
+        background: rgba(44, 74, 62, 0.95);
+        border-color: rgba(127, 182, 133, 0.5);
+        box-shadow: 0 8px 30px rgba(44, 74, 62, 0.3);
+    }
+
+    .maps-header-compact {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .maps-icon-compact {
+        width: 45px;
+        height: 45px;
+        background: rgba(127, 182, 133, 0.25);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: #A5D6A7;
+        flex-shrink: 0;
+        border: 2px solid rgba(127, 182, 133, 0.4);
+    }
+
+    .maps-address-inline {
+        color: white;
+        font-size: 1.05rem;
+        line-height: 1.5;
+        font-weight: 600;
+        flex-grow: 1;
+    }
+
+    .maps-container {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        margin-top: 20px;
+    }
+
+    .maps-container iframe {
+        display: block;
+        height: 500px;
+    }
+
     /* Footer Bottom */
     .footer-bottom {
         text-align: center;
@@ -558,7 +642,7 @@
 
     @media (max-width: 768px) {
         .contact-section-modern {
-            padding: 30px 0 30px;
+            padding: 10px 0 30px;
         }
 
         .contact-main-title {
@@ -574,11 +658,19 @@
         .marketplace-card {
             padding: 30px;
         }
+
+        .maps-card {
+            padding: 25px;
+        }
+
+        .maps-container iframe {
+            height: 450px;
+        }
     }
 
     @media (max-width: 576px) {
         .contact-section-modern {
-            padding: 20px 0 20px;
+            padding: 10px 0 20px;
         }
 
         .contact-header {
@@ -600,6 +692,165 @@
         .social-link-item {
             padding: 12px 15px;
             font-size: 0.95rem;
+        }
+
+        .maps-container iframe {
+            height: 400px;
+        }
+    }
+
+    /* Extra small devices */
+    @media (max-width: 400px) {
+        .contact-section-modern {
+            padding: 5px 0 15px;
+        }
+
+        .contact-header {
+            margin-bottom: 30px;
+            padding-top: 10px;
+        }
+
+        .contact-badge {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            padding: 6px 16px;
+        }
+
+        .contact-main-title {
+            font-size: 1.75rem;
+            margin-bottom: 12px;
+        }
+
+        .contact-subtitle {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .contact-card-modern {
+            padding: 25px 18px;
+            border-radius: 20px;
+        }
+
+        .contact-icon-modern {
+            width: 60px;
+            height: 60px;
+            font-size: 1.75rem;
+            margin-bottom: 16px;
+        }
+
+        .contact-card-title {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .contact-card-desc {
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .contact-link {
+            font-size: 0.95rem;
+        }
+
+        .contact-address {
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .social-media-card,
+        .marketplace-card {
+            padding: 25px;
+            border-radius: 20px;
+        }
+
+        .maps-card {
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        .social-icon-header,
+        .marketplace-icon-header {
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+        }
+
+        .maps-icon-compact {
+            width: 40px;
+            height: 40px;
+            font-size: 1.3rem;
+        }
+
+        .social-title,
+        .marketplace-title {
+            font-size: 1.35rem;
+        }
+
+        .social-subtitle,
+        .marketplace-subtitle {
+            font-size: 0.85rem;
+        }
+
+        .maps-container iframe {
+            height: 350px;
+        }
+
+        .maps-address-inline {
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .maps-header-compact {
+            margin-bottom: 16px;
+            gap: 12px;
+        }
+
+        .social-links-grid {
+            gap: 10px;
+        }
+
+        .social-link-item {
+            padding: 10px 12px;
+            font-size: 0.9rem;
+            border-radius: 12px;
+        }
+
+        .social-link-item i {
+            font-size: 1.3rem;
+        }
+
+        .marketplace-link-item {
+            padding: 16px 18px;
+            gap: 15px;
+            border-radius: 15px;
+        }
+
+        .marketplace-logo {
+            width: 45px;
+            height: 45px;
+            font-size: 1.3rem;
+        }
+
+        .marketplace-info h5 {
+            font-size: 1rem;
+        }
+
+        .marketplace-info p {
+            font-size: 0.85rem;
+        }
+
+        .marketplace-link-item > i:last-child {
+            font-size: 1.3rem;
+        }
+
+        .footer-bottom {
+            margin-top: 30px;
+            padding: 25px 15px;
+            border-radius: 18px;
+        }
+
+        .footer-bottom p {
+            font-size: 0.85rem;
         }
     }
 </style>

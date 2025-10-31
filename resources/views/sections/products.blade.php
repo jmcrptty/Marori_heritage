@@ -18,257 +18,51 @@
 
             <!-- Products Slider -->
             <div class="products-slider-wrapper">
+                @if(isset($products) && $products->count() > 0)
                 <div class="products-slider-container" id="productsSlider">
-                    <!-- Product 1 -->
+                    @foreach($products as $product)
                     <div class="product-slide">
                         <div class="product-card-modern">
-                            <div class="product-image-bg" style="background: linear-gradient(135deg, rgba(139, 111, 71, 0.85), rgba(92, 64, 51, 0.85)), url('/images/placeholder-product.jpg') center/cover;">
+                            @if($product->image)
+                            <div class="product-image-bg" style="background: url('{{ asset('storage/' . $product->image) }}') center/cover;">
+                                <div class="product-overlay"></div>
+                            </div>
+                            @else
+                            <div class="product-image-bg" style="background: linear-gradient(135deg, rgba(139, 111, 71, 0.85), rgba(92, 64, 51, 0.85));">
                                 <div class="product-overlay">
-                                    <i class="bi bi-bag product-icon"></i>
+                                    <i class="bi bi-image product-icon"></i>
                                 </div>
                             </div>
+                            @endif
                             <div class="product-content-modern">
-                                <span class="product-date">KERAJINAN TANGAN</span>
-                                <h3 class="product-title-modern">Noken Marori</h3>
-                                <p class="product-description-modern">Tas rajutan tradisional yang dibuat dengan teknik warisan leluhur dari serat kulit kayu pilihan.</p>
-                                <div class="product-price-modern">Rp 250.000 - Rp 500.000</div>
+                                <span class="product-date">{{ strtoupper($product->category) }}</span>
+                                <h3 class="product-title-modern">{{ $product->name }}</h3>
+                                <p class="product-description-modern">{{ $product->description }}</p>
+                                <div class="product-price-modern">{{ $product->price }}</div>
+                                @if($product->shopee_link || $product->tokopedia_link)
                                 <div class="product-buttons">
-                                    <a href="#" class="product-btn btn-shopee-earth">
+                                    @if($product->shopee_link)
+                                    <a href="{{ $product->shopee_link }}" target="_blank" rel="noopener" class="product-btn btn-shopee-earth">
                                         <i class="bi bi-bag-check"></i> Shopee
                                     </a>
-                                    <a href="#" class="product-btn btn-tokopedia-earth">
+                                    @endif
+                                    @if($product->tokopedia_link)
+                                    <a href="{{ $product->tokopedia_link }}" target="_blank" rel="noopener" class="product-btn btn-tokopedia-earth">
                                         <i class="bi bi-cart-check"></i> Tokopedia
                                     </a>
+                                    @endif
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>
-
-                    <!-- Product 2 -->
-                    <div class="product-slide">
-                        <div class="product-card-modern">
-                            <div class="product-image-bg" style="background: linear-gradient(135deg, rgba(109, 93, 79, 0.85), rgba(78, 54, 41, 0.85)), url('/images/placeholder-product.jpg') center/cover;">
-                                <div class="product-overlay">
-                                    <i class="bi bi-tree product-icon"></i>
-                                </div>
-                            </div>
-                            <div class="product-content-modern">
-                                <span class="product-date">KERAJINAN TANGAN</span>
-                                <h3 class="product-title-modern">Ukiran Kayu Merbau</h3>
-                                <p class="product-description-modern">Patung dan ukiran dari kayu merbau khas Papua dengan motif tradisional Marori.</p>
-                                <div class="product-price-modern">Rp 350.000 - Rp 2.000.000</div>
-                                <div class="product-buttons">
-                                    <a href="#" class="product-btn btn-shopee-earth">
-                                        <i class="bi bi-bag-check"></i> Shopee
-                                    </a>
-                                    <a href="#" class="product-btn btn-tokopedia-earth">
-                                        <i class="bi bi-cart-check"></i> Tokopedia
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 3 -->
-                    <div class="product-slide">
-                        <div class="product-card-modern">
-                            <div class="product-image-bg" style="background: linear-gradient(135deg, rgba(166, 138, 100, 0.85), rgba(139, 111, 71, 0.85)), url('/images/placeholder-product.jpg') center/cover;">
-                                <div class="product-overlay">
-                                    <i class="bi bi-basket product-icon"></i>
-                                </div>
-                            </div>
-                            <div class="product-content-modern">
-                                <span class="product-date">MAKANAN</span>
-                                <h3 class="product-title-modern">Sagu Wasur Organik</h3>
-                                <p class="product-description-modern">Tepung sagu murni 100% organik hasil panen dari hutan Wasur, diolah secara tradisional.</p>
-                                <div class="product-price-modern">Rp 45.000 / kg</div>
-                                <div class="product-buttons">
-                                    <a href="#" class="product-btn btn-shopee-earth">
-                                        <i class="bi bi-bag-check"></i> Shopee
-                                    </a>
-                                    <a href="#" class="product-btn btn-tokopedia-earth">
-                                        <i class="bi bi-cart-check"></i> Tokopedia
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 4 -->
-                    <div class="product-slide">
-                        <div class="product-card-modern">
-                            <div class="product-image-bg" style="background: linear-gradient(135deg, rgba(92, 77, 66, 0.85), rgba(74, 63, 53, 0.85)), url('/images/placeholder-product.jpg') center/cover;">
-                                <div class="product-overlay">
-                                    <i class="bi bi-gem product-icon"></i>
-                                </div>
-                            </div>
-                            <div class="product-content-modern">
-                                <span class="product-date">AKSESORIS</span>
-                                <h3 class="product-title-modern">Gelang Kulit Rusa</h3>
-                                <p class="product-description-modern">Gelang handmade dari kulit rusa asli dengan ukiran motif khas Marori.</p>
-                                <div class="product-price-modern">Rp 75.000 - Rp 150.000</div>
-                                <div class="product-buttons">
-                                    <a href="#" class="product-btn btn-shopee-earth">
-                                        <i class="bi bi-bag-check"></i> Shopee
-                                    </a>
-                                    <a href="#" class="product-btn btn-tokopedia-earth">
-                                        <i class="bi bi-cart-check"></i> Tokopedia
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 5 -->
-                    <div class="product-slide">
-                        <div class="product-card-modern">
-                            <div class="product-image-bg" style="background: linear-gradient(135deg, rgba(139, 111, 71, 0.85), rgba(109, 93, 79, 0.85)), url('/images/placeholder-product.jpg') center/cover;">
-                                <div class="product-overlay">
-                                    <i class="bi bi-palette product-icon"></i>
-                                </div>
-                            </div>
-                            <div class="product-content-modern">
-                                <span class="product-date">KERAJINAN TANGAN</span>
-                                <h3 class="product-title-modern">Lukisan Kulit Kayu</h3>
-                                <p class="product-description-modern">Lukisan motif tradisional di atas kulit kayu dengan pewarna alami dari hutan Wasur.</p>
-                                <div class="product-price-modern">Rp 200.000 - Rp 800.000</div>
-                                <div class="product-buttons">
-                                    <a href="#" class="product-btn btn-shopee-earth">
-                                        <i class="bi bi-bag-check"></i> Shopee
-                                    </a>
-                                    <a href="#" class="product-btn btn-tokopedia-earth">
-                                        <i class="bi bi-cart-check"></i> Tokopedia
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 6 -->
-                    <div class="product-slide">
-                        <div class="product-card-modern">
-                            <div class="product-image-bg" style="background: linear-gradient(135deg, rgba(74, 63, 53, 0.85), rgba(92, 77, 66, 0.85)), url('/images/placeholder-product.jpg') center/cover;">
-                                <div class="product-overlay">
-                                    <i class="bi bi-droplet product-icon"></i>
-                                </div>
-                            </div>
-                            <div class="product-content-modern">
-                                <span class="product-date">KESEHATAN</span>
-                                <h3 class="product-title-modern">Minyak Buah Merah</h3>
-                                <p class="product-description-modern">Minyak buah merah asli Papua dengan khasiat tinggi untuk kesehatan.</p>
-                                <div class="product-price-modern">Rp 150.000 / 100ml</div>
-                                <div class="product-buttons">
-                                    <a href="#" class="product-btn btn-shopee-earth">
-                                        <i class="bi bi-bag-check"></i> Shopee
-                                    </a>
-                                    <a href="#" class="product-btn btn-tokopedia-earth">
-                                        <i class="bi bi-cart-check"></i> Tokopedia
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 7 -->
-                    <div class="product-slide">
-                        <div class="product-card-modern">
-                            <div class="product-image-bg" style="background: linear-gradient(135deg, rgba(139, 111, 71, 0.85), rgba(166, 138, 100, 0.85)), url('/images/placeholder-product.jpg') center/cover;">
-                                <div class="product-overlay">
-                                    <i class="bi bi-gift product-icon"></i>
-                                </div>
-                            </div>
-                            <div class="product-content-modern">
-                                <span class="product-date">PAKET SOUVENIR</span>
-                                <h3 class="product-title-modern">Paket Suvenir Papua</h3>
-                                <p class="product-description-modern">Paket lengkap souvenir khas Papua untuk oleh-oleh atau hadiah istimewa.</p>
-                                <div class="product-price-modern">Rp 300.000 - Rp 1.000.000</div>
-                                <div class="product-buttons">
-                                    <a href="#" class="product-btn btn-shopee-earth">
-                                        <i class="bi bi-bag-check"></i> Shopee
-                                    </a>
-                                    <a href="#" class="product-btn btn-tokopedia-earth">
-                                        <i class="bi bi-cart-check"></i> Tokopedia
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 8 -->
-                    <div class="product-slide">
-                        <div class="product-card-modern">
-                            <div class="product-image-bg" style="background: linear-gradient(135deg, rgba(92, 77, 66, 0.85), rgba(109, 93, 79, 0.85)), url('/images/placeholder-product.jpg') center/cover;">
-                                <div class="product-overlay">
-                                    <i class="bi bi-flower1 product-icon"></i>
-                                </div>
-                            </div>
-                            <div class="product-content-modern">
-                                <span class="product-date">KERAJINAN TANGAN</span>
-                                <h3 class="product-title-modern">Topi Sali</h3>
-                                <p class="product-description-modern">Topi tradisional dari daun sagu yang dianyam dengan teknik khas Marori.</p>
-                                <div class="product-price-modern">Rp 100.000 - Rp 200.000</div>
-                                <div class="product-buttons">
-                                    <a href="#" class="product-btn btn-shopee-earth">
-                                        <i class="bi bi-bag-check"></i> Shopee
-                                    </a>
-                                    <a href="#" class="product-btn btn-tokopedia-earth">
-                                        <i class="bi bi-cart-check"></i> Tokopedia
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 9 -->
-                    <div class="product-slide">
-                        <div class="product-card-modern">
-                            <div class="product-image-bg" style="background: linear-gradient(135deg, rgba(166, 138, 100, 0.85), rgba(139, 111, 71, 0.85)), url('/images/placeholder-product.jpg') center/cover;">
-                                <div class="product-overlay">
-                                    <i class="bi bi-soundwave product-icon"></i>
-                                </div>
-                            </div>
-                            <div class="product-content-modern">
-                                <span class="product-date">MUSIK</span>
-                                <h3 class="product-title-modern">Tifa Papua</h3>
-                                <p class="product-description-modern">Alat musik tradisional Papua berupa gendang dengan ukiran khas Marori.</p>
-                                <div class="product-price-modern">Rp 400.000 - Rp 1.500.000</div>
-                                <div class="product-buttons">
-                                    <a href="#" class="product-btn btn-shopee-earth">
-                                        <i class="bi bi-bag-check"></i> Shopee
-                                    </a>
-                                    <a href="#" class="product-btn btn-tokopedia-earth">
-                                        <i class="bi bi-cart-check"></i> Tokopedia
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 10 -->
-                    <div class="product-slide">
-                        <div class="product-card-modern">
-                            <div class="product-image-bg" style="background: linear-gradient(135deg, rgba(74, 63, 53, 0.85), rgba(92, 77, 66, 0.85)), url('/images/placeholder-product.jpg') center/cover;">
-                                <div class="product-overlay">
-                                    <i class="bi bi-stars product-icon"></i>
-                                </div>
-                            </div>
-                            <div class="product-content-modern">
-                                <span class="product-date">KERAJINAN TANGAN</span>
-                                <h3 class="product-title-modern">Perhiasan Kerang</h3>
-                                <p class="product-description-modern">Kalung dan gelang dari kerang laut dengan motif tradisional Papua.</p>
-                                <div class="product-price-modern">Rp 50.000 - Rp 150.000</div>
-                                <div class="product-buttons">
-                                    <a href="#" class="product-btn btn-shopee-earth">
-                                        <i class="bi bi-bag-check"></i> Shopee
-                                    </a>
-                                    <a href="#" class="product-btn btn-tokopedia-earth">
-                                        <i class="bi bi-cart-check"></i> Tokopedia
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
+                @else
+                <div class="text-center py-5">
+                    <p class="text-white">Belum ada produk untuk ditampilkan.</p>
+                </div>
+                @endif
             </div>
 
             <!-- Navigation Buttons - Di bawah cards -->
@@ -704,6 +498,11 @@
 
     .product-modal-image-bg .product-icon {
         font-size: 6rem;
+        display: none; /* Hide icon in modal */
+    }
+
+    .product-modal-image-bg .product-overlay {
+        display: none; /* Hide overlay in modal */
     }
 
     .product-modal-info {
@@ -914,6 +713,144 @@
             right: 15px;
         }
     }
+
+    /* Extra small devices */
+    @media (max-width: 400px) {
+        .products-section-slider {
+            min-height: auto;
+        }
+
+        .products-slider-bg {
+            padding: 80px 0 50px;
+        }
+
+        .products-header {
+            margin-bottom: 25px;
+        }
+
+        .products-label {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            padding: 5px 14px;
+        }
+
+        .products-main-title {
+            font-size: 1.75rem;
+            margin-bottom: 10px;
+        }
+
+        .products-subtitle {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .products-slider-wrapper {
+            max-width: calc(100% - 20px);
+            width: calc(100% - 20px);
+        }
+
+        .product-card-modern {
+            min-height: 450px;
+            border-radius: 16px;
+        }
+
+        .product-image-bg {
+            height: 200px;
+        }
+
+        .product-icon {
+            font-size: 3rem;
+        }
+
+        .product-content-modern {
+            padding: 16px;
+        }
+
+        .product-date {
+            font-size: 0.65rem;
+            letter-spacing: 1px;
+        }
+
+        .product-title-modern {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+
+        .product-description-modern {
+            font-size: 0.8rem;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .product-price-modern {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .product-btn {
+            font-size: 0.7rem;
+            padding: 9px;
+        }
+
+        .product-btn i {
+            font-size: 0.85rem;
+        }
+
+        .products-navigation {
+            margin-top: 25px;
+            gap: 10px;
+        }
+
+        .product-nav-btn {
+            width: 38px;
+            height: 38px;
+            font-size: 1.1rem;
+        }
+
+        .product-modal-content {
+            width: 98%;
+            border-radius: 20px;
+        }
+
+        .product-modal-image {
+            min-height: 220px;
+        }
+
+        .product-modal-image-bg .product-icon {
+            font-size: 5rem;
+        }
+
+        .product-modal-info {
+            padding: 20px 15px;
+            gap: 15px;
+        }
+
+        .product-modal-title {
+            font-size: 1.3rem;
+        }
+
+        .product-modal-description {
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .product-modal-price {
+            font-size: 1.6rem !important;
+        }
+
+        .product-modal-buttons .product-btn {
+            padding: 12px 20px;
+            font-size: 0.9rem;
+        }
+
+        .product-modal-close {
+            width: 38px;
+            height: 38px;
+            top: 12px;
+            right: 12px;
+            font-size: 1.2rem;
+        }
+    }
 </style>
 
 <script>
@@ -1063,7 +1000,7 @@
         const productCards = document.querySelectorAll('.product-card-modern');
 
         // Open modal when clicking on a product card
-        productCards.forEach(card => {
+        productCards.forEach((card, index) => {
             card.addEventListener('click', function(e) {
                 // Don't open modal if clicking on buttons
                 if (e.target.closest('.product-btn')) {
@@ -1073,19 +1010,47 @@
                 // Get product data from card
                 const productImageBg = card.querySelector('.product-image-bg');
                 const productIcon = card.querySelector('.product-icon');
-                const category = card.querySelector('.product-date').textContent;
-                const title = card.querySelector('.product-title-modern').textContent;
-                const description = card.querySelector('.product-description-modern').textContent;
-                const price = card.querySelector('.product-price-modern').textContent;
-                const bgStyle = productImageBg.style.background;
+                const category = card.querySelector('.product-date') ? card.querySelector('.product-date').textContent : '';
+                const title = card.querySelector('.product-title-modern') ? card.querySelector('.product-title-modern').textContent : '';
+                const description = card.querySelector('.product-description-modern') ? card.querySelector('.product-description-modern').textContent : '';
+                const price = card.querySelector('.product-price-modern') ? card.querySelector('.product-price-modern').textContent : '';
+                const bgStyle = productImageBg ? productImageBg.style.background : '';
+
+                // Get Shopee and Tokopedia links from the card
+                const shopeeBtn = card.querySelector('.btn-shopee-earth');
+                const tokopediaBtn = card.querySelector('.btn-tokopedia-earth');
+                const modalShopeeBtn = document.getElementById('modalShopeeBtn');
+                const modalTokopediaBtn = document.getElementById('modalTokopediaBtn');
 
                 // Set modal content
-                modalImage.style.background = bgStyle;
-                modalIcon.className = productIcon.className;
-                modalCategory.textContent = category;
-                modalTitle.textContent = title;
-                modalDescription.textContent = description;
-                modalPrice.textContent = price;
+                if (modalImage && bgStyle) {
+                    modalImage.style.background = bgStyle;
+                }
+
+                // Hide icon in modal (we don't want to show it)
+                if (modalIcon) {
+                    modalIcon.style.display = 'none';
+                }
+
+                if (modalCategory) modalCategory.textContent = category;
+                if (modalTitle) modalTitle.textContent = title;
+                if (modalDescription) modalDescription.textContent = description;
+                if (modalPrice) modalPrice.textContent = price;
+
+                // Update modal buttons
+                if (shopeeBtn && modalShopeeBtn) {
+                    modalShopeeBtn.href = shopeeBtn.href;
+                    modalShopeeBtn.style.display = 'flex';
+                } else if (modalShopeeBtn) {
+                    modalShopeeBtn.style.display = 'none';
+                }
+
+                if (tokopediaBtn && modalTokopediaBtn) {
+                    modalTokopediaBtn.href = tokopediaBtn.href;
+                    modalTokopediaBtn.style.display = 'flex';
+                } else if (modalTokopediaBtn) {
+                    modalTokopediaBtn.style.display = 'none';
+                }
 
                 // Show modal
                 modal.classList.add('active');

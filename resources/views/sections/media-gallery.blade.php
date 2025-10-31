@@ -13,24 +13,26 @@
 
             <!-- Video Slider -->
             <div class="media-gallery-slider-wrapper">
+                @if(isset($videos) && $videos->count() > 0)
                 <div class="media-gallery-slider-container" id="mediaGallerySlider">
-                    <!-- Video 1 -->
+                    @foreach($videos as $video)
+                    @if($video->is_active)
                     <div class="media-slide">
                         <div class="media-card">
                             <div class="media-video-wrapper">
                                 <iframe
-                                    src="https://www.youtube.com/embed/KpCwki0hWDQ"
-                                    title="Suku Marori Wasur - Dokumenter"
+                                    src="https://www.youtube.com/embed/{{ $video->youtube_id }}"
+                                    title="{{ $video->title }}"
                                     frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                     allowfullscreen>
                                 </iframe>
                                 <div class="media-overlay">
                                     <div class="media-content">
-                                        <span class="media-category">DOKUMENTER</span>
-                                        <h3 class="media-title">Kehidupan Suku Marori di Taman Nasional Wasur</h3>
-                                        <p class="media-description">Dokumenter tentang kehidupan sehari-hari masyarakat Suku Marori dan bagaimana mereka menjaga kelestarian hutan Wasur.</p>
-                                        <a href="https://www.youtube.com/watch?v=KpCwki0hWDQ" target="_blank" class="media-btn">
+                                        <span class="media-category">VIDEO</span>
+                                        <h3 class="media-title">{{ $video->title }}</h3>
+                                        <p class="media-description">{{ $video->description }}</p>
+                                        <a href="{{ $video->youtube_url }}" target="_blank" rel="noopener" class="media-btn">
                                             <i class="bi bi-play-circle"></i> WATCH
                                         </a>
                                     </div>
@@ -38,82 +40,14 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Video 2 -->
-                    <div class="media-slide">
-                        <div class="media-card">
-                            <div class="media-video-wrapper">
-                                <iframe
-                                    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                                    title="Budaya Marori"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    allowfullscreen>
-                                </iframe>
-                                <div class="media-overlay">
-                                    <div class="media-content">
-                                        <span class="media-category">BUDAYA</span>
-                                        <h3 class="media-title">Tarian dan Ritual Tradisional Marori</h3>
-                                        <p class="media-description">Saksikan tarian perang dan ritual adat yang masih dilestarikan oleh masyarakat Marori hingga saat ini.</p>
-                                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="media-btn">
-                                            <i class="bi bi-play-circle"></i> WATCH
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Video 3 -->
-                    <div class="media-slide">
-                        <div class="media-card">
-                            <div class="media-video-wrapper">
-                                <iframe
-                                    src="https://www.youtube.com/embed/jNQXAC9IVRw"
-                                    title="Kerajinan Marori"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    allowfullscreen>
-                                </iframe>
-                                <div class="media-overlay">
-                                    <div class="media-content">
-                                        <span class="media-category">KERAJINAN</span>
-                                        <h3 class="media-title">Proses Pembuatan Noken Tradisional</h3>
-                                        <p class="media-description">Ikuti proses pembuatan noken, tas tradisional khas Papua yang dibuat dengan teknik turun-temurun.</p>
-                                        <a href="https://www.youtube.com/watch?v=jNQXAC9IVRw" target="_blank" class="media-btn">
-                                            <i class="bi bi-play-circle"></i> WATCH
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Video 4 -->
-                    <div class="media-slide">
-                        <div class="media-card">
-                            <div class="media-video-wrapper">
-                                <iframe
-                                    src="https://www.youtube.com/embed/9bZkp7q19f0"
-                                    title="Alam Wasur"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    allowfullscreen>
-                                </iframe>
-                                <div class="media-overlay">
-                                    <div class="media-content">
-                                        <span class="media-category">ALAM</span>
-                                        <h3 class="media-title">Keindahan Taman Nasional Wasur</h3>
-                                        <p class="media-description">Jelajahi keindahan savana, hutan, dan satwa liar di Taman Nasional Wasur, habitat asli Suku Marori.</p>
-                                        <a href="https://www.youtube.com/watch?v=9bZkp7q19f0" target="_blank" class="media-btn">
-                                            <i class="bi bi-play-circle"></i> WATCH
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endif
+                    @endforeach
                 </div>
+                @else
+                <div class="text-center py-5">
+                    <p class="text-white">Belum ada video untuk ditampilkan.</p>
+                </div>
+                @endif
 
                 <!-- Navigation Buttons -->
                 <button class="media-nav-btn media-prev-btn" id="mediaPrevBtn">
@@ -134,128 +68,82 @@
                     </p>
                 </div>
 
-                <div class="photo-grid">
-                    <!-- Photo 1 -->
-                    <div class="photo-item">
-                        <div class="photo-card">
-                            <img src="https://images.unsplash.com/photo-1551918120-9739cb430c6d?w=800&q=80" alt="Budaya Marori" loading="lazy">
+                @if(isset($photos) && $photos->count() > 0)
+                <div class="photo-grid" id="photoGrid">
+                    @foreach($photos as $index => $photo)
+                    @if($photo->is_active && $photo->image_path)
+                    <div class="photo-item" data-index="{{ $index }}" style="{{ $index >= 9 ? 'display: none;' : '' }}">
+                        <div class="photo-card" onclick="openLightbox({{ $index }})">
+                            <img data-src="{{ asset('storage/' . $photo->image_path) }}" alt="{{ $photo->title }}" loading="lazy" class="lazy-loading photo-img" data-full-src="{{ asset('storage/' . $photo->image_path) }}">
                             <div class="photo-overlay">
                                 <div class="photo-content">
-                                    <span class="photo-category">BUDAYA</span>
-                                    <h4 class="photo-title">Tarian Tradisional</h4>
+                                    <span class="photo-category">FOTO</span>
+                                    <h4 class="photo-title">{{ $photo->title }}</h4>
+                                    <div class="photo-view-icon">
+                                        <i class="bi bi-zoom-in"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @endif
+                    @endforeach
+                </div>
 
-                    <!-- Photo 2 -->
-                    <div class="photo-item">
-                        <div class="photo-card">
-                            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80" alt="Alam Wasur" loading="lazy">
-                            <div class="photo-overlay">
-                                <div class="photo-content">
-                                    <span class="photo-category">ALAM</span>
-                                    <h4 class="photo-title">Savana Wasur</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                @php
+                    $activePhotosCount = $photos->filter(fn($p) => $p->is_active && $p->image_path)->count();
+                @endphp
 
-                    <!-- Photo 3 -->
-                    <div class="photo-item">
-                        <div class="photo-card">
-                            <img src="https://images.unsplash.com/photo-1566404394190-cda8c6209208?w=800&q=80" alt="Kerajinan Marori" loading="lazy">
-                            <div class="photo-overlay">
-                                <div class="photo-content">
-                                    <span class="photo-category">KERAJINAN</span>
-                                    <h4 class="photo-title">Noken Papua</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Photo 4 -->
-                    <div class="photo-item">
-                        <div class="photo-card">
-                            <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&q=80" alt="Pemandangan" loading="lazy">
-                            <div class="photo-overlay">
-                                <div class="photo-content">
-                                    <span class="photo-category">PEMANDANGAN</span>
-                                    <h4 class="photo-title">Matahari Terbenam</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Photo 5 -->
-                    <div class="photo-item">
-                        <div class="photo-card">
-                            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80" alt="Rumah Adat" loading="lazy">
-                            <div class="photo-overlay">
-                                <div class="photo-content">
-                                    <span class="photo-category">ARSITEKTUR</span>
-                                    <h4 class="photo-title">Rumah Adat Marori</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Photo 6 -->
-                    <div class="photo-item">
-                        <div class="photo-card">
-                            <img src="https://images.unsplash.com/photo-1504198458649-3128b932f49e?w=800&q=80" alt="Ritual Adat" loading="lazy">
-                            <div class="photo-overlay">
-                                <div class="photo-content">
-                                    <span class="photo-category">UPACARA</span>
-                                    <h4 class="photo-title">Ritual Adat</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Photo 7 -->
-                    <div class="photo-item">
-                        <div class="photo-card">
-                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Hutan Papua" loading="lazy">
-                            <div class="photo-overlay">
-                                <div class="photo-content">
-                                    <span class="photo-category">ALAM</span>
-                                    <h4 class="photo-title">Hutan Tropis Papua</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Photo 8 -->
-                    <div class="photo-item">
-                        <div class="photo-card">
-                            <img src="https://images.unsplash.com/photo-1445262102387-5fbb30a5e59d?w=800&q=80" alt="Senjata Tradisional" loading="lazy">
-                            <div class="photo-overlay">
-                                <div class="photo-content">
-                                    <span class="photo-category">TRADISI</span>
-                                    <h4 class="photo-title">Senjata Tradisional</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Photo 9 -->
-                    <div class="photo-item">
-                        <div class="photo-card">
-                            <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80" alt="Kearifan Lokal" loading="lazy">
-                            <div class="photo-overlay">
-                                <div class="photo-content">
-                                    <span class="photo-category">KOMUNITAS</span>
-                                    <h4 class="photo-title">Kehidupan Bersama</h4>
-                                </div>
-                            </div>
-                        </div>
+                @if($activePhotosCount > 9)
+                <div class="load-more-container">
+                    <button class="btn-load-more" id="loadMoreBtn" onclick="loadMorePhotos()">
+                        <span class="load-more-text">Lihat Lebih Banyak</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="photos-counter">
+                        <span id="photosShown">9</span> dari <span id="photosTotal">{{ $activePhotosCount }}</span> foto
                     </div>
                 </div>
+                @endif
+                @php
+                    $activePhotosWithImage = $photos->filter(fn($p) => $p->is_active && $p->image_path)->count();
+                @endphp
+                @if($activePhotosWithImage == 0)
+                <div class="text-center py-5">
+                    <p class="text-muted">Belum ada foto untuk ditampilkan. Upload foto melalui dashboard.</p>
+                </div>
+                @endif
+                @else
+                <div class="text-center py-5">
+                    <p class="text-muted">Belum ada foto untuk ditampilkan.</p>
+                </div>
+                @endif
             </div> <!-- End photo-gallery-section -->
 
         </div> <!-- End container-fluid -->
     </div> <!-- End media-gallery-slider-bg -->
+
+    <!-- Lightbox Modal -->
+    <div class="photo-lightbox" id="photoLightbox" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)">
+            <i class="bi bi-x-lg"></i>
+        </button>
+        <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1, event)">
+            <i class="bi bi-chevron-left"></i>
+        </button>
+        <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1, event)">
+            <i class="bi bi-chevron-right"></i>
+        </button>
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <img src="" alt="" id="lightboxImg">
+            <div class="lightbox-info">
+                <h3 id="lightboxTitle"></h3>
+                <div class="lightbox-counter">
+                    <span id="lightboxCurrent">1</span> / <span id="lightboxTotal">1</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <style>
@@ -274,7 +162,7 @@
         background: #FFFFFF;
         width: 100%;
         min-height: 200vh;
-        padding: 80px 0 80px;
+        padding: 80px 0 20px;
         position: relative;
     }
 
@@ -641,9 +529,177 @@
         font-family: 'Playfair Display', serif;
         font-size: 1.3rem;
         color: white;
-        margin: 0;
+        margin: 0 0 10px 0;
         font-weight: 700;
         line-height: 1.3;
+    }
+
+    .photo-view-icon {
+        margin-top: 10px;
+        font-size: 1.5rem;
+        color: white;
+        opacity: 0.9;
+    }
+
+    .photo-card {
+        cursor: pointer;
+    }
+
+    /* Load More Button */
+    .load-more-container {
+        text-align: center;
+        margin-top: 50px;
+        padding: 20px 0;
+    }
+
+    .btn-load-more {
+        background: rgba(44, 74, 62, 0.1);
+        border: 2px solid rgba(44, 74, 62, 0.3);
+        color: #2C4A3E;
+        padding: 16px 40px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .btn-load-more:hover {
+        background: rgba(44, 74, 62, 0.2);
+        border-color: rgba(44, 74, 62, 0.5);
+        transform: translateY(-2px);
+    }
+
+    .btn-load-more i {
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+    }
+
+    .btn-load-more:hover i {
+        transform: translateY(3px);
+    }
+
+    .photos-counter {
+        color: #5D4037;
+        font-size: 0.95rem;
+        font-weight: 500;
+    }
+
+    /* Lightbox Modal */
+    .photo-lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 10000;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .photo-lightbox.active {
+        display: flex;
+        opacity: 1;
+    }
+
+    .lightbox-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .lightbox-content img {
+        max-width: 100%;
+        max-height: 80vh;
+        object-fit: contain;
+        border-radius: 12px;
+        box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-info {
+        margin-top: 20px;
+        text-align: center;
+        color: white;
+    }
+
+    .lightbox-info h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+
+    .lightbox-counter {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.7);
+        font-weight: 500;
+    }
+
+    .lightbox-close {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10001;
+    }
+
+    .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: rotate(90deg);
+    }
+
+    .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10001;
+    }
+
+    .lightbox-nav:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .lightbox-prev {
+        left: 30px;
+    }
+
+    .lightbox-next {
+        right: 30px;
     }
 
     /* Responsive */
@@ -672,33 +728,131 @@
 
         .media-gallery-slider-bg {
             min-height: auto;
-            padding: 60px 0;
+            padding: 60px 0 20px;
+        }
+
+        .media-gallery-slider-bg .container-fluid {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
         }
 
         .media-gallery-slider-wrapper {
-            max-width: 100%;
-            width: 100%;
-            min-height: 60vh;
-            margin-bottom: 40px;
+            max-width: 100% !important;
+            width: 100% !important;
+            min-height: 55vh !important;
+            margin-bottom: 40px !important;
+            padding: 0 !important;
+            position: relative !important;
+            overflow: visible !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
         }
 
         .media-gallery-slider-container {
-            gap: 15px;
-            padding: 30px 0;
+            gap: 80vw !important;
+            padding: 25px 0 !important;
+            justify-content: center !important;
+            position: relative !important;
+            width: 100% !important;
+            display: flex !important;
+            align-items: center !important;
         }
 
-        .media-nav-btn {
-            width: 50px;
-            height: 50px;
+        /* Tablet slide */
+        .media-slide {
+            margin: 0 !important;
+            flex-shrink: 0 !important;
+            width: 85vw !important;
+            max-width: 700px !important;
+            min-width: auto !important;
+        }
+
+        /* HIDE non-active slides on tablet */
+        .media-slide:not(.active) {
+            opacity: 0 !important;
+            pointer-events: none !important;
+            visibility: hidden !important;
+        }
+
+        .media-slide.active {
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+        }
+
+        /* Clean card for tablet */
+        .media-card {
+            border-radius: 20px;
+            overflow: hidden;
+            width: 100%;
+            height: auto;
+        }
+
+        /* Video wrapper with flexible height for tablet */
+        .media-video-wrapper {
+            width: 100% !important;
+            height: auto !important;
+            min-height: 250px !important;
+            aspect-ratio: 16 / 9 !important;
+            overflow: hidden !important;
+            background: #000;
+            border-radius: 20px;
+        }
+
+        .media-video-wrapper iframe {
+            width: 100% !important;
+            height: 100% !important;
+            border: none !important;
+            display: block !important;
+            object-fit: contain !important;
+        }
+
+        .media-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+            padding: 30px 25px 25px;
+            justify-content: flex-end;
+        }
+
+        .media-content {
+            text-align: left;
+        }
+
+        .media-title {
             font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .media-description {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .media-btn {
+            padding: 11px 24px;
+            font-size: 0.85rem;
+        }
+
+        /* Navigation buttons - optimized for tablet */
+        .media-nav-btn {
+            width: 48px;
+            height: 48px;
+            font-size: 1.4rem;
+            background: rgba(44, 74, 62, 0.15);
+            border-width: 2px;
         }
 
         .media-prev-btn {
-            left: 15px;
+            left: 12px;
         }
 
         .media-next-btn {
-            right: 15px;
+            right: 12px;
+        }
+
+        .media-nav-btn:hover {
+            background: rgba(44, 74, 62, 0.25);
         }
 
         .media-gallery-header {
@@ -749,33 +903,154 @@
 
         .media-gallery-slider-bg {
             min-height: auto;
-            padding: 40px 0;
+            padding: 40px 0 15px;
+        }
+
+        .media-gallery-slider-bg .container-fluid {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
         }
 
         .media-gallery-slider-wrapper {
-            max-width: 100%;
-            width: 100%;
-            min-height: 50vh;
-            margin-bottom: 30px;
+            max-width: 100% !important;
+            width: 100% !important;
+            min-height: 45vh !important;
+            margin-bottom: 30px !important;
+            padding: 0 !important;
+            position: relative !important;
+            overflow: visible !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
         }
 
         .media-gallery-slider-container {
-            gap: 12px;
-            padding: 25px 0;
+            gap: 0 !important;
+            padding: 20px 0 !important;
+            justify-content: center !important;
+            transform: none !important;
+            transition: none !important;
+            position: relative !important;
+            width: 100% !important;
+            display: flex !important;
+            align-items: center !important;
         }
 
-        .media-nav-btn {
-            width: 45px;
-            height: 45px;
+        /* Mobile slide - Absolute positioning, stack on top of each other */
+        .media-slide {
+            position: absolute !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            margin: 0 !important;
+            flex-shrink: 0 !important;
+            width: 90vw !important;
+            max-width: 500px !important;
+            min-width: auto !important;
+            transition: opacity 0.4s ease !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+        }
+
+        /* Only active slide is visible and centered */
+        .media-slide.active {
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+            position: absolute !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            z-index: 10 !important;
+        }
+
+        /* Hide clones on mobile */
+        .media-slide.clone {
+            display: none !important;
+        }
+
+        /* Clean card */
+        .media-card {
+            border-radius: 18px;
+            overflow: hidden;
+            width: 100%;
+            height: auto;
+        }
+
+        /* Video wrapper with flexible height */
+        .media-video-wrapper {
+            width: 100% !important;
+            height: auto !important;
+            min-height: 200px !important;
+            aspect-ratio: 16 / 9 !important;
+            overflow: hidden !important;
+            background: #000;
+            border-radius: 18px;
+        }
+
+        .media-video-wrapper iframe {
+            width: 100% !important;
+            height: 100% !important;
+            border: none !important;
+            display: block !important;
+            object-fit: contain !important;
+        }
+
+        .media-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, transparent 100%);
+            padding: 25px 20px 20px;
+            justify-content: flex-end;
+        }
+
+        .media-content {
+            text-align: left;
+        }
+
+        .media-category {
+            font-size: 0.7rem;
+            padding: 4px 12px;
+            margin-bottom: 10px;
+        }
+
+        .media-title {
             font-size: 1.3rem;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .media-description {
+            font-size: 0.85rem;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .media-btn {
+            padding: 10px 22px;
+            font-size: 0.8rem;
+        }
+
+        /* Navigation buttons - optimized for mobile */
+        .media-nav-btn {
+            width: 42px;
+            height: 42px;
+            font-size: 1.2rem;
+            background: rgba(44, 74, 62, 0.2);
+            border-width: 2px;
         }
 
         .media-prev-btn {
-            left: 10px;
+            left: 8px;
         }
 
         .media-next-btn {
-            right: 10px;
+            right: 8px;
+        }
+
+        .media-nav-btn:hover {
+            background: rgba(44, 74, 62, 0.3);
+        }
+
+        .media-nav-btn:active {
+            transform: translateY(-50%) scale(0.9);
         }
 
         .media-gallery-header {
@@ -823,6 +1098,190 @@
         .photo-overlay {
             padding: 25px 20px 20px;
         }
+
+        /* Lightbox responsive - Mobile */
+        .lightbox-close {
+            width: 40px;
+            height: 40px;
+            top: 15px;
+            right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .lightbox-nav {
+            width: 45px;
+            height: 45px;
+            font-size: 1.5rem;
+        }
+
+        .lightbox-prev {
+            left: 15px;
+        }
+
+        .lightbox-next {
+            right: 15px;
+        }
+
+        .lightbox-info h3 {
+            font-size: 1.4rem;
+        }
+
+        .lightbox-counter {
+            font-size: 0.9rem;
+        }
+
+        /* Load More Button - Mobile */
+        .btn-load-more {
+            padding: 14px 30px;
+            font-size: 0.9rem;
+        }
+
+        .photos-counter {
+            font-size: 0.85rem;
+        }
+    }
+
+    /* Extra small devices */
+    @media (max-width: 400px) {
+        .media-gallery-slider-wrapper {
+            padding: 0 8px !important;
+            overflow: hidden !important;
+            min-height: 40vh !important;
+            max-width: 100% !important;
+            width: 100% !important;
+        }
+
+        .media-gallery-slider-container {
+            gap: 35vw !important; /* MASSIVE GAP - same as mobile */
+            padding: 15px 0 !important;
+            justify-content: flex-start !important;
+        }
+
+        /* Force slide width on extra small */
+        .media-slide {
+            flex-shrink: 0 !important;
+            width: 96vw !important; /* Same as mobile - 96% */
+            max-width: 96vw !important;
+            min-width: 96vw !important;
+            margin: 0 !important;
+        }
+
+        /* Navigation buttons - extra small */
+        .media-nav-btn {
+            width: 38px;
+            height: 38px;
+            font-size: 1.1rem;
+        }
+
+        .media-prev-btn {
+            left: 5px;
+        }
+
+        .media-next-btn {
+            right: 5px;
+        }
+
+        .media-card {
+            border-radius: 16px;
+        }
+
+        .media-overlay {
+            padding: 20px 15px 15px;
+        }
+
+        .media-category {
+            font-size: 0.65rem;
+            padding: 3px 10px;
+            margin-bottom: 8px;
+        }
+
+        .media-title {
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+        }
+
+        .media-description {
+            font-size: 0.8rem;
+            line-height: 1.35;
+            margin-bottom: 10px;
+        }
+
+        .media-btn {
+            padding: 8px 20px;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .media-gallery-slider-wrapper .media-nav-btn {
+            width: 45px !important;
+            height: 45px !important;
+            font-size: 1.2rem !important;
+        }
+
+        .media-gallery-slider-wrapper .media-prev-btn {
+            left: 5px !important;
+        }
+
+        .media-gallery-slider-wrapper .media-next-btn {
+            right: 5px !important;
+        }
+
+        .media-gallery-main-title {
+            font-size: 1.6rem;
+        }
+
+        .media-gallery-subtitle {
+            font-size: 0.9rem;
+        }
+
+        /* Lightbox responsive - Extra small */
+        .lightbox-close {
+            width: 35px;
+            height: 35px;
+            top: 10px;
+            right: 10px;
+            font-size: 1rem;
+        }
+
+        .lightbox-nav {
+            width: 40px;
+            height: 40px;
+            font-size: 1.3rem;
+        }
+
+        .lightbox-prev {
+            left: 10px;
+        }
+
+        .lightbox-next {
+            right: 10px;
+        }
+
+        .lightbox-info h3 {
+            font-size: 1.2rem;
+        }
+
+        .lightbox-counter {
+            font-size: 0.85rem;
+        }
+
+        .lightbox-content {
+            max-width: 95%;
+        }
+
+        /* Load More Button - Extra small */
+        .btn-load-more {
+            padding: 12px 25px;
+            font-size: 0.85rem;
+        }
+
+        .photos-counter {
+            font-size: 0.8rem;
+        }
+
+        .load-more-container {
+            margin-top: 40px;
+        }
     }
 </style>
 
@@ -839,23 +1298,46 @@
         console.log('Media Gallery Slider initialized');
         console.log('Total slides:', slides.length);
 
-        // Set slide widths dynamically
+        // Set slide widths dynamically (only for desktop)
         function setSlideWidths() {
             const viewportWidth = window.innerWidth;
-            // Responsive slide width percentage
-            let widthPercentage = 0.75; // Desktop: 75% of viewport
 
-            if (viewportWidth <= 576) {
-                widthPercentage = 0.88; // Mobile: 88%
-            } else if (viewportWidth <= 768) {
-                widthPercentage = 0.82; // Tablet: 82%
-            } else if (viewportWidth <= 1200) {
-                widthPercentage = 0.78; // Small desktop: 78%
+            // On mobile/tablet, let CSS handle ALL styles
+            if (viewportWidth <= 768) {
+                slides.forEach(slide => {
+                    slide.style.width = '';
+                    slide.style.height = '';
+                    slide.style.minHeight = '';
+                    slide.style.maxHeight = '';
+                    slide.style.transform = '';
+
+                    const videoWrapper = slide.querySelector('.media-video-wrapper');
+                    if (videoWrapper) {
+                        videoWrapper.style.width = '';
+                        videoWrapper.style.height = '';
+                        videoWrapper.style.paddingTop = '';
+                        videoWrapper.style.position = '';
+                    }
+                });
+
+                // Reset slider transform on mobile
+                if (viewportWidth <= 576) {
+                    slider.style.transform = 'none';
+                }
+
+                console.log('Mobile/Tablet: Using CSS - all inline styles cleared');
+                return;
+            }
+
+            // Desktop: use JavaScript width calculation
+            let widthPercentage = 0.75;
+            if (viewportWidth <= 1200) {
+                widthPercentage = 0.78;
             }
 
             const slideWidth = viewportWidth * widthPercentage;
 
-            console.log('Setting media slide widths:', {
+            console.log('Desktop: Setting media slide widths:', {
                 viewportWidth: viewportWidth,
                 widthPercentage: widthPercentage,
                 slideWidth: slideWidth
@@ -877,23 +1359,37 @@
             });
         }
 
+        // Load iframe for current and adjacent slides
+        function loadVisibleIframes() {
+            // All iframes now load immediately with src attribute
+            // This function is kept for compatibility but no longer needed
+            console.log('All video iframes are loaded directly');
+        }
+
         // Update slider position (with clones)
         function updateSlider(instant = false) {
+            const viewportWidth = window.innerWidth;
+
+            // Mobile: CSS-only approach, just update active class
+            if (viewportWidth <= 576) {
+                updateActiveSlide();
+                console.log('Mobile: CSS-only slider, index:', currentIndex);
+                return;
+            }
+
+            // Tablet/Desktop: Use translateX
             const allSlides = document.querySelectorAll('.media-slide');
             if (!allSlides[0]) {
                 console.error('No media slides found!');
                 return;
             }
-            const viewportWidth = window.innerWidth;
             const slideWidth = allSlides[0].offsetWidth;
             const totalSlides = slides.length;
 
-            // Responsive gap
-            let gap = 20; // Desktop default
-            if (viewportWidth <= 576) {
-                gap = 12;
-            } else if (viewportWidth <= 768) {
-                gap = 15;
+            // Responsive gap - match CSS
+            let gap = 20; // Default gap
+            if (viewportWidth <= 768) {
+                gap = viewportWidth * 0.80; // 80vw gap on tablet
             }
 
             // Account for clone at the beginning (+1 offset)
@@ -901,10 +1397,9 @@
 
             // Center the current slide in viewport
             const centerOffset = (viewportWidth - slideWidth) / 2;
-            // Then subtract the position of current slide
-            let offset = centerOffset - (displayIndex * (slideWidth + gap));
+            const offset = centerOffset - (displayIndex * (slideWidth + gap));
 
-            console.log('Update media slider:', {
+            console.log('Tablet/Desktop media slider:', {
                 currentIndex: currentIndex,
                 displayIndex: displayIndex,
                 viewportWidth: viewportWidth,
@@ -927,52 +1422,67 @@
             }
 
             updateActiveSlide();
+            loadVisibleIframes(); // Load iframes for visible slides
         }
 
-        // Next slide - seamless infinite loop with clones
+        // Next slide
         function nextSlide() {
             const totalSlides = slides.length;
-            currentIndex++;
+            const viewportWidth = window.innerWidth;
 
-            // Animate to next position
+            // Mobile: Simple loop through slides
+            if (viewportWidth <= 576) {
+                currentIndex++;
+                if (currentIndex >= totalSlides) {
+                    currentIndex = 0;
+                }
+                updateSlider(false);
+                console.log('Mobile next slide:', currentIndex);
+                return;
+            }
+
+            // Tablet/Desktop: Seamless infinite loop with clones
+            currentIndex++;
             updateSlider(false);
 
-            // If we went past the last real slide, we're on clone
-            // Wait for transition, then jump to real first slide
             if (currentIndex >= totalSlides) {
                 setTimeout(() => {
                     currentIndex = 0;
-                    updateSlider(true); // Instant jump without transition
-                }, 800); // Match transition duration
+                    updateSlider(true);
+                }, 800);
             }
 
-            console.log('Next media slide:', {
-                currentIndex: currentIndex,
-                totalSlides: totalSlides
-            });
+            console.log('Desktop next slide:', currentIndex);
         }
 
-        // Previous slide - seamless infinite loop with clones
+        // Previous slide
         function prevSlide() {
             const totalSlides = slides.length;
-            currentIndex--;
+            const viewportWidth = window.innerWidth;
 
-            // Animate to prev position
+            // Mobile: Simple loop through slides
+            if (viewportWidth <= 576) {
+                currentIndex--;
+                if (currentIndex < 0) {
+                    currentIndex = totalSlides - 1;
+                }
+                updateSlider(false);
+                console.log('Mobile prev slide:', currentIndex);
+                return;
+            }
+
+            // Tablet/Desktop: Seamless infinite loop with clones
+            currentIndex--;
             updateSlider(false);
 
-            // If we went before first real slide, we're on clone
-            // Wait for transition, then jump to real last slide
             if (currentIndex < 0) {
                 setTimeout(() => {
                     currentIndex = totalSlides - 1;
-                    updateSlider(true); // Instant jump without transition
-                }, 800); // Match transition duration
+                    updateSlider(true);
+                }, 800);
             }
 
-            console.log('Prev media slide:', {
-                currentIndex: currentIndex,
-                totalSlides: totalSlides
-            });
+            console.log('Desktop prev slide:', currentIndex);
         }
 
         // Event listeners
@@ -984,18 +1494,41 @@
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(() => {
-                // Don't reset index, just recalculate widths
                 const allSlides = document.querySelectorAll('.media-slide');
                 const viewportWidth = window.innerWidth;
-                let widthPercentage = 0.75;
-                if (viewportWidth <= 576) widthPercentage = 0.88;
-                else if (viewportWidth <= 768) widthPercentage = 0.82;
-                else if (viewportWidth <= 1200) widthPercentage = 0.78;
 
-                const slideWidth = viewportWidth * widthPercentage;
-                allSlides.forEach(slide => {
-                    slide.style.width = `${slideWidth}px`;
-                });
+                // On mobile/tablet, let CSS handle ALL styles
+                if (viewportWidth <= 768) {
+                    allSlides.forEach(slide => {
+                        slide.style.width = '';
+                        slide.style.height = '';
+                        slide.style.minHeight = '';
+                        slide.style.maxHeight = '';
+                        slide.style.transform = '';
+
+                        const videoWrapper = slide.querySelector('.media-video-wrapper');
+                        if (videoWrapper) {
+                            videoWrapper.style.width = '';
+                            videoWrapper.style.height = '';
+                            videoWrapper.style.paddingTop = '';
+                            videoWrapper.style.position = '';
+                        }
+                    });
+
+                    // Reset slider transform on mobile
+                    if (viewportWidth <= 576) {
+                        slider.style.transform = 'none';
+                    }
+                } else {
+                    // Desktop: recalculate width
+                    let widthPercentage = 0.75;
+                    if (viewportWidth <= 1200) widthPercentage = 0.78;
+
+                    const slideWidth = viewportWidth * widthPercentage;
+                    allSlides.forEach(slide => {
+                        slide.style.width = `${slideWidth}px`;
+                    });
+                }
 
                 updateSlider(true);
             }, 250);
@@ -1009,12 +1542,22 @@
             const lastSlideClone = slides[totalSlides - 1].cloneNode(true);
             lastSlideClone.classList.add('clone');
             lastSlideClone.classList.remove('active');
+            // Load iframe for last clone
+            const lastCloneIframe = lastSlideClone.querySelector('iframe[data-src]');
+            if (lastCloneIframe && lastCloneIframe.dataset.src) {
+                lastCloneIframe.src = lastCloneIframe.dataset.src;
+            }
             slider.insertBefore(lastSlideClone, slides[0]);
 
             // Clone first slide and append
             const firstSlideClone = slides[0].cloneNode(true);
             firstSlideClone.classList.add('clone');
             firstSlideClone.classList.remove('active');
+            // Load iframe for first clone
+            const firstCloneIframe = firstSlideClone.querySelector('iframe[data-src]');
+            if (firstCloneIframe && firstCloneIframe.dataset.src) {
+                firstCloneIframe.src = firstCloneIframe.dataset.src;
+            }
             slider.appendChild(firstSlideClone);
 
             console.log('Cloned slides for seamless loop');
@@ -1029,15 +1572,43 @@
 
         // Set widths for all slides including clones
         const viewportWidth = window.innerWidth;
-        let widthPercentage = 0.75;
-        if (viewportWidth <= 576) widthPercentage = 0.88;
-        else if (viewportWidth <= 768) widthPercentage = 0.82;
-        else if (viewportWidth <= 1200) widthPercentage = 0.78;
 
-        const slideWidth = viewportWidth * widthPercentage;
-        allSlides.forEach(slide => {
-            slide.style.width = `${slideWidth}px`;
-        });
+        // On mobile/tablet, let CSS handle ALL styles
+        if (viewportWidth <= 768) {
+            allSlides.forEach(slide => {
+                slide.style.width = '';
+                slide.style.height = '';
+                slide.style.minHeight = '';
+                slide.style.maxHeight = '';
+                slide.style.transform = '';
+
+                const videoWrapper = slide.querySelector('.media-video-wrapper');
+                if (videoWrapper) {
+                    videoWrapper.style.width = '';
+                    videoWrapper.style.height = '';
+                    videoWrapper.style.paddingTop = '';
+                    videoWrapper.style.position = '';
+                }
+            });
+
+            // Reset slider transform on mobile
+            if (viewportWidth <= 576) {
+                slider.style.transform = 'none';
+                slider.style.transition = 'none';
+            }
+
+            console.log('Initial load: Using CSS for mobile/tablet - all styles cleared');
+        } else {
+            // Desktop: use JavaScript width calculation
+            let widthPercentage = 0.75;
+            if (viewportWidth <= 1200) widthPercentage = 0.78;
+
+            const slideWidth = viewportWidth * widthPercentage;
+            allSlides.forEach(slide => {
+                slide.style.width = `${slideWidth}px`;
+            });
+            console.log('Initial load: Using JS width for desktop');
+        }
 
         // Start at index 1 (first real slide, after clone)
         currentIndex = 0;
@@ -1048,13 +1619,164 @@
             slides[0].classList.add('active');
         }
 
-        // Keyboard navigation
+        // Load initial iframes
+        loadVisibleIframes();
+
+        // Fallback: Load all iframes after 1 second if not loaded
+        setTimeout(() => {
+            const allIframes = document.querySelectorAll('.media-slide iframe[data-src]');
+            allIframes.forEach(iframe => {
+                if (iframe.dataset.src && !iframe.src) {
+                    iframe.src = iframe.dataset.src;
+                    console.log('Fallback loaded iframe:', iframe.dataset.src);
+                }
+            });
+        }, 1000);
+
+        // Keyboard navigation for video slider
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                prevSlide();
-            } else if (e.key === 'ArrowRight') {
-                nextSlide();
+            const lightbox = document.getElementById('photoLightbox');
+            const isLightboxActive = lightbox && lightbox.classList.contains('active');
+
+            if (isLightboxActive) {
+                // Lightbox keyboard navigation
+                if (e.key === 'ArrowLeft') {
+                    navigateLightbox(-1, e);
+                } else if (e.key === 'ArrowRight') {
+                    navigateLightbox(1, e);
+                } else if (e.key === 'Escape') {
+                    closeLightbox(e);
+                }
+            } else {
+                // Video slider keyboard navigation
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                }
             }
         });
     });
+
+    // Photo Gallery Load More & Lightbox Functions
+    let photosShown = 9;
+    let currentLightboxIndex = 0;
+    let allPhotoItems = [];
+
+    // Load More Photos
+    function loadMorePhotos() {
+        const photoItems = document.querySelectorAll('.photo-item');
+        const totalPhotos = photoItems.length;
+        const btn = document.getElementById('loadMoreBtn');
+        const photosShownEl = document.getElementById('photosShown');
+
+        // Show next 9 photos
+        let newShown = photosShown;
+        photoItems.forEach((item, index) => {
+            if (index >= photosShown && index < photosShown + 9) {
+                item.style.display = '';
+                item.style.animation = 'fadeInUp 0.6s ease forwards';
+                item.style.animationDelay = `${(index - photosShown) * 0.1}s`;
+                newShown = index + 1;
+            }
+        });
+
+        photosShown = newShown;
+        photosShownEl.textContent = photosShown;
+
+        // Hide button if all photos are shown
+        if (photosShown >= totalPhotos) {
+            btn.style.display = 'none';
+            document.querySelector('.photos-counter').innerHTML = `Menampilkan semua ${totalPhotos} foto`;
+        }
+    }
+
+    // Open Lightbox
+    function openLightbox(index) {
+        const lightbox = document.getElementById('photoLightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxTitle = document.getElementById('lightboxTitle');
+        const lightboxCurrent = document.getElementById('lightboxCurrent');
+        const lightboxTotal = document.getElementById('lightboxTotal');
+
+        // Get all visible photo items
+        allPhotoItems = Array.from(document.querySelectorAll('.photo-item')).filter(item => {
+            return item.style.display !== 'none';
+        });
+
+        // Find the actual index in visible items
+        const visibleIndex = allPhotoItems.findIndex(item => item.dataset.index == index);
+        if (visibleIndex === -1) return;
+
+        currentLightboxIndex = visibleIndex;
+
+        const photoCard = allPhotoItems[currentLightboxIndex].querySelector('.photo-card');
+        const img = photoCard.querySelector('img');
+        const title = photoCard.querySelector('.photo-title').textContent;
+
+        lightboxImg.src = img.dataset.fullSrc || img.src;
+        lightboxTitle.textContent = title;
+        lightboxCurrent.textContent = currentLightboxIndex + 1;
+        lightboxTotal.textContent = allPhotoItems.length;
+
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Close Lightbox
+    function closeLightbox(event) {
+        event.stopPropagation();
+        const lightbox = document.getElementById('photoLightbox');
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Navigate Lightbox
+    function navigateLightbox(direction, event) {
+        event.stopPropagation();
+
+        currentLightboxIndex += direction;
+
+        // Loop around
+        if (currentLightboxIndex < 0) {
+            currentLightboxIndex = allPhotoItems.length - 1;
+        } else if (currentLightboxIndex >= allPhotoItems.length) {
+            currentLightboxIndex = 0;
+        }
+
+        const photoCard = allPhotoItems[currentLightboxIndex].querySelector('.photo-card');
+        const img = photoCard.querySelector('img');
+        const title = photoCard.querySelector('.photo-title').textContent;
+
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxTitle = document.getElementById('lightboxTitle');
+        const lightboxCurrent = document.getElementById('lightboxCurrent');
+
+        lightboxImg.style.opacity = '0';
+        setTimeout(() => {
+            lightboxImg.src = img.dataset.fullSrc || img.src;
+            lightboxTitle.textContent = title;
+            lightboxCurrent.textContent = currentLightboxIndex + 1;
+            lightboxImg.style.opacity = '1';
+        }, 150);
+    }
+
+    // Fade in animation for loaded photos
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .lightbox-content img {
+            transition: opacity 0.3s ease;
+        }
+    `;
+    document.head.appendChild(style);
 </script>

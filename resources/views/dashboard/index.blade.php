@@ -9,249 +9,312 @@
 @endsection
 
 @section('content')
-<!-- Stats Cards -->
-<div class="row g-4 mb-4">
-    <div class="col-md-3">
-        <div class="stats-card">
-            <div class="stats-icon primary">
-                <i class="bi bi-star"></i>
-            </div>
-            <div class="stats-content">
-                <h3>1</h3>
-                <p>Hero Section</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-3">
-        <div class="stats-card">
-            <div class="stats-icon success">
-                <i class="bi bi-book"></i>
-            </div>
-            <div class="stats-content">
-                <h3>6</h3>
-                <p>Item Budaya</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-3">
-        <div class="stats-card">
-            <div class="stats-icon warning">
-                <i class="bi bi-box-seam"></i>
-            </div>
-            <div class="stats-content">
-                <h3>6</h3>
-                <p>Produk Aktif</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-3">
-        <div class="stats-card">
-            <div class="stats-icon info">
-                <i class="bi bi-eye"></i>
-            </div>
-            <div class="stats-content">
-                <h3>1,234</h3>
-                <p>Total Visitor</p>
-            </div>
-        </div>
-    </div>
+<div class="alert alert-info mb-4">
+    <i class="bi bi-info-circle me-2"></i>
+    <strong>Dashboard Overview</strong> - Kelola semua konten website dari sini
 </div>
 
-<!-- Quick Actions -->
-<div class="row mb-4">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title">Quick Actions</h5>
+<!-- Section Previews -->
+<div class="row g-4">
+    <!-- Hero Section -->
+    <div class="col-lg-6">
+        <div class="section-preview-card">
+            <div class="section-preview-header">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="bi bi-star"></i>
+                    </div>
+                    <div>
+                        <h5 class="mb-1">Hero Section</h5>
+                        <small class="text-muted">Bagian utama halaman website</small>
+                    </div>
+                </div>
+                <a href="{{ route('dashboard.hero') }}" class="btn btn-sm btn-outline-primary">
+                    <i class="bi bi-pencil"></i> Edit
+                </a>
             </div>
-            <div class="card-body">
-                <div class="row g-3">
-                    <div class="col-md-4">
-                        <a href="{{ route('dashboard.hero') }}" class="btn btn-outline-primary w-100 d-flex align-items-center justify-content-center gap-2" style="padding: 1.25rem;">
-                            <i class="bi bi-star" style="font-size: 1.5rem;"></i>
-                            <span>Edit Hero Section</span>
-                        </a>
+            <div class="section-preview-body">
+                <div class="preview-content">
+                    <div class="preview-icon">
+                        <i class="bi bi-star"></i>
                     </div>
-                    <div class="col-md-4">
-                        <a href="{{ route('dashboard.products') }}" class="btn btn-outline-success w-100 d-flex align-items-center justify-content-center gap-2" style="padding: 1.25rem;">
-                            <i class="bi bi-plus-circle" style="font-size: 1.5rem;"></i>
-                            <span>Tambah Produk</span>
-                        </a>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="{{ url('/') }}" target="_blank" class="btn btn-outline-info w-100 d-flex align-items-center justify-content-center gap-2" style="padding: 1.25rem;">
-                            <i class="bi bi-eye" style="font-size: 1.5rem;"></i>
-                            <span>Lihat Website</span>
-                        </a>
+                    <div class="preview-stats">
+                        @if($stats['hero'] > 0)
+                            <span class="badge bg-success">Sudah dikonfigurasi</span>
+                            <p class="text-muted mt-2 mb-0">Hero section telah diatur dengan gambar dan konten</p>
+                        @else
+                            <span class="badge bg-warning">Belum dikonfigurasi</span>
+                            <p class="text-muted mt-2 mb-0">Hero section belum diatur</p>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Content Management Overview -->
-<div class="row">
-    <div class="col-lg-8">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title">Content Management</h5>
+    <!-- Culture Section -->
+    <div class="col-lg-6">
+        <div class="section-preview-card">
+            <div class="section-preview-header">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="bi bi-book"></i>
+                    </div>
+                    <div>
+                        <h5 class="mb-1">Budaya</h5>
+                        <small class="text-muted">Kelola item budaya Suku Marori</small>
+                    </div>
+                </div>
+                <a href="{{ route('dashboard.culture') }}" class="btn btn-sm btn-outline-primary">
+                    <i class="bi bi-pencil"></i> Kelola
+                </a>
             </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Section</th>
-                                <th>Status</th>
-                                <th>Last Updated</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <i class="bi bi-star me-2"></i>
-                                    <strong>Hero Section</strong>
-                                </td>
-                                <td><span class="badge bg-success">Published</span></td>
-                                <td><small class="text-muted">2 hari yang lalu</small></td>
-                                <td>
-                                    <a href="{{ route('dashboard.hero') }}" class="btn btn-sm btn-outline-primary">
-                                        <i class="bi bi-pencil"></i> Edit
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <i class="bi bi-info-circle me-2"></i>
-                                    <strong>Tentang Kami</strong>
-                                </td>
-                                <td><span class="badge bg-success">Published</span></td>
-                                <td><small class="text-muted">5 hari yang lalu</small></td>
-                                <td>
-                                    <a href="{{ route('dashboard.about') }}" class="btn btn-sm btn-outline-primary">
-                                        <i class="bi bi-pencil"></i> Edit
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <i class="bi bi-book me-2"></i>
-                                    <strong>Budaya</strong>
-                                </td>
-                                <td><span class="badge bg-success">6 Items</span></td>
-                                <td><small class="text-muted">1 minggu yang lalu</small></td>
-                                <td>
-                                    <a href="{{ route('dashboard.culture') }}" class="btn btn-sm btn-outline-primary">
-                                        <i class="bi bi-pencil"></i> Kelola
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <i class="bi bi-box-seam me-2"></i>
-                                    <strong>Produk</strong>
-                                </td>
-                                <td><span class="badge bg-warning">6 Items</span></td>
-                                <td><small class="text-muted">3 hari yang lalu</small></td>
-                                <td>
-                                    <a href="{{ route('dashboard.products') }}" class="btn btn-sm btn-outline-primary">
-                                        <i class="bi bi-pencil"></i> Kelola
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <i class="bi bi-telephone me-2"></i>
-                                    <strong>Kontak</strong>
-                                </td>
-                                <td><span class="badge bg-success">Published</span></td>
-                                <td><small class="text-muted">1 bulan yang lalu</small></td>
-                                <td>
-                                    <a href="{{ route('dashboard.contact') }}" class="btn btn-sm btn-outline-primary">
-                                        <i class="bi bi-pencil"></i> Edit
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="section-preview-body">
+                <div class="preview-content">
+                    <div class="preview-icon">
+                        <i class="bi bi-book"></i>
+                    </div>
+                    <div class="preview-stats">
+                        <h2 class="mb-1">{{ $stats['culture_items'] }}</h2>
+                        <p class="text-muted mb-0">Item budaya yang terdaftar</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="col-lg-4">
-        <div class="card mb-4">
-            <div class="card-header">
-                <h5 class="card-title">Recent Activity</h5>
+    <!-- Products Section -->
+    <div class="col-lg-6">
+        <div class="section-preview-card">
+            <div class="section-preview-header">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class="bi bi-box-seam"></i>
+                    </div>
+                    <div>
+                        <h5 class="mb-1">Produk</h5>
+                        <small class="text-muted">Kelola produk lokal</small>
+                    </div>
+                </div>
+                <a href="{{ route('dashboard.products') }}" class="btn btn-sm btn-outline-primary">
+                    <i class="bi bi-pencil"></i> Kelola
+                </a>
             </div>
-            <div class="card-body">
-                <div class="timeline">
-                    <div class="d-flex gap-3 mb-3">
-                        <div class="flex-shrink-0">
-                            <div style="width: 36px; height: 36px; background: rgba(74, 124, 89, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                <i class="bi bi-pencil text-success"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="mb-1" style="font-size: 0.9rem;"><strong>Hero Section</strong> diupdate</p>
-                            <small class="text-muted">2 hari yang lalu</small>
-                        </div>
+            <div class="section-preview-body">
+                <div class="preview-content">
+                    <div class="preview-icon">
+                        <i class="bi bi-box-seam"></i>
                     </div>
-
-                    <div class="d-flex gap-3 mb-3">
-                        <div class="flex-shrink-0">
-                            <div style="width: 36px; height: 36px; background: rgba(255, 193, 7, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                <i class="bi bi-plus-circle text-warning"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="mb-1" style="font-size: 0.9rem;">Produk baru <strong>ditambahkan</strong></p>
-                            <small class="text-muted">3 hari yang lalu</small>
-                        </div>
-                    </div>
-
-                    <div class="d-flex gap-3">
-                        <div class="flex-shrink-0">
-                            <div style="width: 36px; height: 36px; background: rgba(92, 64, 51, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                                <i class="bi bi-trash" style="color: #5C4033;"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="mb-1" style="font-size: 0.9rem;">Item budaya <strong>dihapus</strong></p>
-                            <small class="text-muted">1 minggu yang lalu</small>
-                        </div>
+                    <div class="preview-stats">
+                        <h2 class="mb-1">{{ $stats['products'] }}</h2>
+                        <p class="text-muted mb-0">Produk lokal yang terdaftar</p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title">System Info</h5>
+    <!-- Researchers Section -->
+    <div class="col-lg-6">
+        <div class="section-preview-card">
+            <div class="section-preview-header">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <i class="bi bi-people"></i>
+                    </div>
+                    <div>
+                        <h5 class="mb-1">Tim Peneliti</h5>
+                        <small class="text-muted">Kelola profil tim peneliti</small>
+                    </div>
+                </div>
+                <a href="{{ route('dashboard.researchers') }}" class="btn btn-sm btn-outline-primary">
+                    <i class="bi bi-pencil"></i> Kelola
+                </a>
             </div>
-            <div class="card-body">
-                <div class="mb-3">
-                    <small class="text-muted">Version</small>
-                    <p class="mb-0"><strong>1.0.0</strong></p>
+            <div class="section-preview-body">
+                <div class="preview-content">
+                    <div class="preview-icon">
+                        <i class="bi bi-people"></i>
+                    </div>
+                    <div class="preview-stats">
+                        <h2 class="mb-1">{{ $stats['researchers'] }}</h2>
+                        <p class="text-muted mb-0">Anggota tim peneliti</p>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <small class="text-muted">Last Backup</small>
-                    <p class="mb-0"><strong>1 Jan 2025</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Media Gallery Section -->
+    <div class="col-lg-6">
+        <div class="section-preview-card">
+            <div class="section-preview-header">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                        <i class="bi bi-images"></i>
+                    </div>
+                    <div>
+                        <h5 class="mb-1">Galeri Media</h5>
+                        <small class="text-muted">Kelola foto dan video</small>
+                    </div>
                 </div>
-                <div>
-                    <small class="text-muted">Storage Used</small>
-                    <p class="mb-2"><strong>245 MB / 1 GB</strong></p>
-                    <div class="progress" style="height: 6px;">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 24.5%"></div>
+                <a href="{{ route('dashboard.media') }}" class="btn btn-sm btn-outline-primary">
+                    <i class="bi bi-pencil"></i> Kelola
+                </a>
+            </div>
+            <div class="section-preview-body">
+                <div class="preview-content">
+                    <div class="preview-icon">
+                        <i class="bi bi-images"></i>
+                    </div>
+                    <div class="preview-stats">
+                        <h2 class="mb-1">{{ $stats['total_media'] }}</h2>
+                        <p class="text-muted mb-0">Total media ({{ $stats['videos'] }} video, {{ $stats['photos'] }} foto)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="col-lg-6">
+        <div class="section-preview-card">
+            <div class="section-preview-header">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                        <i class="bi bi-telephone"></i>
+                    </div>
+                    <div>
+                        <h5 class="mb-1">Kontak</h5>
+                        <small class="text-muted">Kelola informasi kontak</small>
+                    </div>
+                </div>
+                <a href="{{ route('dashboard.contact') }}" class="btn btn-sm btn-outline-primary">
+                    <i class="bi bi-pencil"></i> Edit
+                </a>
+            </div>
+            <div class="section-preview-body">
+                <div class="preview-content">
+                    <div class="preview-icon">
+                        <i class="bi bi-telephone"></i>
+                    </div>
+                    <div class="preview-stats">
+                        @if($stats['contact'] > 0)
+                            <span class="badge bg-success">Sudah dikonfigurasi</span>
+                            <p class="text-muted mt-2 mb-0">Informasi kontak, sosial media, dan lokasi telah diatur</p>
+                        @else
+                            <span class="badge bg-warning">Belum dikonfigurasi</span>
+                            <p class="text-muted mt-2 mb-0">Informasi kontak belum diatur</p>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+.section-preview-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.section-preview-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+.section-preview-header {
+    padding: 20px;
+    background: #f8f9fa;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.section-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.section-preview-header h5 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.section-preview-body {
+    padding: 0;
+    min-height: 180px;
+}
+
+.preview-content {
+    height: 180px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+.preview-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #495057;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.preview-stats {
+    text-align: center;
+}
+
+.preview-stats h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.preview-stats p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.preview-stats .badge {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    font-weight: 600;
+}
+
+@media (max-width: 991px) {
+    .section-preview-card {
+        margin-bottom: 1rem;
+    }
+
+    .preview-stats h2 {
+        font-size: 2rem;
+    }
+}
+</style>
 @endsection

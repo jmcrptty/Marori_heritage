@@ -30,8 +30,10 @@
                         <div class="culture-slide">
                             <div class="culture-slide-image">
                                 @if($culture->image)
-                                    <img src="{{ asset($culture->image) }}"
+                                    <img data-src="{{ asset($culture->image) }}"
                                          alt="{{ $culture->title }}"
+                                         loading="lazy"
+                                         class="lazy-loading"
                                          style="width: 100%; height: 100%; object-fit: cover;">
                                 @else
                                     <i class="bi bi-palette-fill"></i>
@@ -110,21 +112,18 @@
         margin: 0;
         position: relative;
         overflow: hidden;
-        min-height: 100vh; /* Full screen seperti hero */
+        min-height: 100vh;
         display: flex;
         align-items: center;
-    }
-
-    .culture-slider-bg {
         background: linear-gradient(135deg, #3E2723 0%, #5C4033 50%, #4E3629 100%);
         background-image:
             linear-gradient(135deg, rgba(62, 39, 35, 0.95) 0%, rgba(92, 64, 51, 0.95) 50%, rgba(78, 54, 41, 0.95) 100%),
             repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(139, 111, 71, 0.03) 40px, rgba(139, 111, 71, 0.03) 80px);
-        position: absolute;
-        top: 0;
-        left: 0;
+    }
+
+    .culture-slider-bg {
+        position: relative;
         width: 100%;
-        height: 100%;
         min-height: 100vh;
         display: flex;
         align-items: center;
@@ -343,6 +342,11 @@
             min-height: auto;
         }
 
+        .culture-slider-bg {
+            min-height: auto;
+            padding: 60px 0;
+        }
+
         .culture-info-box {
             padding: 40px 30px;
             margin-bottom: 40px;
@@ -363,8 +367,12 @@
     }
 
     @media (max-width: 768px) {
+        .culture-slider-bg {
+            padding: 50px 0;
+        }
+
         .culture-slide {
-            flex: 0 0 100%; /* 1 card full width di mobile */
+            flex: 0 0 100%;
             width: 100%;
         }
 
@@ -393,6 +401,10 @@
     }
 
     @media (max-width: 576px) {
+        .culture-slider-bg {
+            padding: 40px 0;
+        }
+
         .culture-info-box {
             padding: 30px 20px;
         }
@@ -418,6 +430,67 @@
             width: 45px;
             height: 45px;
             font-size: 1.3rem;
+        }
+    }
+
+    /* Extra small devices */
+    @media (max-width: 400px) {
+        .culture-section-slider {
+            min-height: auto;
+        }
+
+        .culture-slider-bg {
+            padding: 40px 0 50px;
+        }
+
+        .culture-info-box {
+            padding: 25px 15px;
+            min-height: auto;
+        }
+
+        .culture-label {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            padding: 6px 16px;
+        }
+
+        .culture-main-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .culture-description {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .culture-slide-image {
+            height: 220px;
+        }
+
+        .culture-slide-content {
+            padding: 24px 20px;
+        }
+
+        .culture-slide-content h3 {
+            font-size: 1.4rem;
+        }
+
+        .culture-category {
+            font-size: 0.8rem;
+            padding: 6px 16px;
+        }
+
+        .culture-nav-controls {
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .culture-nav-btn {
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
         }
     }
 </style>
