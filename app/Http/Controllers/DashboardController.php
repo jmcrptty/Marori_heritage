@@ -49,45 +49,87 @@ class DashboardController extends Controller
      */
     public function updateHero(Request $request)
     {
-        $validated = $request->validate([
-            'badge' => 'required|string|max:100',
-            'title' => 'required|string|max:200',
-            'subtitle' => 'required|string|max:300',
-            'description' => 'required|string',
-            'btn_primary_text' => 'required|string|max:100',
-            'btn_primary_link' => 'required|string|max:255',
-            'btn_secondary_text' => 'required|string|max:100',
-            'btn_secondary_link' => 'required|string|max:255',
-            'background_image' => 'nullable|image|max:2048'
-        ]);
+        try {
+            \Log::info('Hero update started');
+            \Log::info('Has file: ' . ($request->hasFile('background_image') ? 'Yes' : 'No'));
 
-        $hero = HeroSection::first();
-
-        // Handle image upload if exists
-        if ($request->hasFile('background_image')) {
-            // Delete old image if exists
-            if ($hero && $hero->background_image) {
-                Storage::disk('public')->delete($hero->background_image);
-            }
-            $validated['background_image'] = $request->file('background_image')->store('hero', 'public');
-        }
-
-        if ($hero) {
-            $hero->update($validated);
-        } else {
-            HeroSection::create($validated);
-        }
-
-        // Return JSON response for AJAX requests
-        if ($request->ajax() || $request->wantsJson()) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Hero section berhasil diperbarui!'
+            $validated = $request->validate([
+                'badge' => 'required|string|max:100',
+                'title' => 'required|string|max:200',
+                'subtitle' => 'required|string|max:300',
+                'description' => 'required|string',
+                'btn_primary_text' => 'required|string|max:100',
+                'btn_primary_link' => 'required|string|max:255',
+                'btn_secondary_text' => 'required|string|max:100',
+                'btn_secondary_link' => 'required|string|max:255',
+                'background_image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:2048'
             ]);
-        }
 
-        Session::flash('success', 'Hero section berhasil diperbarui!');
-        return redirect()->route('dashboard.hero');
+            $hero = HeroSection::first();
+
+            // Handle image upload if exists
+            if ($request->hasFile('background_image')) {
+                \Log::info('Processing image upload');
+                $file = $request->file('background_image');
+                \Log::info('File name: ' . $file->getClientOriginalName());
+                \Log::info('File size: ' . $file->getSize());
+
+                // Delete old image if exists
+                if ($hero && $hero->background_image) {
+                    \Log::info('Deleting old image: ' . $hero->background_image);
+                    Storage::disk('public')->delete($hero->background_image);
+                }
+
+                $imagePath = $file->store('hero', 'public');
+                \Log::info('Image stored at: ' . $imagePath);
+                $validated['background_image'] = $imagePath;
+            } else {
+                \Log::info('No file uploaded');
+            }
+
+            if ($hero) {
+                $hero->update($validated);
+                \Log::info('Hero updated successfully');
+            } else {
+                HeroSection::create($validated);
+                \Log::info('Hero created successfully');
+            }
+
+            // Return JSON response for AJAX requests
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Hero section berhasil diperbarui!'
+                ]);
+            }
+
+            Session::flash('success', 'Hero section berhasil diperbarui!');
+            return redirect()->route('dashboard.hero');
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            \Log::error('Validation error: ' . json_encode($e->errors()));
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Validation error',
+                    'errors' => $e->errors()
+                ], 422);
+            }
+            throw $e;
+        } catch (\Exception $e) {
+            \Log::error('Hero update error: ' . $e->getMessage());
+            \Log::error('Stack trace: ' . $e->getTraceAsString());
+
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Terjadi kesalahan: ' . $e->getMessage()
+                ], 500);
+            }
+
+            Session::flash('error', 'Terjadi kesalahan saat menyimpan data.');
+            return redirect()->back()->withInput();
+        }
     }
 
     /**

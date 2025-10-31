@@ -33,10 +33,34 @@
                 if (!form.checkValidity()) {
                     event.preventDefault();
                     event.stopPropagation();
+
+                    // Show alert for validation error
+                    alert('Mohon lengkapi semua field yang wajib diisi!');
+
+                    // Scroll to first invalid field
+                    const firstInvalid = form.querySelector(':invalid');
+                    if (firstInvalid) {
+                        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        firstInvalid.focus();
+                    }
+                } else {
+                    // Show loading indicator on submit button
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        const originalHtml = submitBtn.innerHTML;
+                        submitBtn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Menyimpan...';
+
+                        // Re-enable after 5 seconds as fallback
+                        setTimeout(() => {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalHtml;
+                        }, 5000);
+                    }
                 }
 
                 form.classList.add('was-validated');
-            });
+            }, false);
         });
     });
 
