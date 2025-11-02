@@ -1,6 +1,6 @@
-<!-- Researchers Section with Auto Slider -->
-<section id="researchers" class="researchers-section-slider">
-    <div class="researchers-slider-bg">
+<!-- Researchers Section -->
+<section id="researchers" class="researchers-section">
+    <div class="researchers-bg">
         <div class="container">
             <!-- Header Section - Centered Top -->
             <div class="researchers-header">
@@ -12,168 +12,138 @@
                 </p>
             </div>
 
-            <!-- Cards Slider -->
-            <div class="researchers-slider-section">
-                    <!-- Researchers Slider Container -->
-                    <div class="researchers-slider-wrapper">
-                        <div class="researchers-slider-container" id="researchersSlider">
-                    @if(isset($researchers) && $researchers->count() > 0)
-                        @foreach($researchers as $researcher)
-                        <!-- Slide {{ $loop->iteration }} - {{ $researcher->name }} -->
-                        <div class="researcher-card">
-                            <div class="researcher-image">
-                                @if($researcher->photo)
-                                    <img data-src="{{ asset('storage/' . $researcher->photo) }}"
-                                         alt="{{ $researcher->name }}"
-                                         loading="lazy"
-                                         class="lazy-loading">
-                                @else
-                                    <div class="researcher-avatar">
-                                        <i class="bi bi-person-circle"></i>
-                                    </div>
-                                @endif
-                            </div>
-                            <div class="researcher-info">
-                                <h3 class="researcher-name">{{ $researcher->name }}</h3>
-                                <p class="researcher-role">{{ $researcher->role }}</p>
-                                <p class="researcher-institution">{{ $researcher->institution }}</p>
-                            </div>
-                        </div>
-                        @endforeach
-                    @else
-                        <!-- Default slides if no data -->
-                        <div class="researcher-card">
-                            <div class="researcher-image">
+            <!-- Cards Grid -->
+            <div class="researchers-grid-container" id="researchersGrid">
+                @if(isset($researchers) && $researchers->count() > 0)
+                    @foreach($researchers as $index => $researcher)
+                    <div class="researcher-card {{ $index >= 6 ? 'hidden-card' : '' }}" data-index="{{ $index }}">
+                        <div class="researcher-image">
+                            @if($researcher->photo)
+                                <img src="{{ asset('storage/' . $researcher->photo) }}"
+                                     alt="{{ $researcher->name }}"
+                                     loading="lazy">
+                            @else
                                 <div class="researcher-avatar">
                                     <i class="bi bi-person-circle"></i>
                                 </div>
-                            </div>
-                            <div class="researcher-info">
-                                <h3 class="researcher-name">Dr. John Doe</h3>
-                                <p class="researcher-role">Antropolog</p>
-                                <p class="researcher-institution">Universitas Papua</p>
+                            @endif
+                        </div>
+                        <div class="researcher-info">
+                            <h3 class="researcher-name">{{ $researcher->name }}</h3>
+                            <p class="researcher-role">{{ $researcher->role }}</p>
+                            <p class="researcher-institution">{{ $researcher->institution }}</p>
+                        </div>
+                    </div>
+                    @endforeach
+                @else
+                    <!-- Default cards if no data -->
+                    <div class="researcher-card" data-index="0">
+                        <div class="researcher-image">
+                            <div class="researcher-avatar">
+                                <i class="bi bi-person-circle"></i>
                             </div>
                         </div>
-
-                        <div class="researcher-card">
-                            <div class="researcher-image">
-                                <div class="researcher-avatar">
-                                    <i class="bi bi-person-circle"></i>
-                                </div>
-                            </div>
-                            <div class="researcher-info">
-                                <h3 class="researcher-name">Prof. Jane Smith</h3>
-                                <p class="researcher-role">Etnografer</p>
-                                <p class="researcher-institution">Institut Penelitian Budaya</p>
-                            </div>
-                        </div>
-
-                        <div class="researcher-card">
-                            <div class="researcher-image">
-                                <div class="researcher-avatar">
-                                    <i class="bi bi-person-circle"></i>
-                                </div>
-                            </div>
-                            <div class="researcher-info">
-                                <h3 class="researcher-name">Michael Johnson</h3>
-                                <p class="researcher-role">Peneliti Lapangan</p>
-                                <p class="researcher-institution">Lembaga Studi Papua</p>
-                            </div>
-                        </div>
-
-                        <div class="researcher-card">
-                            <div class="researcher-image">
-                                <div class="researcher-avatar">
-                                    <i class="bi bi-person-circle"></i>
-                                </div>
-                            </div>
-                            <div class="researcher-info">
-                                <h3 class="researcher-name">Sarah Williams</h3>
-                                <p class="researcher-role">Dokumentator</p>
-                                <p class="researcher-institution">Pusat Dokumentasi Budaya</p>
-                            </div>
-                        </div>
-
-                        <div class="researcher-card">
-                            <div class="researcher-image">
-                                <div class="researcher-avatar">
-                                    <i class="bi bi-person-circle"></i>
-                                </div>
-                            </div>
-                            <div class="researcher-info">
-                                <h3 class="researcher-name">Dr. Ahmad Yusuf</h3>
-                                <p class="researcher-role">Linguistik</p>
-                                <p class="researcher-institution">Universitas Indonesia</p>
-                            </div>
-                        </div>
-
-                        <div class="researcher-card">
-                            <div class="researcher-image">
-                                <div class="researcher-avatar">
-                                    <i class="bi bi-person-circle"></i>
-                                </div>
-                            </div>
-                            <div class="researcher-info">
-                                <h3 class="researcher-name">Lisa Anderson</h3>
-                                <p class="researcher-role">Arkeolog</p>
-                                <p class="researcher-institution">Institut Arkeologi Papua</p>
-                            </div>
-                        </div>
-                    @endif
+                        <div class="researcher-info">
+                            <h3 class="researcher-name">Dr. John Doe</h3>
+                            <p class="researcher-role">Antropolog</p>
+                            <p class="researcher-institution">Universitas Papua</p>
                         </div>
                     </div>
 
-                    <!-- Slider Navigation Buttons Below -->
-                    <div class="slider-controls">
-                        <button class="slider-control-btn prev-btn-bottom" id="prevBtn">
-                            <i class="bi bi-chevron-left"></i>
-                        </button>
-                        <div class="slider-indicators" id="sliderIndicators"></div>
-                        <button class="slider-control-btn next-btn-bottom" id="nextBtn">
-                            <i class="bi bi-chevron-right"></i>
-                        </button>
+                    <div class="researcher-card" data-index="1">
+                        <div class="researcher-image">
+                            <div class="researcher-avatar">
+                                <i class="bi bi-person-circle"></i>
+                            </div>
+                        </div>
+                        <div class="researcher-info">
+                            <h3 class="researcher-name">Prof. Jane Smith</h3>
+                            <p class="researcher-role">Etnografer</p>
+                            <p class="researcher-institution">Institut Penelitian Budaya</p>
+                        </div>
                     </div>
+
+                    <div class="researcher-card" data-index="2">
+                        <div class="researcher-image">
+                            <div class="researcher-avatar">
+                                <i class="bi bi-person-circle"></i>
+                            </div>
+                        </div>
+                        <div class="researcher-info">
+                            <h3 class="researcher-name">Michael Johnson</h3>
+                            <p class="researcher-role">Peneliti Lapangan</p>
+                            <p class="researcher-institution">Lembaga Studi Papua</p>
+                        </div>
+                    </div>
+
+                    <div class="researcher-card" data-index="3">
+                        <div class="researcher-image">
+                            <div class="researcher-avatar">
+                                <i class="bi bi-person-circle"></i>
+                            </div>
+                        </div>
+                        <div class="researcher-info">
+                            <h3 class="researcher-name">Sarah Williams</h3>
+                            <p class="researcher-role">Dokumentator</p>
+                            <p class="researcher-institution">Pusat Dokumentasi Budaya</p>
+                        </div>
+                    </div>
+
+                    <div class="researcher-card" data-index="4">
+                        <div class="researcher-image">
+                            <div class="researcher-avatar">
+                                <i class="bi bi-person-circle"></i>
+                            </div>
+                        </div>
+                        <div class="researcher-info">
+                            <h3 class="researcher-name">Dr. Ahmad Yusuf</h3>
+                            <p class="researcher-role">Linguistik</p>
+                            <p class="researcher-institution">Universitas Indonesia</p>
+                        </div>
+                    </div>
+
+                    <div class="researcher-card" data-index="5">
+                        <div class="researcher-image">
+                            <div class="researcher-avatar">
+                                <i class="bi bi-person-circle"></i>
+                            </div>
+                        </div>
+                        <div class="researcher-info">
+                            <h3 class="researcher-name">Lisa Anderson</h3>
+                            <p class="researcher-role">Arkeolog</p>
+                            <p class="researcher-institution">Institut Arkeologi Papua</p>
+                        </div>
+                    </div>
+                @endif
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more-container" id="loadMoreContainer" style="display: none;">
+                <button class="load-more-btn" id="loadMoreBtn">
+                    <span>Lihat Lebih Banyak</span>
+                    <i class="bi bi-chevron-down"></i>
+                </button>
             </div>
         </div>
     </div>
 </section>
 
 <style>
-    /* Researchers Slider Section */
-    .researchers-section-slider {
-        padding: 0;
+    /* Researchers Section */
+    .researchers-section {
+        padding: 80px 0;
         margin: 0;
         position: relative;
-        overflow: hidden;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
         background: #FFFFFF;
     }
 
-    .researchers-slider-bg {
+    .researchers-bg {
         background: transparent;
         position: relative;
         width: 100%;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        padding: 80px 0;
-        margin: 0;
     }
 
-    .researchers-slider-bg::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: transparent;
-        pointer-events: none;
-    }
-
-    .researchers-slider-bg .container {
+    .researchers-bg .container {
         position: relative;
         z-index: 2;
         width: 100%;
@@ -218,28 +188,18 @@
         margin: 0 auto;
     }
 
-    /* Slider Section */
-    .researchers-slider-section {
-        width: 100%;
-        position: relative;
-    }
-
-    /* Slider Container */
-    .researchers-slider-wrapper {
-        position: relative;
-        overflow: visible;
-        margin: 0 auto;
-        max-width: 100%;
-    }
-
-    .researchers-slider-container {
+    /* Grid Container */
+    .researchers-grid-container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: auto;
-        gap: 15px;
-        transition: opacity 0.5s ease;
+        gap: 20px;
         width: 100%;
-        min-height: 400px;
+        margin-top: 40px;
+    }
+
+    /* Hidden Cards */
+    .researcher-card.hidden-card {
+        display: none;
     }
 
     /* Researcher Card - Smaller Design */
@@ -266,7 +226,7 @@
 
     .researcher-image {
         width: 100%;
-        height: 200px;
+        height: 380px;
         background: #2a2a2a;
         display: flex;
         align-items: center;
@@ -345,59 +305,41 @@
         font-weight: 500;
     }
 
-    /* Slider Controls at Bottom */
-    .slider-controls {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 30px;
-        margin-top: 30px;
-        position: relative;
-        z-index: 2;
+    /* Load More Button */
+    .load-more-container {
+        margin-top: 50px;
+        text-align: center;
     }
 
-    .slider-control-btn {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: rgba(26, 26, 26, 0.2);
-        backdrop-filter: blur(10px);
-        border: 2px solid rgba(26, 26, 26, 0.3);
-        color: #1a1a1a;
-        font-size: 1.3rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .slider-control-btn:hover {
-        background: rgba(26, 26, 26, 0.35);
-        border-color: rgba(26, 26, 26, 0.5);
-        transform: scale(1.1);
-    }
-
-    /* Slider Indicators */
-    .slider-indicators {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    .indicator-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: rgba(26, 26, 26, 0.3);
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .indicator-dot.active {
+    .load-more-btn {
         background: #1a1a1a;
-        width: 30px;
-        border-radius: 5px;
+        color: white;
+        border: 2px solid #1a1a1a;
+        padding: 14px 40px;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .load-more-btn:hover {
+        background: #8B0000;
+        border-color: #8B0000;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(139, 0, 0, 0.3);
+    }
+
+    .load-more-btn i {
+        transition: transform 0.3s ease;
+    }
+
+    .load-more-btn:hover i {
+        transform: translateY(3px);
     }
 
     /* Responsive Design */
@@ -407,25 +349,18 @@
         }
 
         .researcher-image {
-            height: 250px;
+            height: 400px;
         }
     }
 
     @media (max-width: 991px) {
-        .researchers-section-slider {
-            min-height: auto;
-        }
-
-        .researchers-slider-bg {
-            min-height: auto;
+        .researchers-section {
             padding: 60px 0;
         }
 
-        .researchers-slider-container {
+        .researchers-grid-container {
             grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: auto;
             gap: 20px;
-            min-height: 500px;
         }
 
         .researchers-header {
@@ -441,34 +376,26 @@
         }
 
         .researcher-image {
-            height: 240px;
+            height: 380px;
         }
     }
 
     @media (max-width: 768px) {
-        .researchers-slider-bg {
+        .researchers-section {
             padding: 50px 0;
         }
 
-        .researchers-slider-container {
+        .researchers-grid-container {
             grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: auto;
-            gap: 20px;
-            min-height: 450px;
+            gap: 15px;
         }
 
         .researcher-image {
-            height: 220px;
+            height: 360px;
         }
 
         .researcher-avatar {
             font-size: 4rem;
-        }
-
-        .slider-control-btn {
-            width: 50px;
-            height: 50px;
-            font-size: 1.3rem;
         }
 
         .researchers-main-title {
@@ -478,23 +405,16 @@
         .researchers-subtitle {
             font-size: 1rem;
         }
-
-        .slider-controls {
-            gap: 25px;
-            margin-top: 40px;
-        }
     }
 
     @media (max-width: 576px) {
-        .researchers-slider-bg {
+        .researchers-section {
             padding: 40px 0;
         }
 
-        .researchers-slider-container {
+        .researchers-grid-container {
             grid-template-columns: 1fr;
-            grid-template-rows: auto;
             gap: 20px;
-            min-height: auto;
         }
 
         .researchers-header {
@@ -510,17 +430,11 @@
         }
 
         .researcher-image {
-            height: 200px;
+            height: 380px;
         }
 
         .researcher-avatar {
             font-size: 3.5rem;
-        }
-
-        .slider-control-btn {
-            width: 45px;
-            height: 45px;
-            font-size: 1.2rem;
         }
 
         .researcher-name {
@@ -530,19 +444,11 @@
         .researcher-info {
             padding: 16px;
         }
-
-        .slider-controls {
-            margin-top: 35px;
-        }
     }
 
     /* Extra small devices */
     @media (max-width: 400px) {
-        .researchers-section-slider {
-            min-height: auto;
-        }
-
-        .researchers-slider-bg {
+        .researchers-section {
             padding: 40px 0 50px;
         }
 
@@ -571,7 +477,7 @@
         }
 
         .researcher-image {
-            height: 180px;
+            height: 360px;
         }
 
         .researcher-avatar {
@@ -595,190 +501,49 @@
         .researcher-institution {
             font-size: 0.7rem;
         }
-
-        .slider-controls {
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .slider-control-btn {
-            width: 40px;
-            height: 40px;
-            font-size: 1.1rem;
-        }
-
-        .indicator-dot {
-            width: 8px;
-            height: 8px;
-        }
-
-        .indicator-dot.active {
-            width: 24px;
-        }
     }
 </style>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const slider = document.getElementById('researchersSlider');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const indicators = document.getElementById('sliderIndicators');
-        const sliderControls = document.querySelector('.slider-controls');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const loadMoreContainer = document.getElementById('loadMoreContainer');
         const cards = document.querySelectorAll('.researcher-card');
+        const totalCards = cards.length;
+        const initialShow = 6;
+        let currentlyShown = initialShow;
 
-        let currentPage = 0;
-        let autoSlideInterval;
-        const autoSlideDelay = 5000; // 5 seconds
-        const cardsPerPage = 6; // 3 columns × 2 rows
-        const totalPages = Math.ceil(cards.length / cardsPerPage);
-
-        // Hide controls if only 6 or fewer cards
-        if (cards.length <= 6) {
-            if (sliderControls) {
-                sliderControls.style.display = 'none';
-            }
-            return; // Don't initialize slider
+        // Show load more button if there are more than 6 cards
+        if (totalCards > initialShow) {
+            loadMoreContainer.style.display = 'block';
         }
 
-        // Show controls if more than 6 cards
-        if (sliderControls) {
-            sliderControls.style.display = 'flex';
-        }
+        // Load more functionality
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', function() {
+                const hiddenCards = document.querySelectorAll('.researcher-card.hidden-card');
 
-        // Setup cards with data attributes for column position
-        cards.forEach((card, index) => {
-            const columnIndex = index % 3; // 0, 1, 2 for three columns
-            card.setAttribute('data-column', columnIndex);
-            card.style.opacity = '0';
-            card.style.visibility = 'hidden';
-        });
-
-        // Show cards for current page with animation
-        function showPage(pageIndex) {
-            const startIdx = pageIndex * cardsPerPage;
-            const endIdx = Math.min(startIdx + cardsPerPage, cards.length);
-
-            // Hide all cards first
-            cards.forEach((card) => {
-                card.style.opacity = '0';
-                card.style.visibility = 'hidden';
-                card.style.transition = 'none';
-            });
-
-            // Show cards for current page with column-specific animations
-            setTimeout(() => {
-                for (let i = startIdx; i < endIdx; i++) {
-                    const card = cards[i];
-                    const columnIndex = parseInt(card.getAttribute('data-column'));
-                    const rowIndex = Math.floor((i - startIdx) / 3); // 0 for top row, 1 for bottom row
-
-                    // Set initial position based on column
-                    if (columnIndex === 0) {
-                        // Column 1: slide from bottom to top
-                        card.style.transform = 'translateY(100%)';
-                    } else if (columnIndex === 1) {
-                        // Column 2: slide from right to left
-                        card.style.transform = 'translateX(100%)';
-                    } else if (columnIndex === 2) {
-                        // Column 3: slide from top to bottom
-                        card.style.transform = 'translateY(-100%)';
-                    }
-
-                    card.style.visibility = 'visible';
-
-                    // Trigger animation
+                // Show all remaining cards with animation
+                hiddenCards.forEach((card, index) => {
                     setTimeout(() => {
-                        card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-                        card.style.transform = 'translate(0, 0)';
-                        card.style.opacity = '1';
-                    }, 50 + (rowIndex * 100)); // Stagger animation by row
-                }
-            }, 50);
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        card.classList.remove('hidden-card');
 
-            updateIndicators();
-        }
+                        // Trigger animation
+                        setTimeout(() => {
+                            card.style.transition = 'all 0.5s ease';
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 50);
+                    }, index * 100);
+                });
 
-        // Create indicators
-        function createIndicators() {
-            indicators.innerHTML = '';
-            for (let i = 0; i < totalPages; i++) {
-                const dot = document.createElement('div');
-                dot.classList.add('indicator-dot');
-                if (i === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToPage(i));
-                indicators.appendChild(dot);
-            }
-        }
-
-        // Update indicators
-        function updateIndicators() {
-            const dots = document.querySelectorAll('.indicator-dot');
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentPage);
+                // Hide the button after showing all
+                setTimeout(() => {
+                    loadMoreContainer.style.display = 'none';
+                }, hiddenCards.length * 100 + 300);
             });
         }
-
-        // Go to specific page
-        function goToPage(pageIndex) {
-            currentPage = pageIndex;
-            if (currentPage >= totalPages) currentPage = 0;
-            if (currentPage < 0) currentPage = totalPages - 1;
-            showPage(currentPage);
-        }
-
-        // Next page
-        function nextPage() {
-            currentPage++;
-            if (currentPage >= totalPages) {
-                currentPage = 0; // Loop back to start
-            }
-            showPage(currentPage);
-        }
-
-        // Previous page
-        function prevPage() {
-            currentPage--;
-            if (currentPage < 0) {
-                currentPage = totalPages - 1; // Loop to end
-            }
-            showPage(currentPage);
-        }
-
-        // Start auto slide
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(nextPage, autoSlideDelay);
-        }
-
-        // Stop auto slide
-        function stopAutoSlide() {
-            clearInterval(autoSlideInterval);
-        }
-
-        // Event listeners
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                stopAutoSlide();
-                prevPage();
-                startAutoSlide();
-            });
-        }
-
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => {
-                stopAutoSlide();
-                nextPage();
-                startAutoSlide();
-            });
-        }
-
-        // Pause on hover
-        slider.addEventListener('mouseenter', stopAutoSlide);
-        slider.addEventListener('mouseleave', startAutoSlide);
-
-        // Initialize
-        createIndicators();
-        showPage(0);
-        startAutoSlide();
     });
 </script>

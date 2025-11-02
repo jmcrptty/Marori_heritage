@@ -20,18 +20,18 @@
         }
 
         :root {
-            --primary-color: #4A6B5A;
-            --secondary-color: #8B6F47;
-            --accent-color: #A68A64;
-            --light-bg: #F5F1ED;
-            --text-primary: #3E2723;
-            --text-secondary: #5D4037;
-            --border-color: rgba(139, 111, 71, 0.15);
+            --primary-color: #8B0000;
+            --secondary-color: #DC143C;
+            --accent-color: #1a1a1a;
+            --light-bg: #F8F9FA;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --border-color: rgba(0, 0, 0, 0.15);
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #F5F1ED 0%, #EDE8E3 100%);
+            background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -47,13 +47,13 @@
             background: white;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 24px rgba(74, 107, 90, 0.15);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
         }
 
         /* Left Side - Logo & Branding */
         .login-brand {
             flex: 1;
-            background: linear-gradient(135deg, #3E5A4C 0%, #4A6B5A 50%, #5A7868 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
             padding: 60px;
             display: flex;
             flex-direction: column;
@@ -79,19 +79,21 @@
         }
 
         .logo-container {
-            width: 100px;
-            height: 100px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 50%;
+            width: 180px;
+            height: 180px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 30px;
-            font-size: 3rem;
-            backdrop-filter: blur(10px);
             position: relative;
             z-index: 1;
-            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
         }
 
         .brand-title {
@@ -146,9 +148,10 @@
         /* Status Message */
         .status-message {
             padding: 12px 16px;
-            background: #d1fae5;
-            border: 1px solid #6ee7b7;
-            color: #065f46;
+            background: #FFE5E5;
+            border: 2px solid rgba(139, 0, 0, 0.3);
+            border-left: 4px solid #8B0000;
+            color: #1a1a1a;
             border-radius: 6px;
             font-size: 0.9rem;
             font-family: 'Inter', sans-serif;
@@ -183,7 +186,7 @@
         .form-input:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(74, 107, 90, 0.1);
+            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
         }
 
         .error-message {
@@ -238,27 +241,28 @@
 
         .btn-primary {
             padding: 12px 32px;
-            background: linear-gradient(135deg, #4A6B5A 0%, #3E5A4C 100%);
+            background: #8B0000;
             color: white;
-            border: none;
+            border: 2px solid #8B0000;
             border-radius: 6px;
             font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: 'Inter', sans-serif;
-            box-shadow: 0 2px 8px rgba(74, 107, 90, 0.2);
+            box-shadow: 0 2px 8px rgba(139, 0, 0, 0.2);
         }
 
         .btn-primary:hover {
-            background: linear-gradient(135deg, #8B6F47 0%, #6F5639 100%);
+            background: #DC143C;
+            border-color: #DC143C;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(139, 111, 71, 0.3);
+            box-shadow: 0 4px 12px rgba(139, 0, 0, 0.3);
         }
 
         .btn-primary:active {
             transform: translateY(0);
-            box-shadow: 0 2px 4px rgba(74, 107, 90, 0.2);
+            box-shadow: 0 2px 4px rgba(139, 0, 0, 0.2);
         }
 
         /* Responsive */
@@ -278,9 +282,8 @@
             }
 
             .logo-container {
-                width: 80px;
-                height: 80px;
-                font-size: 2.5rem;
+                width: 140px;
+                height: 140px;
                 margin-bottom: 20px;
             }
 
@@ -316,7 +319,7 @@
         <!-- Left Side - Logo & Branding -->
         <div class="login-brand">
             <div class="logo-container">
-                🏝️
+                <img src="{{ asset('img/marori.png') }}" alt="Logo Marori">
             </div>
             <h1 class="brand-title">Suku Marori Wasur</h1>
             <p class="brand-subtitle">Melestarikan budaya, memberdayakan ekonomi lokal Papua</p>
