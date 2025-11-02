@@ -28,7 +28,7 @@
                                 <div class="product-overlay"></div>
                             </div>
                             @else
-                            <div class="product-image-bg" style="background: linear-gradient(135deg, rgba(139, 111, 71, 0.85), rgba(92, 64, 51, 0.85));">
+                            <div class="product-image-bg" style="background: #F8F8F8;">
                                 <div class="product-overlay">
                                     <i class="bi bi-image product-icon"></i>
                                 </div>
@@ -124,7 +124,7 @@
     }
 
     .products-slider-bg {
-        background: linear-gradient(135deg, #6D5D4F 0%, #5C4D42 50%, #4A3F35 100%);
+        background: #8B0000;
         position: absolute;
         top: 0;
         left: 0;
@@ -147,7 +147,7 @@
     .shape-1 {
         width: 600px;
         height: 600px;
-        background: #F4D03F;
+        background: #DC143C;
         top: -200px;
         right: -100px;
     }
@@ -155,7 +155,7 @@
     .shape-2 {
         width: 400px;
         height: 400px;
-        background: #8B6F47;
+        background: #B22222;
         bottom: -150px;
         left: -100px;
     }
@@ -163,7 +163,7 @@
     .shape-3 {
         width: 500px;
         height: 500px;
-        background: #A68A64;
+        background: #FF6B6B;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -191,10 +191,10 @@
         font-size: 0.7rem;
         font-weight: 700;
         letter-spacing: 3px;
-        color: #F4D03F;
+        color: #FFFFFF;
         text-transform: uppercase;
         margin-bottom: 12px;
-        background: rgba(244, 208, 63, 0.2);
+        background: rgba(255, 255, 255, 0.15);
         padding: 6px 16px;
         border-radius: 20px;
     }
@@ -289,7 +289,7 @@
 
     .product-icon {
         font-size: 3.5rem;
-        color: white;
+        color: #8B0000;
         opacity: 0.8;
         transition: all 0.4s ease;
     }
@@ -311,7 +311,7 @@
         font-size: 0.7rem;
         font-weight: 700;
         letter-spacing: 1.5px;
-        color: #8B6F47;
+        color: #8B0000;
         text-transform: uppercase;
         margin-bottom: 8px;
     }
@@ -319,14 +319,14 @@
     .product-title-modern {
         font-family: 'Playfair Display', serif;
         font-size: 1.3rem;
-        color: #3E2723;
+        color: #1a1a1a;
         margin-bottom: 10px;
         font-weight: 700;
         line-height: 1.3;
     }
 
     .product-description-modern {
-        color: #5D4037;
+        color: #4a4a4a;
         font-size: 0.85rem;
         line-height: 1.5;
         margin-bottom: 12px;
@@ -336,7 +336,7 @@
     .product-price-modern {
         font-family: 'Playfair Display', serif;
         font-size: 1.1rem;
-        color: #8B6F47;
+        color: #8B0000;
         font-weight: 700;
         margin-bottom: 12px;
     }
@@ -364,29 +364,29 @@
     }
 
     .btn-shopee-earth {
-        background: linear-gradient(135deg, #8B6F47 0%, #6D5D4F 100%);
+        background: #660000;
         color: white;
-        box-shadow: 0 4px 12px rgba(139, 111, 71, 0.3);
+        box-shadow: 0 4px 12px rgba(139, 0, 0, 0.3);
     }
 
     .btn-shopee-earth:hover {
-        background: linear-gradient(135deg, #6D5D4F 0%, #5C4D42 100%);
+        background: #8B0000;
         color: white;
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(139, 111, 71, 0.5);
+        box-shadow: 0 6px 20px rgba(139, 0, 0, 0.5);
     }
 
     .btn-tokopedia-earth {
-        background: linear-gradient(135deg, #A68A64 0%, #8B6F47 100%);
+        background: #8B0000;
         color: white;
-        box-shadow: 0 4px 12px rgba(166, 138, 100, 0.3);
+        box-shadow: 0 4px 12px rgba(220, 20, 60, 0.3);
     }
 
     .btn-tokopedia-earth:hover {
-        background: linear-gradient(135deg, #8B6F47 0%, #6D5D4F 100%);
+        background: #660000;
         color: white;
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(166, 138, 100, 0.5);
+        box-shadow: 0 6px 20px rgba(220, 20, 60, 0.5);
     }
 
     .product-btn i {

@@ -189,18 +189,19 @@
         font-size: 0.7rem;
         font-weight: 700;
         letter-spacing: 3px;
-        color: #2C4A3E;
+        color: #FFFFFF;
         text-transform: uppercase;
         margin-bottom: 12px;
-        background: rgba(44, 74, 62, 0.1);
+        background: rgba(26, 26, 26, 0.8);
         padding: 6px 16px;
         border-radius: 20px;
+        border: 2px solid rgba(26, 26, 26, 0.9);
     }
 
     .media-gallery-main-title {
         font-family: 'Playfair Display', serif;
         font-size: 2.5rem;
-        color: #2C4A3E;
+        color: #1a1a1a;
         margin-bottom: 12px;
         font-weight: 700;
         line-height: 1.2;
@@ -208,7 +209,7 @@
     }
 
     .media-gallery-subtitle {
-        color: #5D4037;
+        color: #4a4a4a;
         font-size: 1rem;
         line-height: 1.5;
         max-width: 650px;
@@ -314,10 +315,10 @@
         font-size: 0.7rem;
         font-weight: 700;
         letter-spacing: 2px;
-        color: #7FB685;
+        color: #FFFFFF;
         text-transform: uppercase;
         margin-bottom: 10px;
-        background: rgba(127, 182, 133, 0.2);
+        background: rgba(26, 26, 26, 0.2);
         padding: 4px 12px;
         border-radius: 12px;
     }
@@ -374,10 +375,10 @@
         width: 60px;
         height: 60px;
         border-radius: 50%;
-        background: rgba(44, 74, 62, 0.1);
+        background: rgba(26, 26, 26, 0.6);
         backdrop-filter: blur(10px);
-        border: 2px solid rgba(44, 74, 62, 0.3);
-        color: #2C4A3E;
+        border: 2px solid rgba(26, 26, 26, 0.7);
+        color: #FFFFFF;
         font-size: 1.8rem;
         cursor: pointer;
         transition: all 0.3s ease;
@@ -390,8 +391,8 @@
     }
 
     .media-nav-btn:hover {
-        background: rgba(44, 74, 62, 0.2);
-        border-color: rgba(44, 74, 62, 0.5);
+        background: rgba(26, 26, 26, 0.8);
+        border-color: rgba(26, 26, 26, 0.9);
         transform: translateY(-50%) scale(1.1);
     }
 
@@ -425,18 +426,19 @@
         font-size: 0.7rem;
         font-weight: 700;
         letter-spacing: 3px;
-        color: #2C4A3E;
+        color: #FFFFFF;
         text-transform: uppercase;
         margin-bottom: 12px;
-        background: rgba(44, 74, 62, 0.1);
+        background: rgba(26, 26, 26, 0.8);
         padding: 6px 16px;
         border-radius: 20px;
+        border: 2px solid rgba(26, 26, 26, 0.9);
     }
 
     .photo-gallery-title {
         font-family: 'Playfair Display', serif;
         font-size: 2.5rem;
-        color: #2C4A3E;
+        color: #1a1a1a;
         margin-bottom: 12px;
         font-weight: 700;
         line-height: 1.2;
@@ -444,7 +446,7 @@
     }
 
     .photo-gallery-subtitle {
-        color: #5D4037;
+        color: #4a4a4a;
         font-size: 1rem;
         line-height: 1.5;
         max-width: 650px;
@@ -517,10 +519,10 @@
         font-size: 0.65rem;
         font-weight: 700;
         letter-spacing: 2px;
-        color: #7FB685;
+        color: #FFFFFF;
         text-transform: uppercase;
         margin-bottom: 8px;
-        background: rgba(127, 182, 133, 0.2);
+        background: rgba(26, 26, 26, 0.2);
         padding: 4px 12px;
         border-radius: 12px;
     }
@@ -553,9 +555,9 @@
     }
 
     .btn-load-more {
-        background: rgba(44, 74, 62, 0.1);
-        border: 2px solid rgba(44, 74, 62, 0.3);
-        color: #2C4A3E;
+        background: rgba(26, 26, 26, 0.6);
+        border: 2px solid rgba(26, 26, 26, 0.7);
+        color: #FFFFFF;
         padding: 16px 40px;
         border-radius: 50px;
         font-weight: 600;
@@ -569,8 +571,8 @@
     }
 
     .btn-load-more:hover {
-        background: rgba(44, 74, 62, 0.2);
-        border-color: rgba(44, 74, 62, 0.5);
+        background: rgba(26, 26, 26, 0.8);
+        border-color: rgba(26, 26, 26, 0.9);
         transform: translateY(-2px);
     }
 
@@ -584,7 +586,7 @@
     }
 
     .photos-counter {
-        color: #5D4037;
+        color: #4a4a4a;
         font-size: 0.95rem;
         font-weight: 500;
     }
@@ -839,7 +841,7 @@
             width: 48px;
             height: 48px;
             font-size: 1.4rem;
-            background: rgba(44, 74, 62, 0.15);
+            background: rgba(26, 26, 26, 0.6);
             border-width: 2px;
         }
 
@@ -852,7 +854,7 @@
         }
 
         .media-nav-btn:hover {
-            background: rgba(44, 74, 62, 0.25);
+            background: rgba(26, 26, 26, 0.8);
         }
 
         .media-gallery-header {
@@ -1033,7 +1035,7 @@
             width: 42px;
             height: 42px;
             font-size: 1.2rem;
-            background: rgba(44, 74, 62, 0.2);
+            background: rgba(26, 26, 26, 0.6);
             border-width: 2px;
         }
 
@@ -1046,7 +1048,7 @@
         }
 
         .media-nav-btn:hover {
-            background: rgba(44, 74, 62, 0.3);
+            background: rgba(26, 26, 26, 0.8);
         }
 
         .media-nav-btn:active {

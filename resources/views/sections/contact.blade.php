@@ -178,11 +178,13 @@
     .contact-section-modern {
         background: linear-gradient(to bottom,
             #FFFFFF 0%,
-            #FFFEF9 20%,
-            #FFF9F0 40%,
-            #FFF4E6 60%,
-            #FFEBCC 80%,
-            #F5E6D3 100%);
+            #FFE5E5 15%,
+            #FFCCCC 30%,
+            #FF9999 45%,
+            #FF6666 60%,
+            #CC0000 75%,
+            #990000 90%,
+            #8B0000 100%);
         position: relative;
         padding: 10px 0 40px;
         overflow: hidden;
@@ -195,8 +197,8 @@
         width: 100%;
         height: 100%;
         background:
-            radial-gradient(circle at 20% 30%, rgba(127, 182, 133, 0.08) 0%, transparent 50%),
-            radial-gradient(circle at 80% 70%, rgba(93, 64, 55, 0.08) 0%, transparent 50%);
+            radial-gradient(circle at 20% 30%, rgba(139, 0, 0, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(220, 20, 60, 0.08) 0%, transparent 50%);
         z-index: 1;
     }
 
@@ -214,19 +216,19 @@
         font-size: 0.7rem;
         font-weight: 700;
         letter-spacing: 3px;
-        color: #2C4A3E;
+        color: #1a1a1a;
         text-transform: uppercase;
         margin-bottom: 15px;
-        background: rgba(44, 74, 62, 0.1);
+        background: rgba(255, 255, 255, 0.15);
         padding: 8px 20px;
         border-radius: 25px;
-        border: 1px solid rgba(44, 74, 62, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .contact-main-title {
         font-family: 'Playfair Display', serif;
         font-size: 3rem;
-        color: #2C4A3E;
+        color: #1a1a1a;
         margin-bottom: 15px;
         font-weight: 700;
         line-height: 1.2;
@@ -234,7 +236,7 @@
     }
 
     .contact-subtitle {
-        color: #5D4037;
+        color: #4a4a4a;
         font-size: 1.1rem;
         line-height: 1.6;
         max-width: 700px;
@@ -243,42 +245,42 @@
 
     /* Contact Cards */
     .contact-card-modern {
-        background: rgba(44, 74, 62, 0.85);
+        background: rgba(26, 26, 26, 0.85);
         backdrop-filter: blur(10px);
-        border: 2px solid rgba(44, 74, 62, 0.3);
+        border: 2px solid rgba(26, 26, 26, 0.3);
         border-radius: 24px;
         padding: 40px 30px;
         text-align: center;
         transition: all 0.4s ease;
         height: 100%;
-        box-shadow: 0 4px 20px rgba(44, 74, 62, 0.2);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
 
     .contact-card-modern:hover {
-        background: rgba(44, 74, 62, 0.95);
-        border-color: rgba(127, 182, 133, 0.5);
+        background: rgba(26, 26, 26, 0.95);
+        border-color: rgba(255, 255, 255, 0.3);
         transform: translateY(-8px);
-        box-shadow: 0 8px 30px rgba(44, 74, 62, 0.3);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
     }
 
     .contact-icon-modern {
         width: 70px;
         height: 70px;
-        background: rgba(127, 182, 133, 0.25);
+        background: rgba(220, 20, 60, 0.25);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 0 auto 20px;
         font-size: 2rem;
-        color: #A5D6A7;
+        color: #FF6B6B;
         transition: all 0.4s ease;
-        border: 2px solid rgba(127, 182, 133, 0.4);
+        border: 2px solid rgba(220, 20, 60, 0.4);
     }
 
     .contact-card-modern:hover .contact-icon-modern {
-        background: rgba(127, 182, 133, 0.35);
-        border-color: #7FB685;
+        background: rgba(220, 20, 60, 0.35);
+        border-color: #DC143C;
         transform: scale(1.1);
     }
 
@@ -300,7 +302,7 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        color: #A5D6A7;
+        color: #FF6B6B;
         text-decoration: none;
         font-weight: 600;
         font-size: 1rem;
@@ -308,7 +310,7 @@
     }
 
     .contact-link:hover {
-        color: #C8E6C9;
+        color: #FFB6B6;
         gap: 12px;
     }
 
@@ -322,20 +324,20 @@
 
     /* Social Media Card */
     .social-media-card {
-        background: rgba(44, 74, 62, 0.85);
+        background: rgba(26, 26, 26, 0.85);
         backdrop-filter: blur(10px);
-        border: 2px solid rgba(44, 74, 62, 0.3);
+        border: 2px solid rgba(26, 26, 26, 0.3);
         border-radius: 24px;
         padding: 40px;
         height: 100%;
         transition: all 0.4s ease;
-        box-shadow: 0 4px 20px rgba(44, 74, 62, 0.2);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
 
     .social-media-card:hover {
-        background: rgba(44, 74, 62, 0.95);
-        border-color: rgba(127, 182, 133, 0.5);
-        box-shadow: 0 8px 30px rgba(44, 74, 62, 0.3);
+        background: rgba(26, 26, 26, 0.95);
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
     }
 
     .social-header {
@@ -348,15 +350,15 @@
     .social-icon-header {
         width: 60px;
         height: 60px;
-        background: rgba(127, 182, 133, 0.25);
+        background: rgba(220, 20, 60, 0.25);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 1.8rem;
-        color: #A5D6A7;
+        color: #FF6B6B;
         flex-shrink: 0;
-        border: 2px solid rgba(127, 182, 133, 0.4);
+        border: 2px solid rgba(220, 20, 60, 0.4);
     }
 
     .social-title {
@@ -430,20 +432,20 @@
 
     /* Marketplace Card */
     .marketplace-card {
-        background: rgba(44, 74, 62, 0.85);
+        background: rgba(26, 26, 26, 0.85);
         backdrop-filter: blur(10px);
-        border: 2px solid rgba(44, 74, 62, 0.3);
+        border: 2px solid rgba(26, 26, 26, 0.3);
         border-radius: 24px;
         padding: 40px;
         height: 100%;
         transition: all 0.4s ease;
-        box-shadow: 0 4px 20px rgba(44, 74, 62, 0.2);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
 
     .marketplace-card:hover {
-        background: rgba(44, 74, 62, 0.95);
-        border-color: rgba(127, 182, 133, 0.5);
-        box-shadow: 0 8px 30px rgba(44, 74, 62, 0.3);
+        background: rgba(26, 26, 26, 0.95);
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
     }
 
     .marketplace-header {
@@ -456,15 +458,15 @@
     .marketplace-icon-header {
         width: 60px;
         height: 60px;
-        background: rgba(127, 182, 133, 0.25);
+        background: rgba(220, 20, 60, 0.25);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 1.8rem;
-        color: #A5D6A7;
+        color: #FF6B6B;
         flex-shrink: 0;
-        border: 2px solid rgba(127, 182, 133, 0.4);
+        border: 2px solid rgba(220, 20, 60, 0.4);
     }
 
     .marketplace-title {
@@ -550,19 +552,19 @@
 
     /* Google Maps Card */
     .maps-card {
-        background: rgba(44, 74, 62, 0.85);
+        background: rgba(26, 26, 26, 0.85);
         backdrop-filter: blur(10px);
-        border: 2px solid rgba(44, 74, 62, 0.3);
+        border: 2px solid rgba(26, 26, 26, 0.3);
         border-radius: 24px;
         padding: 30px;
         transition: all 0.4s ease;
-        box-shadow: 0 4px 20px rgba(44, 74, 62, 0.2);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
 
     .maps-card:hover {
-        background: rgba(44, 74, 62, 0.95);
-        border-color: rgba(127, 182, 133, 0.5);
-        box-shadow: 0 8px 30px rgba(44, 74, 62, 0.3);
+        background: rgba(26, 26, 26, 0.95);
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
     }
 
     .maps-header-compact {
@@ -575,15 +577,15 @@
     .maps-icon-compact {
         width: 45px;
         height: 45px;
-        background: rgba(127, 182, 133, 0.25);
+        background: rgba(220, 20, 60, 0.25);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 1.5rem;
-        color: #A5D6A7;
+        color: #FF6B6B;
         flex-shrink: 0;
-        border: 2px solid rgba(127, 182, 133, 0.4);
+        border: 2px solid rgba(220, 20, 60, 0.4);
     }
 
     .maps-address-inline {
@@ -611,11 +613,11 @@
         text-align: center;
         margin-top: 40px;
         padding: 30px 20px;
-        background: rgba(44, 74, 62, 0.85);
+        background: rgba(26, 26, 26, 0.85);
         backdrop-filter: blur(10px);
-        border: 2px solid rgba(44, 74, 62, 0.3);
+        border: 2px solid rgba(26, 26, 26, 0.3);
         border-radius: 20px;
-        box-shadow: 0 4px 20px rgba(44, 74, 62, 0.2);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
 
     .footer-bottom p {

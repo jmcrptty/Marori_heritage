@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-<div class="alert alert-info mb-4">
+<div class="alert alert-marori mb-4">
     <i class="bi bi-info-circle me-2"></i>
     <strong>Dashboard Overview</strong> - Kelola semua konten website dari sini
 </div>
@@ -21,7 +21,7 @@
         <div class="section-preview-card">
             <div class="section-preview-header">
                 <div class="d-flex align-items-center gap-3">
-                    <div class="section-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);">
                         <i class="bi bi-star"></i>
                     </div>
                     <div>
@@ -29,7 +29,7 @@
                         <small class="text-muted">Bagian utama halaman website</small>
                     </div>
                 </div>
-                <a href="{{ route('dashboard.hero') }}" class="btn btn-sm btn-outline-primary">
+                <a href="{{ route('dashboard.hero') }}" class="btn btn-sm btn-marori">
                     <i class="bi bi-pencil"></i> Edit
                 </a>
             </div>
@@ -57,7 +57,7 @@
         <div class="section-preview-card">
             <div class="section-preview-header">
                 <div class="d-flex align-items-center gap-3">
-                    <div class="section-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #B22222 0%, #8B0000 100%);">
                         <i class="bi bi-book"></i>
                     </div>
                     <div>
@@ -65,7 +65,7 @@
                         <small class="text-muted">Kelola item budaya Suku Marori</small>
                     </div>
                 </div>
-                <a href="{{ route('dashboard.culture') }}" class="btn btn-sm btn-outline-primary">
+                <a href="{{ route('dashboard.culture') }}" class="btn btn-sm btn-marori">
                     <i class="bi bi-pencil"></i> Kelola
                 </a>
             </div>
@@ -88,7 +88,7 @@
         <div class="section-preview-card">
             <div class="section-preview-header">
                 <div class="d-flex align-items-center gap-3">
-                    <div class="section-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);">
                         <i class="bi bi-box-seam"></i>
                     </div>
                     <div>
@@ -96,7 +96,7 @@
                         <small class="text-muted">Kelola produk lokal</small>
                     </div>
                 </div>
-                <a href="{{ route('dashboard.products') }}" class="btn btn-sm btn-outline-primary">
+                <a href="{{ route('dashboard.products') }}" class="btn btn-sm btn-marori">
                     <i class="bi bi-pencil"></i> Kelola
                 </a>
             </div>
@@ -119,7 +119,7 @@
         <div class="section-preview-card">
             <div class="section-preview-header">
                 <div class="d-flex align-items-center gap-3">
-                    <div class="section-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #1a1a1a 0%, #8B0000 100%);">
                         <i class="bi bi-people"></i>
                     </div>
                     <div>
@@ -127,7 +127,7 @@
                         <small class="text-muted">Kelola profil tim peneliti</small>
                     </div>
                 </div>
-                <a href="{{ route('dashboard.researchers') }}" class="btn btn-sm btn-outline-primary">
+                <a href="{{ route('dashboard.researchers') }}" class="btn btn-sm btn-marori">
                     <i class="bi bi-pencil"></i> Kelola
                 </a>
             </div>
@@ -150,7 +150,7 @@
         <div class="section-preview-card">
             <div class="section-preview-header">
                 <div class="d-flex align-items-center gap-3">
-                    <div class="section-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #8B0000 0%, #1a1a1a 100%);">
                         <i class="bi bi-images"></i>
                     </div>
                     <div>
@@ -158,7 +158,7 @@
                         <small class="text-muted">Kelola foto dan video</small>
                     </div>
                 </div>
-                <a href="{{ route('dashboard.media') }}" class="btn btn-sm btn-outline-primary">
+                <a href="{{ route('dashboard.media') }}" class="btn btn-sm btn-marori">
                     <i class="bi bi-pencil"></i> Kelola
                 </a>
             </div>
@@ -181,7 +181,7 @@
         <div class="section-preview-card">
             <div class="section-preview-header">
                 <div class="d-flex align-items-center gap-3">
-                    <div class="section-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #DC143C 0%, #FF6B6B 100%);">
                         <i class="bi bi-telephone"></i>
                     </div>
                     <div>
@@ -189,7 +189,7 @@
                         <small class="text-muted">Kelola informasi kontak</small>
                     </div>
                 </div>
-                <a href="{{ route('dashboard.contact') }}" class="btn btn-sm btn-outline-primary">
+                <a href="{{ route('dashboard.contact') }}" class="btn btn-sm btn-marori">
                     <i class="bi bi-pencil"></i> Edit
                 </a>
             </div>
@@ -218,20 +218,21 @@
     background: white;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    border: 1px solid rgba(0, 0, 0, 0.06);
+    border: 2px solid rgba(0, 0, 0, 0.08);
 }
 
 .section-preview-card:hover {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
+    border-color: rgba(0, 0, 0, 0.15);
 }
 
 .section-preview-header {
     padding: 20px;
-    background: #f8f9fa;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.08);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -253,7 +254,7 @@
     margin: 0;
     font-size: 1.1rem;
     font-weight: 600;
-    color: #2c3e50;
+    color: #1a1a1a;
 }
 
 .section-preview-body {
@@ -263,7 +264,7 @@
 
 .preview-content {
     height: 180px;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 50%, #E9ECEF 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -275,14 +276,15 @@
 .preview-icon {
     width: 70px;
     height: 70px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(0, 0, 0, 0.05);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2rem;
-    color: #495057;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    color: #1a1a1a;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .preview-stats {
@@ -292,7 +294,7 @@
 .preview-stats h2 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #2c3e50;
+    color: #1a1a1a;
     margin: 0;
 }
 
@@ -305,6 +307,35 @@
     font-size: 0.85rem;
     padding: 6px 12px;
     font-weight: 600;
+}
+
+.btn-marori {
+    background: #8B0000;
+    border: 2px solid #8B0000;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-marori:hover {
+    background: #DC143C;
+    border-color: #DC143C;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.alert-marori {
+    background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #1a1a1a;
+    color: #1a1a1a;
+}
+
+.alert-marori i {
+    color: #1a1a1a;
+}
+
+.alert-marori strong {
+    color: #1a1a1a;
 }
 
 @media (max-width: 991px) {

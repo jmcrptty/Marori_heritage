@@ -6,19 +6,12 @@
 
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}">Dashboard</a></li>
-    <li class="breadcrumb-item active">Tim Peneliti</li>
+    <li class="breadcrumb-item active">Tim Kedaireka</li>
 @endsection
 
 @section('content')
 <div class="row">
     <div class="col-12">
-        @if(session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <i class="bi bi-check-circle me-2"></i>{{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-        @endif
-
         @if(session('error'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <i class="bi bi-exclamation-circle me-2"></i>{{ session('error') }}
@@ -41,16 +34,16 @@
 
         <div class="alert alert-info">
             <i class="bi bi-info-circle me-2"></i>
-            Kelola tim peneliti yang ditampilkan di website.
+            Kelola tim kedaireka yang ditampilkan di website.
         </div>
     </div>
 </div>
 
 <div class="card mb-4">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="card-title mb-0"><i class="bi bi-people me-2"></i>Daftar Tim Peneliti ({{ $researchers->count() }})</h5>
-        <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#addResearcherModal">
-            <i class="bi bi-plus-lg me-1"></i>Tambah Peneliti
+        <h5 class="card-title mb-0"><i class="bi bi-people me-2"></i>Daftar Tim Kedaireka ({{ $researchers->count() }})</h5>
+        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addResearcherModal">
+            <i class="bi bi-plus-lg me-1"></i>Tambah personil       
         </button>
     </div>
     <div class="card-body">
@@ -59,13 +52,13 @@
             @foreach($researchers as $researcher)
             <div class="col-md-6 col-lg-4 col-xl-3">
                 <div class="card h-100">
-                    <div style="height: 200px; overflow: hidden; background: linear-gradient(135deg, #4A6B5A 0%, #5A7868 100%); display: flex; align-items: center; justify-content: center;">
+                    <div style="height: 200px; overflow: hidden; background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%); display: flex; align-items: center; justify-content: center;">
                         @if($researcher->photo)
                         <img src="{{ asset('storage/' . $researcher->photo) }}"
                              alt="{{ $researcher->name }}"
                              style="width: 100%; height: 100%; object-fit: cover;">
                         @else
-                        <i class="bi bi-person-circle" style="font-size: 5rem; color: white;"></i>
+                        <i class="bi bi-person-circle" style="font-size: 5rem; color: #1a1a1a;"></i>
                         @endif
                     </div>
                     <div class="card-body">
@@ -87,7 +80,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>      
             @endforeach
         </div>
         @else
@@ -155,7 +148,7 @@
                             <div class="col-md-4">
                                 <label class="form-label fw-bold">Preview Profil</label>
                                 <div class="researcher-preview-card" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                                    <div class="researcher-preview-image" style="width: 100%; aspect-ratio: 1/1; background: linear-gradient(135deg, #4A6B5A 0%, #5A7868 100%); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                                    <div class="researcher-preview-image" style="width: 100%; aspect-ratio: 1/1; background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%); display: flex; align-items: center; justify-content: center; overflow: hidden;">
                                         <canvas id="add_researcher_preview_canvas" style="width: 100%; height: 100%; object-fit: cover;"></canvas>
                                     </div>
                                     <div class="p-2 text-center">
@@ -168,7 +161,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-success">Tambah Peneliti</button>
+                    <button type="submit" class="btn btn-primary">Tambah Peneliti</button>
                 </div>
             </form>
         </div>
@@ -231,7 +224,7 @@
                             <div class="col-md-4">
                                 <label class="form-label fw-bold">Preview Profil</label>
                                 <div class="researcher-preview-card" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                                    <div class="researcher-preview-image" style="width: 100%; aspect-ratio: 1/1; background: linear-gradient(135deg, #4A6B5A 0%, #5A7868 100%); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                                    <div class="researcher-preview-image" style="width: 100%; aspect-ratio: 1/1; background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%); display: flex; align-items: center; justify-content: center; overflow: hidden;">
                                         <canvas id="edit_researcher_preview_canvas" style="width: 100%; height: 100%; object-fit: cover;"></canvas>
                                     </div>
                                     <div class="p-2 text-center">
@@ -372,7 +365,17 @@ document.querySelector('#addResearcherModal form').addEventListener('submit', fu
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    window.location.reload();
+                    // Close the add modal
+                    var addModal = bootstrap.Modal.getInstance(document.getElementById('addResearcherModal'));
+                    if (addModal) addModal.hide();
+
+                    // Show success modal
+                    showSuccessModal(data.message || 'Peneliti berhasil ditambahkan');
+
+                    // Reload after modal is shown
+                    setTimeout(function() {
+                        window.location.reload();
+                    }, 1500);
                 } else {
                     alert(data.message || 'Terjadi kesalahan saat menyimpan peneliti');
                 }
@@ -499,7 +502,17 @@ document.getElementById('editResearcherForm').addEventListener('submit', functio
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    window.location.reload();
+                    // Close the edit modal
+                    var editModal = bootstrap.Modal.getInstance(document.getElementById('editResearcherModal'));
+                    if (editModal) editModal.hide();
+
+                    // Show success modal
+                    showSuccessModal(data.message || 'Peneliti berhasil diperbarui');
+
+                    // Reload after modal is shown
+                    setTimeout(function() {
+                        window.location.reload();
+                    }, 1500);
                 } else {
                     alert(data.message || 'Terjadi kesalahan saat menyimpan peneliti');
                 }

@@ -12,13 +12,6 @@
 @section('content')
 <div class="row">
     <div class="col-12">
-        @if(session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <i class="bi bi-check-circle me-2"></i>{{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-        @endif
-
         @if(session('error'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <i class="bi bi-exclamation-circle me-2"></i>{{ session('error') }}
@@ -540,7 +533,17 @@ document.getElementById('addPhotoForm').addEventListener('submit', function(e) {
             })
             .then(response => {
                 if (response.ok) {
-                    window.location.reload();
+                    // Close the add modal
+                    var addModal = bootstrap.Modal.getInstance(document.getElementById('addPhotoModal'));
+                    if (addModal) addModal.hide();
+
+                    // Show success modal
+                    showSuccessModal('Foto berhasil ditambahkan');
+
+                    // Reload after modal is shown
+                    setTimeout(function() {
+                        window.location.reload();
+                    }, 1500);
                 } else {
                     alert('Gagal upload foto. Silakan coba lagi.');
                 }
@@ -673,7 +676,17 @@ document.getElementById('editPhotoForm').addEventListener('submit', function(e) 
             })
             .then(response => {
                 if (response.ok) {
-                    window.location.reload();
+                    // Close the edit modal
+                    var editModal = bootstrap.Modal.getInstance(document.getElementById('editPhotoModal'));
+                    if (editModal) editModal.hide();
+
+                    // Show success modal
+                    showSuccessModal('Foto berhasil diperbarui');
+
+                    // Reload after modal is shown
+                    setTimeout(function() {
+                        window.location.reload();
+                    }, 1500);
                 } else {
                     alert('Gagal update foto. Silakan coba lagi.');
                 }

@@ -103,8 +103,8 @@ class DashboardController extends Controller
                 ]);
             }
 
-            Session::flash('success', 'Hero section berhasil diperbarui!');
-            return redirect()->route('dashboard.hero');
+            \Log::info('Setting session success message and redirecting...');
+            return redirect()->route('dashboard.hero')->with('success', 'Hero section berhasil diperbarui!');
 
         } catch (\Illuminate\Validation\ValidationException $e) {
             \Log::error('Validation error: ' . json_encode($e->errors()));

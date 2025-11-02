@@ -114,12 +114,8 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Kategori <span class="text-danger">*</span></label>
-                            <select name="category" class="form-select" required>
-                                <option value="Kerajinan Tangan" {{ old('category') == 'Kerajinan Tangan' ? 'selected' : '' }}>Kerajinan Tangan</option>
-                                <option value="Makanan" {{ old('category') == 'Makanan' ? 'selected' : '' }}>Makanan</option>
-                                <option value="Aksesoris" {{ old('category') == 'Aksesoris' ? 'selected' : '' }}>Aksesoris</option>
-                                <option value="Kesehatan" {{ old('category') == 'Kesehatan' ? 'selected' : '' }}>Kesehatan</option>
-                            </select>
+                            <input type="text" name="category" class="form-control" required value="{{ old('category') }}" placeholder="Contoh: Kerajinan Tangan, Makanan, Aksesoris">
+                            <small class="text-muted">Isi kategori produk sesuai keinginan</small>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -211,12 +207,8 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Kategori <span class="text-danger">*</span></label>
-                            <select name="category" id="edit_category" class="form-select" required>
-                                <option value="Kerajinan Tangan">Kerajinan Tangan</option>
-                                <option value="Makanan">Makanan</option>
-                                <option value="Aksesoris">Aksesoris</option>
-                                <option value="Kesehatan">Kesehatan</option>
-                            </select>
+                            <input type="text" name="category" id="edit_category" class="form-control" required placeholder="Contoh: Kerajinan Tangan, Makanan, Aksesoris">
+                            <small class="text-muted">Isi kategori produk sesuai keinginan</small>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -415,7 +407,17 @@ document.querySelector('#addProductModal form').addEventListener('submit', funct
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    window.location.reload();
+                    // Close the add modal
+                    var addModal = bootstrap.Modal.getInstance(document.getElementById('addProductModal'));
+                    if (addModal) addModal.hide();
+
+                    // Show success modal
+                    showSuccessModal(data.message || 'Produk berhasil ditambahkan');
+
+                    // Reload after modal is shown
+                    setTimeout(function() {
+                        window.location.reload();
+                    }, 1500);
                 } else {
                     alert(data.message || 'Terjadi kesalahan saat menyimpan produk');
                 }
@@ -545,7 +547,17 @@ document.getElementById('editProductForm').addEventListener('submit', function(e
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    window.location.reload();
+                    // Close the edit modal
+                    var editModal = bootstrap.Modal.getInstance(document.getElementById('editProductModal'));
+                    if (editModal) editModal.hide();
+
+                    // Show success modal
+                    showSuccessModal(data.message || 'Produk berhasil diperbarui');
+
+                    // Reload after modal is shown
+                    setTimeout(function() {
+                        window.location.reload();
+                    }, 1500);
                 } else {
                     alert(data.message || 'Terjadi kesalahan saat menyimpan produk');
                 }

@@ -8,21 +8,21 @@
     }
 
     :root {
-        --primary-color: #5C4033;
-        --secondary-color: #8B6F47;
-        --accent-color: #4A7C59;
-        --accent-light: #6B9B7F;
-        --sidebar-bg: #2C1810;
-        --sidebar-hover: #3E2723;
+        --primary-color: #8B0000;
+        --secondary-color: #DC143C;
+        --accent-color: #1a1a1a;
+        --accent-light: #4a4a4a;
+        --sidebar-bg: #1a1a1a;
+        --sidebar-hover: #2a2a2a;
         --topbar-bg: #FFFFFF;
         --content-bg: #F8F9FA;
-        --text-primary: #2C1810;
-        --text-secondary: #6D5D4F;
+        --text-primary: #1a1a1a;
+        --text-secondary: #4a4a4a;
         --border-color: #E5E7EB;
-        --success: #4A7C59;
+        --success: #8B0000;
         --danger: #DC3545;
         --warning: #FFC107;
-        --info: #17A2B8;
+        --info: #8B0000;
     }
 
     body {
@@ -38,11 +38,12 @@
         left: 0;
         width: 260px;
         height: 100vh;
-        background: var(--sidebar-bg);
+        background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 100%);
         color: white;
         transition: all 0.3s ease;
         z-index: 1000;
         overflow-y: auto;
+        border-right: 3px solid rgba(0, 0, 0, 0.3);
     }
 
     .sidebar::-webkit-scrollbar {
@@ -60,7 +61,8 @@
 
     .sidebar-header {
         padding: 1.5rem 1.25rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        background: rgba(0, 0, 0, 0.2);
     }
 
     .sidebar-brand {
@@ -72,7 +74,7 @@
     }
 
     .sidebar-brand:hover {
-        color: var(--accent-light);
+        color: #E9ECEF;
     }
 
     .sidebar-subtitle {
@@ -105,12 +107,12 @@
     }
 
     .menu-item:hover {
-        background: var(--sidebar-hover);
+        background: rgba(255, 255, 255, 0.1);
         color: white;
     }
 
     .menu-item.active {
-        background: var(--sidebar-hover);
+        background: rgba(255, 255, 255, 0.15);
         color: white;
     }
 
@@ -120,8 +122,8 @@
         left: 0;
         top: 0;
         bottom: 0;
-        width: 3px;
-        background: var(--accent-color);
+        width: 4px;
+        background: #8B0000;
     }
 
     .menu-item i {
@@ -144,8 +146,8 @@
 
     /* Topbar */
     .topbar {
-        background: var(--topbar-bg);
-        border-bottom: 1px solid var(--border-color);
+        background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
+        border-bottom: 2px solid rgba(0, 0, 0, 0.08);
         padding: 1rem 2rem;
         display: flex;
         justify-content: space-between;
@@ -153,6 +155,7 @@
         position: sticky;
         top: 0;
         z-index: 999;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
     .topbar-left h1 {
@@ -215,14 +218,15 @@
     .card {
         background: white;
         border-radius: 12px;
-        border: 1px solid var(--border-color);
-        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        border: 2px solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         margin-bottom: 1.5rem;
     }
 
     .card-header {
         padding: 1.25rem 1.5rem;
-        border-bottom: 1px solid var(--border-color);
+        border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+        background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 50%);
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -256,8 +260,8 @@
     }
 
     .form-control:focus, .form-select:focus {
-        border-color: var(--accent-color);
-        box-shadow: 0 0 0 3px rgba(74, 124, 89, 0.1);
+        border-color: #8B0000;
+        box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
     }
 
     textarea.form-control {
@@ -332,13 +336,13 @@
     }
 
     .stats-icon.primary {
-        background: rgba(92, 64, 51, 0.1);
-        color: var(--primary-color);
+        background: rgba(0, 0, 0, 0.05);
+        color: #1a1a1a;
     }
 
     .stats-icon.success {
-        background: rgba(74, 124, 89, 0.1);
-        color: var(--accent-color);
+        background: rgba(0, 0, 0, 0.08);
+        color: #2a2a2a;
     }
 
     .stats-icon.warning {

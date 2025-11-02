@@ -10,62 +10,27 @@
 @endsection
 
 @section('content')
-<!-- Success Modal -->
-<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header bg-success text-white">
-                <h5 class="modal-title" id="successModalLabel">
-                    <i class="bi bi-check-circle-fill me-2"></i>Berhasil!
-                </h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-center py-4">
-                <i class="bi bi-check-circle text-success" style="font-size: 4rem;"></i>
-                <h4 class="mt-3">{{ Session::get('success') }}</h4>
-                <p class="text-muted">Perubahan telah disimpan dengan sukses</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
-                <a href="{{ url('/') }}" target="_blank" class="btn btn-outline-primary">
-                    <i class="bi bi-eye me-2"></i>Lihat Website
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Error Modal -->
-<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header bg-danger text-white">
-                <h5 class="modal-title" id="errorModalLabel">
-                    <i class="bi bi-exclamation-triangle-fill me-2"></i>Terjadi Kesalahan!
-                </h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="text-center mb-3">
-                    <i class="bi bi-x-circle text-danger" style="font-size: 4rem;"></i>
-                </div>
-                @if($errors->any())
-                <ul class="list-unstyled mb-0">
-                    @foreach($errors->all() as $error)
-                    <li class="mb-2"><i class="bi bi-dot"></i> {{ $error }}</li>
-                    @endforeach
-                </ul>
-                @endif
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="row">
     <div class="col-12">
+        <!-- Error Notification -->
+        @if($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert" style="border-left: 4px solid #dc3545;">
+            <div class="d-flex align-items-start">
+                <i class="bi bi-exclamation-triangle-fill me-3" style="font-size: 2rem;"></i>
+                <div>
+                    <h5 class="alert-heading mb-2">Terjadi Kesalahan!</h5>
+                    <ul class="mb-0">
+                        @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+
+        <!-- Info -->
         <div class="alert alert-info">
             <i class="bi bi-info-circle me-2"></i>
             Edit konten hero section yang tampil di halaman utama website
@@ -76,7 +41,7 @@
 <div class="row">
     <div class="col-lg-8">
 
-        <form action="{{ route('dashboard.hero.update') }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+        <form action="{{ route('dashboard.hero.update') }}" method="POST" enctype="multipart/form-data" id="heroForm">
             @csrf
             <div class="card">
                 <div class="card-header">
@@ -207,112 +172,75 @@
 
 @push('scripts')
 <script>
-    // Live Preview Updates
-    document.addEventListener('DOMContentLoaded', function() {
-        // Show success modal if session has success message
-        @if(Session::has('success'))
-        const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-        successModal.show();
-        @endif
+document.addEventListener('DOMContentLoaded', function() {
+    // Load existing background image to preview box if exists
+    @if(isset($hero) && $hero->background_image)
+    const previewBoxMain = document.getElementById('preview-box-main');
+    if (previewBoxMain) {
+        previewBoxMain.style.backgroundImage = `url('{{ asset('storage/' . $hero->background_image) }}')`;
+    }
+    @endif
 
-        // Show error modal if there are validation errors
-        @if($errors->any())
-        const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
-        errorModal.show();
-        @endif
-
-        // Load existing background image to preview box if exists
-        @if(isset($hero) && $hero->background_image)
-        const previewBoxMain = document.getElementById('preview-box-main');
-        const bgImageUrl = `url('{{ asset('storage/' . $hero->background_image) }}')`;
-
-        if (previewBoxMain) {
-            previewBoxMain.style.backgroundImage = bgImageUrl;
-        }
-        @endif
-
-        // Badge preview
-        document.querySelector('input[name="badge"]').addEventListener('input', function(e) {
-            document.getElementById('preview-badge').textContent = e.target.value.toUpperCase();
-        });
-
-        // Title preview
-        document.querySelector('input[name="title"]').addEventListener('input', function(e) {
-            document.getElementById('preview-title').textContent = e.target.value;
-        });
-
-        // Subtitle preview
-        document.querySelector('input[name="subtitle"]').addEventListener('input', function(e) {
-            document.getElementById('preview-subtitle').textContent = e.target.value;
-        });
-
-        // Description preview with character limit
-        document.querySelector('textarea[name="description"]').addEventListener('input', function(e) {
-            const text = e.target.value;
-            const limit = 120;
-            document.getElementById('preview-description').textContent =
-                text.length > limit ? text.substring(0, limit) + '...' : text;
-        });
-
-        // Primary button preview
-        document.querySelector('input[name="btn_primary_text"]').addEventListener('input', function(e) {
-            document.getElementById('preview-btn-primary').textContent = e.target.value;
-        });
-
-        // Secondary button preview
-        document.querySelector('input[name="btn_secondary_text"]').addEventListener('input', function(e) {
-            document.getElementById('preview-btn-secondary').textContent = e.target.value;
-        });
-
-        // Image preview when file is selected
-        const imageInput = document.querySelector('input[name="background_image"]');
-        if (imageInput) {
-            imageInput.addEventListener('change', function(e) {
-                const file = e.target.files[0];
-                if (file) {
-                    console.log('File selected:', file.name, 'Size:', file.size, 'Type:', file.type);
-
-                    // Check file size
-                    if (file.size > 2 * 1024 * 1024) {
-                        alert('Ukuran file terlalu besar! Maksimal 2MB.');
-                        e.target.value = '';
-                        return;
-                    }
-
-                    // Preview the selected image
-                    const reader = new FileReader();
-                    reader.onload = function(event) {
-                        const previewBoxMain = document.getElementById('preview-box-main');
-                        if (previewBoxMain) {
-                            previewBoxMain.style.backgroundImage = `url('${event.target.result}')`;
-                        }
-                        console.log('Image preview updated successfully');
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-        }
-
-        // Debug form submission
-        const heroForm = document.querySelector('form[action="{{ route('dashboard.hero.update') }}"]');
-        if (heroForm) {
-            heroForm.addEventListener('submit', function(e) {
-                console.log('Form is being submitted...');
-                console.log('Form action:', this.action);
-                console.log('Form method:', this.method);
-                console.log('Form enctype:', this.enctype);
-
-                // Log all form data
-                const formData = new FormData(this);
-                for (let pair of formData.entries()) {
-                    if (pair[1] instanceof File) {
-                        console.log(pair[0] + ':', 'File -', pair[1].name, pair[1].size, 'bytes');
-                    } else {
-                        console.log(pair[0] + ':', pair[1]);
-                    }
-                }
-            });
-        }
+    // Live preview updates
+    document.querySelector('input[name="badge"]')?.addEventListener('input', function(e) {
+        document.getElementById('preview-badge').textContent = e.target.value.toUpperCase();
     });
+
+    document.querySelector('input[name="title"]')?.addEventListener('input', function(e) {
+        document.getElementById('preview-title').textContent = e.target.value;
+    });
+
+    document.querySelector('input[name="subtitle"]')?.addEventListener('input', function(e) {
+        document.getElementById('preview-subtitle').textContent = e.target.value;
+    });
+
+    document.querySelector('textarea[name="description"]')?.addEventListener('input', function(e) {
+        const text = e.target.value;
+        const limit = 120;
+        document.getElementById('preview-description').textContent =
+            text.length > limit ? text.substring(0, limit) + '...' : text;
+    });
+
+    document.querySelector('input[name="btn_primary_text"]')?.addEventListener('input', function(e) {
+        document.getElementById('preview-btn-primary').textContent = e.target.value;
+    });
+
+    document.querySelector('input[name="btn_secondary_text"]')?.addEventListener('input', function(e) {
+        document.getElementById('preview-btn-secondary').textContent = e.target.value;
+    });
+
+    // Image preview when file is selected
+    const imageInput = document.querySelector('input[name="background_image"]');
+    if (imageInput) {
+        imageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                // Check file size
+                if (file.size > 2 * 1024 * 1024) {
+                    alert('Ukuran file terlalu besar! Maksimal 2MB.');
+                    e.target.value = '';
+                    return;
+                }
+
+                // Preview the selected image
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const previewBoxMain = document.getElementById('preview-box-main');
+                    if (previewBoxMain) {
+                        previewBoxMain.style.backgroundImage = `url('${event.target.result}')`;
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    // Auto-scroll to error message
+    @if($errors->any())
+    setTimeout(function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+    @endif
+});
 </script>
 @endpush

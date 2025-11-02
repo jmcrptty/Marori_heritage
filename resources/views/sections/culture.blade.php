@@ -115,10 +115,7 @@
         min-height: 100vh;
         display: flex;
         align-items: center;
-        background: linear-gradient(135deg, #3E2723 0%, #5C4033 50%, #4E3629 100%);
-        background-image:
-            linear-gradient(135deg, rgba(62, 39, 35, 0.95) 0%, rgba(92, 64, 51, 0.95) 50%, rgba(78, 54, 41, 0.95) 100%),
-            repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(139, 111, 71, 0.03) 40px, rgba(139, 111, 71, 0.03) 80px);
+        background: #8B0000;
     }
 
     .culture-slider-bg {
@@ -137,9 +134,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background:
-            radial-gradient(circle at 20% 30%, rgba(139, 111, 71, 0.15) 0%, transparent 50%),
-            radial-gradient(circle at 80% 70%, rgba(166, 138, 100, 0.1) 0%, transparent 50%);
+        background: transparent;
         pointer-events: none;
     }
 
@@ -171,10 +166,10 @@
         font-size: 0.85rem;
         font-weight: 700;
         letter-spacing: 3px;
-        color: #A68A64;
+        color: #FFFFFF;
         text-transform: uppercase;
         margin-bottom: 20px;
-        background: rgba(139, 111, 71, 0.2);
+        background: rgba(255, 255, 255, 0.15);
         padding: 8px 20px;
         border-radius: 25px;
         align-self: flex-start;
@@ -217,12 +212,12 @@
     .culture-slide {
         flex: 0 0 calc(50% - 12px); /* Exactly 50% width minus half of gap */
         width: calc(50% - 12px);
-        background: rgba(255, 255, 255, 0.95);
+        background: #FFFFFF;
         border-radius: 20px;
         overflow: hidden;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         cursor: pointer;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
     }
 
     .culture-slide:hover {
@@ -233,7 +228,7 @@
     .culture-slide-image {
         width: 100%;
         height: 500px;
-        background: linear-gradient(135deg, #F5E6D3 0%, #E8D5C4 100%);
+        background: #F8F8F8;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -248,12 +243,12 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: radial-gradient(circle at center, rgba(139, 111, 71, 0.15) 0%, transparent 70%);
+        background: transparent;
     }
 
     .culture-slide-image i {
         font-size: 5rem;
-        color: var(--secondary-color);
+        color: #8B0000;
         position: relative;
         z-index: 1;
         transition: transform 0.4s;
@@ -271,7 +266,7 @@
 
     .culture-slide-content h3 {
         font-family: 'Playfair Display', serif;
-        color: var(--primary-color);
+        color: #1a1a1a;
         font-size: 1.75rem;
         margin-bottom: 12px;
         font-weight: 700;
@@ -279,8 +274,8 @@
 
     .culture-category {
         display: inline-block;
-        background: rgba(139, 111, 71, 0.15);
-        color: var(--secondary-color);
+        background: rgba(139, 0, 0, 0.1);
+        color: #8B0000;
         padding: 8px 20px;
         border-radius: 50px;
         font-size: 0.9rem;
@@ -304,9 +299,9 @@
         width: 60px;
         height: 60px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.2);
         backdrop-filter: blur(10px);
-        border: 2px solid rgba(255, 255, 255, 0.3);
+        border: 2px solid rgba(255, 255, 255, 0.4);
         color: white;
         font-size: 1.8rem;
         cursor: pointer;
@@ -317,8 +312,8 @@
     }
 
     .culture-nav-btn:hover {
-        background: rgba(255, 255, 255, 0.25);
-        border-color: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.35);
+        border-color: rgba(255, 255, 255, 0.7);
         transform: scale(1.1);
     }
 

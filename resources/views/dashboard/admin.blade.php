@@ -53,19 +53,19 @@
 <!-- Header -->
 <div class="row mb-4">
     <div class="col-12">
-        <div class="card border-0 shadow-sm" style="background: linear-gradient(135deg, #4A6B5A 0%, #5A7868 100%);">
-            <div class="card-body text-white p-4">
+        <div class="card border-0 shadow-sm" style="background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%); border: 2px solid rgba(0, 0, 0, 0.08);">
+            <div class="card-body p-4" style="color: #1a1a1a;">
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center">
-                        <div class="icon-shape bg-white bg-opacity-25 rounded-circle p-3 me-3">
+                        <div class="icon-shape bg-dark bg-opacity-10 rounded-circle p-3 me-3" style="color: #1a1a1a;">
                             <i class="bi bi-people-fill fs-4"></i>
                         </div>
                         <div>
                             <h4 class="mb-1 fw-bold">Kelola Akun Admin</h4>
-                            <p class="mb-0 opacity-75">Total {{ $users->count() }} akun admin</p>
+                            <p class="mb-0 text-muted">Total {{ $users->count() }} akun admin</p>
                         </div>
                     </div>
-                    <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addUserModal">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUserModal">
                         <i class="bi bi-plus-circle me-2"></i>Tambah Admin
                     </button>
                 </div>
@@ -102,7 +102,7 @@
                                         <div>
                                             <div class="fw-semibold">{{ $user->name }}</div>
                                             @if($user->id === auth()->id())
-                                            <small class="badge bg-success">Anda</small>
+                                            <small class="badge bg-dark">Anda</small>
                                             @endif
                                         </div>
                                     </div>
@@ -267,7 +267,8 @@
     }
 
     .alert-success {
-        border-left-color: #198754;
+        border-left-color: #8B0000;
+        background-color: #FFE5E5;
     }
 
     .alert-danger {
@@ -275,12 +276,15 @@
     }
 
     .btn-primary {
-        background: linear-gradient(135deg, #4A6B5A 0%, #5A7868 100%);
-        border: none;
+        background: #8B0000;
+        border: 2px solid #8B0000;
+        color: white;
     }
 
     .btn-primary:hover {
-        background: linear-gradient(135deg, #3a5b4a 0%, #4a6858 100%);
+        background: #DC143C;
+        border-color: #DC143C;
+        color: white;
     }
 </style>
 

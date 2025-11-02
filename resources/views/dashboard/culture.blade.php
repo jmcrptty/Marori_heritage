@@ -12,13 +12,6 @@
 @section('content')
 <div class="row">
     <div class="col-12">
-        @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <i class="bi bi-check-circle me-2"></i>{{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-        @endif
-
         <div class="alert alert-info">
             <i class="bi bi-info-circle me-2"></i>
             Kelola item-item budaya yang ditampilkan di website. Item diurutkan dari yang paling lama ditambahkan.

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="description" content="Suku Marori Wasur - Melestarikan Budaya Papua melalui kerajinan tangan berkualitas tinggi dan pemberdayaan masyarakat adat">
-    <meta name="theme-color" content="#2C4A3E">
+    <meta name="theme-color" content="#8B0000">
     <title>@yield('title', 'Suku Marori Wasur - Melestarikan Budaya Papua')</title>
 
     <!-- Favicon -->

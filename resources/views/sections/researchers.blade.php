@@ -4,10 +4,10 @@
         <div class="container">
             <!-- Header Section - Centered Top -->
             <div class="researchers-header">
-                <span class="researchers-label">TIM PENELITI</span>
-                <h2 class="researchers-main-title">Tim Penelitian Suku Marori</h2>
+                <span class="researchers-label">Suku Marori</span>
+                <h2 class="researchers-main-title">Tim Kedaireka</h2>
                 <p class="researchers-subtitle">
-                    Penelitian tentang Suku Marori Wasur dilakukan oleh tim multidisiplin yang berdedikasi untuk
+                    Penelitian tentang Suku Marori Wasur dilakukan oleh Tim Kedaireka yang berdedikasi untuk
                     mendokumentasikan dan melestarikan warisan budaya Papua.
                 </p>
             </div>
@@ -148,7 +148,7 @@
         min-height: 100vh;
         display: flex;
         align-items: center;
-        background: linear-gradient(135deg, #FFFFFF 0%, #F8F8F8 50%, #FAFAFA 100%);
+        background: #FFFFFF;
     }
 
     .researchers-slider-bg {
@@ -169,9 +169,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background:
-            radial-gradient(circle at 20% 30%, rgba(139, 111, 71, 0.03) 0%, transparent 50%),
-            radial-gradient(circle at 80% 70%, rgba(166, 138, 100, 0.02) 0%, transparent 50%);
+        background: transparent;
         pointer-events: none;
     }
 
@@ -194,10 +192,10 @@
         font-size: 0.65rem;
         font-weight: 700;
         letter-spacing: 2px;
-        color: #4A6B5A;
+        color: #1a1a1a;
         text-transform: uppercase;
         margin-bottom: 8px;
-        background: rgba(74, 107, 90, 0.15);
+        background: rgba(26, 26, 26, 0.1);
         padding: 4px 12px;
         border-radius: 20px;
     }
@@ -205,7 +203,7 @@
     .researchers-main-title {
         font-family: 'Playfair Display', serif;
         font-size: 2rem;
-        color: #4A6B5A;
+        color: #1a1a1a;
         margin-bottom: 10px;
         font-weight: 700;
         line-height: 1.2;
@@ -213,7 +211,7 @@
     }
 
     .researchers-subtitle {
-        color: #4A6B5A;
+        color: #4a4a4a;
         font-size: 0.9rem;
         line-height: 1.5;
         max-width: 700px;
@@ -246,13 +244,13 @@
 
     /* Researcher Card - Smaller Design */
     .researcher-card {
-        background: #4A6B5A;
+        background: #1a1a1a;
         border-radius: 16px;
         overflow: hidden;
         transition: all 0.3s ease;
         cursor: pointer;
-        box-shadow: 0 4px 15px rgba(74, 107, 90, 0.3);
-        border: 1px solid rgba(74, 107, 90, 0.4);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(0, 0, 0, 0.4);
         display: flex;
         flex-direction: column;
         opacity: 1;
@@ -261,15 +259,15 @@
 
     .researcher-card:hover {
         transform: translateY(-8px);
-        box-shadow: 0 8px 25px rgba(74, 107, 90, 0.4);
-        border-color: rgba(74, 107, 90, 0.6);
-        background: #516F5F;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        border-color: rgba(0, 0, 0, 0.7);
+        background: #000000;
     }
 
     .researcher-image {
         width: 100%;
         height: 200px;
-        background: linear-gradient(135deg, #5A7365 0%, #667B6F 100%);
+        background: #2a2a2a;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -284,7 +282,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+        background: transparent;
     }
 
     .researcher-image img {
@@ -294,7 +292,7 @@
     }
 
     .researcher-image img.lazy-loading {
-        background: linear-gradient(135deg, #5A7365 0%, #667B6F 100%);
+        background: #2a2a2a;
     }
 
     .researcher-avatar {
@@ -312,7 +310,7 @@
     .researcher-info {
         padding: 14px;
         text-align: center;
-        background: #4A6B5A;
+        background: #1a1a1a;
         flex-grow: 1;
         display: flex;
         flex-direction: column;
@@ -362,10 +360,10 @@
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        background: rgba(139, 111, 71, 0.2);
+        background: rgba(26, 26, 26, 0.2);
         backdrop-filter: blur(10px);
-        border: 2px solid rgba(139, 111, 71, 0.3);
-        color: #5D4037;
+        border: 2px solid rgba(26, 26, 26, 0.3);
+        color: #1a1a1a;
         font-size: 1.3rem;
         cursor: pointer;
         transition: all 0.3s ease;
@@ -375,8 +373,8 @@
     }
 
     .slider-control-btn:hover {
-        background: rgba(139, 111, 71, 0.35);
-        border-color: rgba(139, 111, 71, 0.5);
+        background: rgba(26, 26, 26, 0.35);
+        border-color: rgba(26, 26, 26, 0.5);
         transform: scale(1.1);
     }
 
@@ -391,13 +389,13 @@
         width: 10px;
         height: 10px;
         border-radius: 50%;
-        background: rgba(139, 111, 71, 0.3);
+        background: rgba(26, 26, 26, 0.3);
         cursor: pointer;
         transition: all 0.3s ease;
     }
 
     .indicator-dot.active {
-        background: #8B6F47;
+        background: #1a1a1a;
         width: 30px;
         border-radius: 5px;
     }

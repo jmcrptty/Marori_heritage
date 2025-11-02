@@ -10,17 +10,6 @@
 @endsection
 
 @section('content')
-<!-- Success Alert -->
-@if(session('success'))
-<div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
-    <div class="d-flex align-items-center">
-        <i class="bi bi-check-circle-fill me-2 fs-5"></i>
-        <div>{{ session('success') }}</div>
-    </div>
-    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-</div>
-@endif
-
 <!-- Error Alert -->
 @if($errors->any())
 <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
