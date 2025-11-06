@@ -266,13 +266,14 @@
 
     @media (max-width: 991px) {
         .hero-section-bg {
-            padding: 100px 0 60px;
+            padding: 130px 0 60px;
         }
 
         .hero-content-left {
             padding-left: 30px;
             padding-right: 30px;
-            padding-top: 20px;
+            padding-top: 60px;
+            margin-top: 0;
             margin-bottom: 50px;
         }
 
@@ -292,13 +293,14 @@
 
     @media (max-width: 768px) {
         .hero-section-bg {
-            padding: 90px 0 60px;
+            padding: 140px 0 60px;
         }
 
         .hero-content-left {
             padding-left: 25px;
             padding-right: 25px;
-            padding-top: 15px;
+            padding-top: 70px;
+            margin-top: 0;
         }
 
         .hero-badge {
@@ -344,13 +346,14 @@
 
     @media (max-width: 576px) {
         .hero-section-bg {
-            padding: 80px 0 60px;
+            padding: 150px 0 60px;
         }
 
         .hero-content-left {
             padding-left: 20px;
             padding-right: 20px;
-            padding-top: 10px;
+            padding-top: 80px;
+            margin-top: 0;
         }
 
         .hero-badge {
@@ -391,13 +394,14 @@
     /* Extra small devices */
     @media (max-width: 400px) {
         .hero-section-bg {
-            padding: 70px 0 50px;
+            padding: 150px 0 50px;
         }
 
         .hero-content-left {
             padding-left: 18px;
             padding-right: 18px;
-            padding-top: 5px;
+            padding-top: 80px;
+            margin-top: 0;
         }
 
         .hero-badge {
