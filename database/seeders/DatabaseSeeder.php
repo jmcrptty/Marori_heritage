@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             ContactInfoSeeder::class,
             GallerySeeder::class,
             ResearcherSeeder::class,
+            PoetrySeeder::class,
         ]);
     }
 }

@@ -11,6 +11,7 @@ use App\Models\ContactInfo;
 use App\Models\GalleryVideo;
 use App\Models\GalleryPhoto;
 use App\Models\Researcher;
+use App\Models\Poetry;
 
 class HomeController extends Controller
 {
@@ -30,8 +31,9 @@ class HomeController extends Controller
             $videos = GalleryVideo::active()->ordered()->get();
             $photos = GalleryPhoto::active()->ordered()->get();
             $researchers = Researcher::ordered()->get();
+            $poetries = Poetry::active()->ordered()->get();
 
-            return view('main', compact('hero', 'about', 'cultureItems', 'products', 'contact', 'video', 'videos', 'photos', 'researchers'));
+            return view('main', compact('hero', 'about', 'cultureItems', 'products', 'contact', 'video', 'videos', 'photos', 'researchers', 'poetries'));
         } catch (\Exception $e) {
             // If database not migrated yet, return view without data
             return view('main');

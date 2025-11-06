@@ -202,6 +202,41 @@
         z-index: 1;
     }
 
+    /* Papua Traditional Weaving Pattern - Diamond/Belah Ketupat for Contact */
+    .contact-bg-overlay::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+            url("data:image/svg+xml,%3Csvg width='120' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='weave-contact' x='0' y='0' width='120' height='80' patternUnits='userSpaceOnUse'%3E%3Cg fill='white' fill-opacity='0.06'%3E%3Cpath d='M20,40 L40,20 L60,40 L40,60 Z' /%3E%3Cpath d='M40,20 L50,30 L40,40 L30,30 Z' fill-opacity='0.10' /%3E%3Cpath d='M80,40 L100,20 L120,40 L100,60 Z' /%3E%3Cpath d='M100,20 L110,30 L100,40 L90,30 Z' fill-opacity='0.10' /%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect width='120' height='80' fill='url(%23weave-contact)' /%3E%3C/svg%3E");
+        background-size: 120px 80px;
+        background-repeat: repeat;
+        opacity: 0.5;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    /* Additional layer - Smaller diamond pattern for Contact */
+    .contact-bg-overlay::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+            url("data:image/svg+xml,%3Csvg width='80' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='white' fill-opacity='0.04'%3E%3Cpath d='M15,30 L30,15 L45,30 L30,45 Z' /%3E%3Cpath d='M25,30 L30,25 L35,30 L30,35 Z' fill-opacity='0.06' /%3E%3Cline x1='15' y1='30' x2='45' y2='30' stroke='white' stroke-width='0.5' stroke-opacity='0.05' /%3E%3Cline x1='30' y1='15' x2='30' y2='45' stroke='white' stroke-width='0.5' stroke-opacity='0.05' /%3E%3C/g%3E%3C/svg%3E");
+        background-size: 80px 60px;
+        background-position: 40px 30px;
+        background-repeat: repeat;
+        opacity: 0.4;
+        pointer-events: none;
+        z-index: 2;
+    }
+
     /* Header */
     .contact-header {
         text-align: center;

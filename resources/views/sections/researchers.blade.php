@@ -5,10 +5,10 @@
             <!-- Header Section - Centered Top -->
             <div class="researchers-header">
                 <span class="researchers-label">Suku Marori</span>
-                <h2 class="researchers-main-title">Tim Kedaireka</h2>
+                <h2 class="researchers-main-title">Kelompok Penjaga Warisan Budaya Marori</h2>
                 <p class="researchers-subtitle">
-                    Penelitian tentang Suku Marori Wasur dilakukan oleh Tim Kedaireka yang berdedikasi untuk
-                    mendokumentasikan dan melestarikan warisan budaya Papua.
+                    Tetua adat dan tim yang berdedikasi menjaga, mendokumentasikan, dan melestarikan
+                    warisan budaya Suku Marori Wasur untuk generasi mendatang.
                 </p>
             </div>
 

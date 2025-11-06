@@ -7,6 +7,7 @@
 @include('sections.culture')
 @include('sections.researchers')
 @include('sections.products')
+@include('sections.marori-poetry')
 @include('sections.media-gallery')
 @include('sections.contact')
 @endsection

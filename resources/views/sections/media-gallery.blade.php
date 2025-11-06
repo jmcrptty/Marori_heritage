@@ -159,11 +159,55 @@
     }
 
     .media-gallery-slider-bg {
-        background: #FFFFFF;
+        background: linear-gradient(to bottom,
+            #8B0000 0%,
+            #8B0000 50%,
+            #A52A2A 60%,
+            #CD5C5C 70%,
+            #F08080 80%,
+            #FFA07A 85%,
+            #FFB6C1 90%,
+            #FFE4E1 95%,
+            #FFFFFF 100%);
         width: 100%;
         min-height: 200vh;
         padding: 80px 0 20px;
         position: relative;
+    }
+
+    /* Papua Traditional Weaving Pattern - Diamond/Belah Ketupat */
+    .media-gallery-slider-bg::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+            url("data:image/svg+xml,%3Csvg width='120' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='weave' x='0' y='0' width='120' height='80' patternUnits='userSpaceOnUse'%3E%3Cg fill='white' fill-opacity='0.08'%3E%3Cpath d='M20,40 L40,20 L60,40 L40,60 Z' /%3E%3Cpath d='M40,20 L50,30 L40,40 L30,30 Z' fill-opacity='0.12' /%3E%3Cpath d='M80,40 L100,20 L120,40 L100,60 Z' /%3E%3Cpath d='M100,20 L110,30 L100,40 L90,30 Z' fill-opacity='0.12' /%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect width='120' height='80' fill='url(%23weave)' /%3E%3C/svg%3E");
+        background-size: 120px 80px;
+        background-repeat: repeat;
+        opacity: 0.6;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    /* Additional layer - Smaller diamond pattern */
+    .media-gallery-slider-bg::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+            url("data:image/svg+xml,%3Csvg width='80' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='white' fill-opacity='0.05'%3E%3Cpath d='M15,30 L30,15 L45,30 L30,45 Z' /%3E%3Cpath d='M25,30 L30,25 L35,30 L30,35 Z' fill-opacity='0.08' /%3E%3Cline x1='15' y1='30' x2='45' y2='30' stroke='white' stroke-width='0.5' stroke-opacity='0.06' /%3E%3Cline x1='30' y1='15' x2='30' y2='45' stroke='white' stroke-width='0.5' stroke-opacity='0.06' /%3E%3C/g%3E%3C/svg%3E");
+        background-size: 80px 60px;
+        background-position: 40px 30px;
+        background-repeat: repeat;
+        opacity: 0.5;
+        pointer-events: none;
+        z-index: 1;
     }
 
     .media-gallery-slider-bg .container-fluid {
@@ -192,28 +236,30 @@
         color: #FFFFFF;
         text-transform: uppercase;
         margin-bottom: 12px;
-        background: rgba(26, 26, 26, 0.8);
+        background: rgba(255, 255, 255, 0.2);
         padding: 6px 16px;
         border-radius: 20px;
-        border: 2px solid rgba(26, 26, 26, 0.9);
+        border: 2px solid rgba(255, 255, 255, 0.4);
     }
 
     .media-gallery-main-title {
         font-family: 'Playfair Display', serif;
         font-size: 2.5rem;
-        color: #1a1a1a;
+        color: #FFFFFF;
         margin-bottom: 12px;
         font-weight: 700;
         line-height: 1.2;
         letter-spacing: -1px;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
 
     .media-gallery-subtitle {
-        color: #4a4a4a;
+        color: rgba(255, 255, 255, 0.95);
         font-size: 1rem;
         line-height: 1.5;
         max-width: 650px;
         margin: 0 auto;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
     }
 
     /* Slider Wrapper */
@@ -375,9 +421,9 @@
         width: 60px;
         height: 60px;
         border-radius: 50%;
-        background: rgba(26, 26, 26, 0.6);
+        background: rgba(255, 255, 255, 0.25);
         backdrop-filter: blur(10px);
-        border: 2px solid rgba(26, 26, 26, 0.7);
+        border: 2px solid rgba(255, 255, 255, 0.4);
         color: #FFFFFF;
         font-size: 1.8rem;
         cursor: pointer;
@@ -391,8 +437,8 @@
     }
 
     .media-nav-btn:hover {
-        background: rgba(26, 26, 26, 0.8);
-        border-color: rgba(26, 26, 26, 0.9);
+        background: rgba(255, 255, 255, 0.35);
+        border-color: rgba(255, 255, 255, 0.6);
         transform: translateY(-50%) scale(1.1);
     }
 
@@ -426,31 +472,33 @@
         font-size: 0.7rem;
         font-weight: 700;
         letter-spacing: 3px;
-        color: #FFFFFF;
+        color: #8B0000;
         text-transform: uppercase;
         margin-bottom: 12px;
-        background: rgba(26, 26, 26, 0.8);
+        background: rgba(139, 0, 0, 0.15);
         padding: 6px 16px;
         border-radius: 20px;
-        border: 2px solid rgba(26, 26, 26, 0.9);
+        border: 2px solid rgba(139, 0, 0, 0.3);
     }
 
     .photo-gallery-title {
         font-family: 'Playfair Display', serif;
         font-size: 2.5rem;
-        color: #1a1a1a;
+        color: #FFFFFF;
         margin-bottom: 12px;
         font-weight: 700;
         line-height: 1.2;
         letter-spacing: -1px;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
     .photo-gallery-subtitle {
-        color: #4a4a4a;
+        color: rgba(255, 255, 255, 0.95);
         font-size: 1rem;
         line-height: 1.5;
         max-width: 650px;
         margin: 0 auto;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
     }
 
     /* Photo Grid - 3 columns */
@@ -555,8 +603,8 @@
     }
 
     .btn-load-more {
-        background: rgba(26, 26, 26, 0.6);
-        border: 2px solid rgba(26, 26, 26, 0.7);
+        background: linear-gradient(135deg, #8B0000 0%, #A52A2A 100%);
+        border: 2px solid rgba(139, 0, 0, 0.8);
         color: #FFFFFF;
         padding: 16px 40px;
         border-radius: 50px;
@@ -568,12 +616,14 @@
         align-items: center;
         gap: 10px;
         margin-bottom: 15px;
+        box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
     }
 
     .btn-load-more:hover {
-        background: rgba(26, 26, 26, 0.8);
-        border-color: rgba(26, 26, 26, 0.9);
+        background: linear-gradient(135deg, #A52A2A 0%, #B22222 100%);
+        border-color: rgba(139, 0, 0, 1);
         transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(139, 0, 0, 0.5);
     }
 
     .btn-load-more i {

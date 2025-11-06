@@ -12,7 +12,7 @@
             <!-- Left Content -->
             <div class="col-lg-6 hero-content-left">
                 <div class="hero-content-inner">
-                    <span class="hero-badge">{{ strtoupper($hero->badge ?? 'WARISAN BUDAYA') }}</span>
+                    <span class="hero-badge">{{ strtoupper($hero->badge ?? 'MARORI HERITAGE') }}</span>
                     <h1 class="hero-title-modern">
                         {{ $hero->title ?? 'Suku Marori Wasur' }}
                     </h1>
@@ -90,44 +90,49 @@
         position: relative;
         z-index: 2;
         padding-left: 60px;
-        padding-top: 40px;
+        padding-top: 0;
+        margin-top: -40px;
+        display: flex;
+        align-items: center;
     }
 
     .hero-content-inner {
-        max-width: 580px;
+        max-width: 750px;
     }
 
     .hero-badge {
         display: inline-block;
         color: #ffffff;
         background: rgba(255, 255, 255, 0.15);
-        font-size: 0.75rem;
+        font-size: 1.3rem;
         font-weight: 700;
-        letter-spacing: 3px;
-        padding: 10px 24px;
+        letter-spacing: 5px;
+        padding: 18px 40px;
         border-radius: 50px;
-        margin-bottom: 28px;
+        margin-bottom: 36px;
         text-transform: uppercase;
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        border: 2px solid rgba(255, 255, 255, 0.4);
     }
 
     .hero-title-modern {
-        font-size: 4.5rem;
+        font-size: 5.5rem;
         font-weight: 900;
         color: #ffffff;
         line-height: 1.15;
-        margin-bottom: 32px;
+        margin-bottom: 36px;
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        letter-spacing: -2.5px;
+        letter-spacing: -3px;
         text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        text-transform: none;
+        white-space: nowrap;
     }
 
     .hero-description {
         color: #ffffff;
-        font-size: 1.15rem;
+        font-size: 1.35rem;
         line-height: 1.85;
-        margin-bottom: 40px;
-        max-width: 540px;
+        margin-bottom: 45px;
+        max-width: 580px;
         font-weight: 400;
         text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
     }
@@ -143,10 +148,10 @@
     .btn-hero-primary {
         background: #1a1a1a;
         color: white;
-        padding: 16px 35px;
+        padding: 18px 40px;
         border-radius: 8px;
         font-weight: 600;
-        font-size: 15px;
+        font-size: 17px;
         text-decoration: none;
         display: inline-flex;
         align-items: center;
@@ -165,10 +170,10 @@
     .btn-hero-outline {
         background: transparent;
         color: white;
-        padding: 16px 35px;
+        padding: 18px 40px;
         border-radius: 8px;
         font-weight: 600;
-        font-size: 15px;
+        font-size: 17px;
         text-decoration: none;
         display: inline-block;
         border: 2px solid rgba(255, 255, 255, 0.3);

@@ -36,7 +36,12 @@
 
         <a href="{{ route('dashboard.researchers') }}" class="menu-item {{ request()->routeIs('dashboard.researchers') ? 'active' : '' }}">
             <i class="bi bi-people"></i>
-            <span class="menu-item-text">Tim Peneliti</span>
+            <span class="menu-item-text">profile Kelompok Marori</span>
+        </a>
+
+        <a href="{{ route('admin.poetry.index') }}" class="menu-item {{ request()->routeIs('admin.poetry.*') ? 'active' : '' }}">
+            <i class="bi bi-mic"></i>
+            <span class="menu-item-text">Puisi Marori</span>
         </a>
 
         <a href="{{ route('dashboard.contact') }}" class="menu-item {{ request()->routeIs('dashboard.contact') ? 'active' : '' }}">

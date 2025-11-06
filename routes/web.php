@@ -8,6 +8,7 @@ use App\Http\Controllers\ResearcherController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PoetryController;
 use App\Http\Controllers\Dashboard\CultureController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,6 +53,13 @@ Route::middleware(['auth'])->group(function () {
     // Contact Management Routes
     Route::get('/dashboard/contact', [ContactController::class, 'index'])->name('dashboard.contact');
     Route::post('/dashboard/contact', [ContactController::class, 'update'])->name('dashboard.contact.update');
+
+    // Poetry Management Routes
+    Route::get('/dashboard/poetry', [PoetryController::class, 'index'])->name('admin.poetry.index');
+    Route::post('/dashboard/poetry', [PoetryController::class, 'store'])->name('admin.poetry.store');
+    Route::post('/dashboard/poetry/update/{id}', [PoetryController::class, 'update'])->name('admin.poetry.update');
+    Route::delete('/dashboard/poetry/{id}', [PoetryController::class, 'destroy'])->name('admin.poetry.destroy');
+    Route::post('/dashboard/poetry/update-order', [PoetryController::class, 'updateOrder'])->name('admin.poetry.updateOrder');
 
     // Admin Management Routes
     Route::get('/dashboard/admin', [AdminController::class, 'index'])->name('dashboard.admin');
