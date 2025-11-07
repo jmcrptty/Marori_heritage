@@ -7,8 +7,8 @@
                 <span class="researchers-label">Suku Marori</span>
                 <h2 class="researchers-main-title">Kelompok Penjaga Warisan Budaya Marori</h2>
                 <p class="researchers-subtitle">
-                    Tetua adat dan tim yang berdedikasi menjaga, mendokumentasikan, dan melestarikan
-                    warisan budaya Suku Marori Wasur untuk generasi mendatang.
+                    Tetua adat dan generasi muda Marori yang berdedikasi menjaga, mendokumentasikan, dan melestarikan
+                    warisan budaya Suku Marori untuk generasi mendatang.
                 </p>
             </div>
 
