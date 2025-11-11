@@ -30,10 +30,9 @@
                         <div class="culture-slide">
                             <div class="culture-slide-image">
                                 @if($culture->image)
-                                    <img data-src="{{ asset($culture->image) }}"
+                                    <img src="{{ asset('storage/' . $culture->image) }}"
                                          alt="{{ $culture->title }}"
                                          loading="lazy"
-                                         class="lazy-loading"
                                          style="width: 100%; height: 100%; object-fit: cover;">
                                 @else
                                     <i class="bi bi-palette-fill"></i>

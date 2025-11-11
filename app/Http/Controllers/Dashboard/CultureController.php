@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CultureItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class CultureController extends Controller
 {
@@ -30,12 +31,12 @@ class CultureController extends Controller
             'description' => 'nullable|string',
         ]);
 
-        // Handle image upload to public folder
+        // Handle image upload to storage
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '_' . Str::slug($request->title) . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images/culture'), $imageName);
-            $validated['image'] = 'images/culture/' . $imageName;
+            $path = $image->storeAs('images/culture', $imageName, 'public');
+            $validated['image'] = $path;
         }
 
         CultureItem::create($validated);
@@ -59,14 +60,21 @@ class CultureController extends Controller
         // Handle image upload
         if ($request->hasFile('image')) {
             // Delete old image if exists
-            if ($culture->image && file_exists(public_path($culture->image))) {
-                unlink(public_path($culture->image));
+            if ($culture->image) {
+                // Try delete from storage first
+                if (Storage::disk('public')->exists($culture->image)) {
+                    Storage::disk('public')->delete($culture->image);
+                }
+                // Also try delete from old public path for backward compatibility
+                if (file_exists(public_path($culture->image))) {
+                    unlink(public_path($culture->image));
+                }
             }
 
             $image = $request->file('image');
             $imageName = time() . '_' . Str::slug($request->title) . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images/culture'), $imageName);
-            $validated['image'] = 'images/culture/' . $imageName;
+            $path = $image->storeAs('images/culture', $imageName, 'public');
+            $validated['image'] = $path;
         }
 
         $culture->update($validated);
@@ -81,8 +89,15 @@ class CultureController extends Controller
     public function destroy(CultureItem $culture)
     {
         // Delete image if exists
-        if ($culture->image && file_exists(public_path($culture->image))) {
-            unlink(public_path($culture->image));
+        if ($culture->image) {
+            // Try delete from storage first
+            if (Storage::disk('public')->exists($culture->image)) {
+                Storage::disk('public')->delete($culture->image);
+            }
+            // Also try delete from old public path for backward compatibility
+            if (file_exists(public_path($culture->image))) {
+                unlink(public_path($culture->image));
+            }
         }
 
         $culture->delete();

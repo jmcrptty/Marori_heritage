@@ -74,7 +74,7 @@
                     @if($photo->is_active && $photo->image_path)
                     <div class="photo-item" data-index="{{ $index }}" style="{{ $index >= 9 ? 'display: none;' : '' }}">
                         <div class="photo-card" onclick="openLightbox({{ $index }})">
-                            <img data-src="{{ asset('storage/' . $photo->image_path) }}" alt="{{ $photo->title }}" loading="lazy" class="lazy-loading photo-img" data-full-src="{{ asset('storage/' . $photo->image_path) }}">
+                            <img src="{{ asset('storage/' . $photo->image_path) }}" alt="{{ $photo->title }}" loading="lazy" class="photo-img">
                             <div class="photo-overlay">
                                 <div class="photo-content">
                                     <span class="photo-category">FOTO</span>
@@ -472,13 +472,13 @@
         font-size: 0.7rem;
         font-weight: 700;
         letter-spacing: 3px;
-        color: #8B0000;
+        color: #FFFFFF;
         text-transform: uppercase;
         margin-bottom: 12px;
-        background: rgba(139, 0, 0, 0.15);
+        background: rgba(255, 255, 255, 0.15);
         padding: 6px 16px;
         border-radius: 20px;
-        border: 2px solid rgba(139, 0, 0, 0.3);
+        border: 2px solid rgba(255, 255, 255, 0.3);
     }
 
     .photo-gallery-title {

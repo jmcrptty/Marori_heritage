@@ -50,7 +50,7 @@
                                 <tr>
                                     <td>
                                         @if($culture->image)
-                                            <img src="{{ asset($culture->image) }}" alt="{{ $culture->title }}"
+                                            <img src="{{ asset('storage/' . $culture->image) }}" alt="{{ $culture->title }}"
                                                  class="img-thumbnail" style="width: 80px; height: 80px; object-fit: cover;">
                                         @else
                                             <div class="bg-secondary d-flex align-items-center justify-content-center"
@@ -114,7 +114,7 @@
                                                         @if($culture->image)
                                                             <div class="mt-3">
                                                                 <p class="text-muted mb-2">Foto saat ini:</p>
-                                                                <img src="{{ asset($culture->image) }}" alt="{{ $culture->title }}"
+                                                                <img src="{{ asset('storage/' . $culture->image) }}" alt="{{ $culture->title }}"
                                                                      class="img-thumbnail" style="max-width: 300px;">
                                                             </div>
                                                         @endif
