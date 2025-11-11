@@ -130,7 +130,7 @@
                     <div class="mb-3">
                         <label class="form-label">Foto Produk</label>
                         <input type="file" id="add_product_image_input" class="form-control" accept="image/*">
-                        <small class="text-muted">Format: JPG, PNG, WEBP. Maksimal 2MB.</small>
+                        <small class="text-muted">Format: JPG, PNG, WEBP. Maksimal 30MB.</small>
                     </div>
 
                     <!-- Crop Container for Add Product -->
@@ -224,7 +224,7 @@
                         <label class="form-label">Foto Produk Saat Ini</label>
                         <div id="current_image_preview" class="mb-2"></div>
                         <input type="file" id="edit_product_image_input" class="form-control" accept="image/*">
-                        <small class="text-muted">Format: JPG, PNG, WEBP. Maksimal 2MB. Kosongkan jika tidak ingin mengubah foto.</small>
+                        <small class="text-muted">Format: JPG, PNG, WEBP. Maksimal 30MB. Kosongkan jika tidak ingin mengubah foto.</small>
                     </div>
 
                     <!-- Crop Container for Edit Product -->
@@ -310,8 +310,8 @@ document.getElementById('add_product_image_input').addEventListener('change', fu
     const file = e.target.files[0];
     if (file) {
         // Validate file size (max 2MB)
-        if (file.size > 2 * 1024 * 1024) {
-            alert('Ukuran file terlalu besar. Maksimal 2MB.');
+        if (file.size > 30 * 1024 * 1024) {
+            alert('Ukuran file terlalu besar. Maksimal 30MB.');
             this.value = '';
             return;
         }
@@ -448,8 +448,8 @@ document.getElementById('edit_product_image_input').addEventListener('change', f
     const file = e.target.files[0];
     if (file) {
         // Validate file size (max 2MB)
-        if (file.size > 2 * 1024 * 1024) {
-            alert('Ukuran file terlalu besar. Maksimal 2MB.');
+        if (file.size > 30 * 1024 * 1024) {
+            alert('Ukuran file terlalu besar. Maksimal 30MB.');
             this.value = '';
             return;
         }

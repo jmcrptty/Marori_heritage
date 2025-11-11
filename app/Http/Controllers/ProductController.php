@@ -28,7 +28,7 @@ class ProductController extends Controller
             'category' => 'required|string|max:100',
             'description' => 'required|string|max:500',
             'price' => 'required|string|max:100',
-            'image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:30720',
             'shopee_link' => 'nullable|url|max:255',
             'tokopedia_link' => 'nullable|url|max:255',
         ]);
@@ -64,7 +64,7 @@ class ProductController extends Controller
             'category' => 'required|string|max:100',
             'description' => 'required|string|max:500',
             'price' => 'required|string|max:100',
-            'image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:30720',
             'shopee_link' => 'nullable|url|max:255',
             'tokopedia_link' => 'nullable|url|max:255',
         ]);

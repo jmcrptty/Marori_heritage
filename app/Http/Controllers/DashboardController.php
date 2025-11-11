@@ -62,7 +62,7 @@ class DashboardController extends Controller
                 'btn_primary_link' => 'required|string|max:255',
                 'btn_secondary_text' => 'required|string|max:100',
                 'btn_secondary_link' => 'required|string|max:255',
-                'background_image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:2048'
+                'background_image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:30720'
             ]);
 
             $hero = HeroSection::first();
@@ -162,7 +162,7 @@ class DashboardController extends Controller
             'stat2_label' => 'required|string|max:100',
             'stat3_number' => 'required|string|max:20',
             'stat3_label' => 'required|string|max:100',
-            'about_image' => 'nullable|image|max:2048'
+            'about_image' => 'nullable|image|max:30720'
         ]);
 
         $about = AboutSection::first();
@@ -335,7 +335,7 @@ class DashboardController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:200',
             'caption' => 'required|string|max:300',
-            'photo' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048'
+            'photo' => 'required|image|mimes:jpg,jpeg,png,webp|max:30720'
         ]);
 
         // Handle photo upload

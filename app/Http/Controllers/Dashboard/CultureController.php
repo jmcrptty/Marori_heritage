@@ -27,7 +27,7 @@ class CultureController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:200',
             'category' => 'required|string|max:100',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:30720',
             'description' => 'nullable|string',
         ]);
 
@@ -53,7 +53,7 @@ class CultureController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:200',
             'category' => 'required|string|max:100',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:30720',
             'description' => 'nullable|string',
         ]);
 

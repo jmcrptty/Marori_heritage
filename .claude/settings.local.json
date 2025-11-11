@@ -15,7 +15,8 @@
       "Bash(nul)",
       "Bash(del \"d:\\project\\marori\\public\\phpinfo.php\")",
       "Bash(del \"d:\\project\\marori\\public\\check-php-upload.php\")",
-      "Bash(del \"d:\\project\\marori\\DEBUGGING-AUDIO-UPLOAD.md\")"
+      "Bash(del \"d:\\project\\marori\\DEBUGGING-AUDIO-UPLOAD.md\")",
+      "Bash(find:*)"
     ],
     "deny": [],
     "ask": []

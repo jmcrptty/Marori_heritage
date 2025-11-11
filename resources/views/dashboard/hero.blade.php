@@ -113,7 +113,7 @@
                     <div class="mb-3">
                         <label class="form-label">Upload Gambar Baru (Opsional)</label>
                         <input type="file" name="background_image" class="form-control" accept="image/*">
-                        <small class="text-muted">Format: JPG, PNG, WEBP. Maksimal 2MB. Rekomendasi aspect ratio 16:9.</small>
+                        <small class="text-muted">Format: JPG, PNG, WEBP. Maksimal 30MB. Rekomendasi aspect ratio 16:9.</small>
                     </div>
                 </div>
             </div>
@@ -216,8 +216,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const file = e.target.files[0];
             if (file) {
                 // Check file size
-                if (file.size > 2 * 1024 * 1024) {
-                    alert('Ukuran file terlalu besar! Maksimal 2MB.');
+                if (file.size > 30 * 1024 * 1024) {
+                    alert('Ukuran file terlalu besar! Maksimal 30MB.');
                     e.target.value = '';
                     return;
                 }

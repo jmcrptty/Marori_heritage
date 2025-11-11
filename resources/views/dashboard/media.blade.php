@@ -253,7 +253,7 @@
                     <div class="mb-3">
                         <label class="form-label">Upload Foto <span class="text-danger">*</span></label>
                         <input type="file" id="add_photo_input" class="form-control" accept="image/*" required>
-                        <small class="text-muted">Format: JPG, PNG, WEBP. Maksimal 2MB.</small>
+                        <small class="text-muted">Format: JPG, PNG, WEBP. Maksimal 30MB.</small>
                     </div>
                     <div id="add_crop_container" style="display: none;">
                         <div class="alert alert-info mb-3">
@@ -330,7 +330,7 @@
                     <div class="mb-3">
                         <label class="form-label">Upload Foto Baru (Opsional)</label>
                         <input type="file" id="edit_photo_input" class="form-control" accept="image/*">
-                        <small class="text-muted">Format: JPG, PNG, WEBP. Maksimal 2MB. Kosongkan jika tidak ingin mengubah foto.</small>
+                        <small class="text-muted">Format: JPG, PNG, WEBP. Maksimal 30MB. Kosongkan jika tidak ingin mengubah foto.</small>
                     </div>
                     <div id="edit_crop_container" style="display: none;">
                         <div class="alert alert-info mb-3">
@@ -448,8 +448,8 @@ let editOriginalImage = null;
 document.getElementById('add_photo_input').addEventListener('change', function(e) {
     const file = e.target.files[0];
     if (file) {
-        if (file.size > 2 * 1024 * 1024) {
-            alert('Ukuran file terlalu besar! Maksimal 2MB.');
+        if (file.size > 30 * 1024 * 1024) {
+            alert('Ukuran file terlalu besar! Maksimal 30MB.');
             e.target.value = '';
             return;
         }
@@ -590,8 +590,8 @@ function rotateAddImage(degree) {
 document.getElementById('edit_photo_input').addEventListener('change', function(e) {
     const file = e.target.files[0];
     if (file) {
-        if (file.size > 2 * 1024 * 1024) {
-            alert('Ukuran file terlalu besar! Maksimal 2MB.');
+        if (file.size > 30 * 1024 * 1024) {
+            alert('Ukuran file terlalu besar! Maksimal 30MB.');
             e.target.value = '';
             return;
         }

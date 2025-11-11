@@ -27,7 +27,7 @@ class ResearcherController extends Controller
             'name' => 'required|string|max:200',
             'role' => 'required|string|max:100',
             'institution' => 'required|string|max:200',
-            'photo' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:2048',
+            'photo' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:30720',
         ]);
 
         // Handle photo upload
@@ -62,7 +62,7 @@ class ResearcherController extends Controller
             'name' => 'required|string|max:200',
             'role' => 'required|string|max:100',
             'institution' => 'required|string|max:200',
-            'photo' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:2048',
+            'photo' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:30720',
         ]);
 
         // Update fields

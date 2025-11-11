@@ -105,7 +105,7 @@ class MediaController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:200',
             'caption' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,jpg,png,webp|max:2048',
+            'image' => 'required|image|mimes:jpeg,jpg,png,webp|max:30720',
         ]);
 
         // Handle image upload
@@ -132,7 +132,7 @@ class MediaController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:200',
             'caption' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:30720',
         ]);
 
         // Update title and caption

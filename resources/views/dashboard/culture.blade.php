@@ -173,7 +173,7 @@
                     <div class="mb-3">
                         <label class="form-label">Foto <span class="text-danger">*</span></label>
                         <input type="file" name="image" class="form-control" accept="image/*" required>
-                        <small class="text-muted">Format: JPG, PNG, GIF. Maksimal 2MB</small>
+                        <small class="text-muted">Format: JPG, PNG, GIF. Maksimal 30MB</small>
                     </div>
 
                     <div class="mb-3">

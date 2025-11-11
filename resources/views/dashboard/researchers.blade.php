@@ -119,7 +119,7 @@
                     <div class="mb-3">
                         <label class="form-label">Foto Peneliti</label>
                         <input type="file" id="add_researcher_photo_input" class="form-control" accept="image/*">
-                        <small class="text-muted">Format: JPG, PNG, WEBP. Maksimal 2MB.</small>
+                        <small class="text-muted">Format: JPG, PNG, WEBP. Maksimal 30MB.</small>
                     </div>
 
                     <!-- Crop Container for Add Researcher -->
@@ -195,7 +195,7 @@
                         <label class="form-label">Foto Saat Ini</label>
                         <div id="current_photo_preview" class="mb-2"></div>
                         <input type="file" id="edit_researcher_photo_input" class="form-control" accept="image/*">
-                        <small class="text-muted">Format: JPG, PNG, WEBP. Maksimal 2MB. Kosongkan jika tidak ingin mengubah foto.</small>
+                        <small class="text-muted">Format: JPG, PNG, WEBP. Maksimal 30MB. Kosongkan jika tidak ingin mengubah foto.</small>
                     </div>
 
                     <!-- Crop Container for Edit Researcher -->
@@ -271,8 +271,8 @@ document.getElementById('add_researcher_photo_input').addEventListener('change',
     const file = e.target.files[0];
     if (file) {
         // Validate file size (max 2MB)
-        if (file.size > 2 * 1024 * 1024) {
-            alert('Ukuran file terlalu besar. Maksimal 2MB.');
+        if (file.size > 30 * 1024 * 1024) {
+            alert('Ukuran file terlalu besar. Maksimal 30MB.');
             this.value = '';
             return;
         }
@@ -406,8 +406,8 @@ document.getElementById('edit_researcher_photo_input').addEventListener('change'
     const file = e.target.files[0];
     if (file) {
         // Validate file size (max 2MB)
-        if (file.size > 2 * 1024 * 1024) {
-            alert('Ukuran file terlalu besar. Maksimal 2MB.');
+        if (file.size > 30 * 1024 * 1024) {
+            alert('Ukuran file terlalu besar. Maksimal 30MB.');
             this.value = '';
             return;
         }
